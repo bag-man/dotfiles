@@ -1,0 +1,11 @@
+Config { 
+   font     = "xft:Anonymous Pro Minus:size=10:antialias=true:autohint=true",
+   bgColor  = "#111111",
+   fgColor  = "#888888",
+   position = Top,
+   commands = [Run StdinReader,
+               Run Date "%H:%M " "date" 10],
+   sepChar  = "%",
+   alignSep = "}{",
+   template = "%StdinReader% }{ %date%" 
+ }

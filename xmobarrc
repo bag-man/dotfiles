@@ -4,6 +4,7 @@ Config {
    fgColor  = "#888888",
    position = Top,
    commands = [Run StdinReader,
+               Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
                Run Date "%H:%M " "date" 10],
    sepChar  = "%",
    alignSep = "}{",

@@ -30,6 +30,7 @@ myKeys = [
   ((0, xK_F11),spawn "amixer set Master 5-"),
   ((0, xK_F12),spawn "amixer set Master 5+"),
   ((mod1Mask, xK_F4), kill),
+  ((mod1Mask, xK_End), spawn "shutdown -h now"),
   ((controlMask .|. mod1Mask, xK_Right), nextWS),
   ((controlMask .|. mod1Mask, xK_Left), prevWS),
   ((mod1Mask .|. shiftMask, xK_Right), shiftToNext >> nextWS),

@@ -29,6 +29,11 @@
 
 }
 
+/* Remove favicons */
+.tab-icon-image	{
+    display:none !important;
+}
+
 
 @-moz-document url(chrome://browser/content/browser.xul) {
     /* URL-BAR */

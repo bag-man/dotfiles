@@ -1,0 +1,7 @@
+#!/bin/bash
+clear
+git add -A
+echo -n "Commit message: "
+read message
+git commit -m "$message"
+git push

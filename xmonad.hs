@@ -23,6 +23,12 @@ myPP = xmobarPP {
 }
 
 myKeys = [ 
+  -- Chromebook
+  ((mod1Mask, xK_w), spawn "firefox"),
+  ((mod1Mask, xK_q), spawn "urxvt"),
+  ((0, xK_F9), spawn "touchtoggle"),
+
+  -- Desktop
   ((mod4Mask, xK_w), spawn "firefox"),
   ((mod4Mask, xK_q), spawn "urxvt"),
   ((0, xK_F9), spawn "ncmpcpp next"),
@@ -31,6 +37,8 @@ myKeys = [
   ((0, xK_F12),spawn "amixer set Master 5+"),
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_End), spawn "shutdown -h now"),
+  
+  -- Workspaces
   ((controlMask .|. mod1Mask, xK_Right), nextWS),
   ((controlMask .|. mod1Mask, xK_Left), prevWS),
   ((mod1Mask .|. shiftMask, xK_Right), shiftToNext >> nextWS),

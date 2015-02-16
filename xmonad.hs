@@ -27,6 +27,7 @@ myKeys = [
   ((mod1Mask, xK_w), spawn "firefox"),
   ((mod1Mask, xK_q), spawn "urxvt"),
   ((0, xK_F9), spawn "touchtoggle"),
+  ((0, xK_Super_L), spawn "dmenu_run"),
 
   -- Desktop
   ((mod4Mask, xK_w), spawn "firefox"),

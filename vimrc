@@ -88,3 +88,18 @@ set wildignore=*.class
 setlocal spell spelllang=en
 nmap ss :set spell!<CR>
 set nospell
+
+" Syntastic
+execute pathogen#infect()
+filetype plugin indent on
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/path/to/python2'
+let g:syntastic_javascript_checkers = ['jshint']

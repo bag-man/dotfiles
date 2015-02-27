@@ -6,6 +6,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
+import XMonad.Layout.ResizableTile
 
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
 
@@ -41,6 +42,10 @@ myKeys = [
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_End), spawn "shutdown -h now"),
   
+  -- Adjust split
+  ((mod1Mask, xK_j), sendMessage MirrorShrink),
+  ((mod1Mask, xK_k), sendMessage MirrorExpand),
+  
   -- Workspaces
   ((controlMask .|. mod1Mask, xK_Right), nextWS),
   ((controlMask .|. mod1Mask, xK_Left), prevWS),
@@ -52,6 +57,7 @@ myKeys = [
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 myManageHook = composeAll[isFullscreen --> (doF W.focusDown <+> doFullFloat)]
+myLayout = smartBorders $ ResizableTall 1 (3/100) (1/2) [] ||| layoutHook defaultConfig
 
 myConfig = defaultConfig {
   terminal           = myTerminal,
@@ -60,6 +66,6 @@ myConfig = defaultConfig {
   focusedBorderColor = myBorderColour,
   workspaces         = myWorkspaces,
   manageHook         = myManageHook,
-  layoutHook         = smartBorders $ layoutHook defaultConfig
-} `removeKeys` [(mod1Mask, xK_period)] -- Removes Alt+.
+  layoutHook         = myLayout
+} `removeKeys` [(mod1Mask, xK_period), (mod1Mask, xK_k), (mod1Mask, xK_j)] -- Removes Alt+. Alt+j Alt+k
   `additionalKeys` myKeys 

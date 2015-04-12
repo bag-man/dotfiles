@@ -103,3 +103,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/path/to/python2'
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_tex_checkers = ['lacheck']

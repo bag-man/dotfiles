@@ -61,10 +61,13 @@ map <Cr> O<Esc>
 map <F5> :make!<cr>
 
 " push to git
-map <F6> :w<Cr>:!push<Cr>
+" map <F6> :w<Cr>:!push<Cr>
 
 " run JUnit tests
-map <F7> :w<Cr>:!junit %<<Cr>
+" map <F7> :w<Cr>:!junit %<<Cr>
+
+" run mocha tests
+map <F6> :w<Cr>:!clear;mocha<Cr>
 
 " disable arrow keys
 map <up> <nop>
@@ -103,3 +106,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_tex_checkers = ['lacheck']
+

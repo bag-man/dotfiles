@@ -33,6 +33,12 @@ alias update="pacman -Syu --ignore ncmpcpp,openbox; kerncheck"
 alias ps="ps aux | grep -v "grep" | grep "
 alias paste="xsel --clipboard | spr"
 
+# OS X aliases for work laptop
+# alias xclip="pbcopy"
+# alias xsel="pbpaste"
+# alias spr="curl -F 'sprunge=<-' http://sprunge.us | pbcopy"
+# alias paste="pbpaste --clipboard | spr"
+
 export TERM=xterm-256color
 export PYTHON=python2.7
 FIGNORE=.class

@@ -19,6 +19,9 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+" Strip trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 " check perl code
 autocmd FileType perl set makeprg=clear;perl\ %\
 autocmd FileType perl set autowrite

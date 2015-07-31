@@ -38,7 +38,7 @@ alias paste="xsel --clipboard | spr"
 # alias xsel="pbpaste"
 # alias spr="curl -F 'sprunge=<-' http://sprunge.us | pbcopy"
 # alias paste="pbpaste --clipboard | spr"
-alias istanbul="istanbul cover node_modules/.bin/_mocha"
+alias istanbul="istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

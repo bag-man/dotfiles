@@ -38,6 +38,7 @@ alias paste="xsel --clipboard | spr"
 # alias xsel="pbpaste"
 # alias spr="curl -F 'sprunge=<-' http://sprunge.us | pbcopy"
 # alias paste="pbpaste --clipboard | spr"
+alias istanbul="istanbul cover node_modules/.bin/_mocha"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

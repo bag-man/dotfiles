@@ -72,6 +72,9 @@ map <F5> :make!<cr>
 " run mocha tests
 map <F6> :w<Cr>:!clear;istanbul<Cr>
 
+" set read aliases
+set shellcmdflag+=i
+
 " disable arrow keys
 map <up> <nop>
 map <down> <nop>

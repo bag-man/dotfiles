@@ -70,7 +70,7 @@ map <F5> :make!<cr>
 " map <F7> :w<Cr>:!junit %<<Cr>
 
 " run mocha tests
-map <F6> :w<Cr>:!clear;mocha<Cr>
+map <F6> :w<Cr>:!clear;istanbul<Cr>
 
 " disable arrow keys
 map <up> <nop>

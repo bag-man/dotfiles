@@ -75,6 +75,8 @@ map <F5> :make!<cr>
 " run mocha tests
 map <F6> :w<Cr>:!clear;istanbul<Cr>
 
+" change open path to open path in vertical split
+map <C-w>f :vertical wincmd f<CR>
 
 """ Behaviour modifiers
 
@@ -122,6 +124,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 set autochdir
 let NERDTreeChDirMode=2
+set mouse=a
 
 " syntastic
 execute pathogen#infect()

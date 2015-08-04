@@ -76,7 +76,7 @@ map <F5> :make!<cr>
 map <F6> :w<Cr>:!clear;istanbul<Cr>
 
 " change open path to open path in vertical split
-map <C-w>f :vertical wincmd f<CR>
+map <C-w><C-f> :vertical wincmd f<CR>
 
 
 """ Behaviour modifiers

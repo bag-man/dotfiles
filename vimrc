@@ -78,6 +78,7 @@ map <F6> :w<Cr>:!clear;istanbul<Cr>
 " change open path to open path in vertical split
 map <C-w>f :vertical wincmd f<CR>
 
+
 """ Behaviour modifiers
 
 " Strip trailing whitespace

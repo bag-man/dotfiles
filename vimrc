@@ -85,10 +85,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 set shellcmdflag+=i
 
 " disable arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
+" I've learned now, and it makes it easier to use NERDTree with the enter key
 
 " enable backspace in insert
 set backspace=indent,eol,start
@@ -113,6 +114,15 @@ set nospell
 
 
 """ Plugins
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap <C-n> :NERDTree .<CR>
 
 " syntastic
 execute pathogen#infect()

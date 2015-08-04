@@ -122,7 +122,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 set autochdir
 let NERDTreeChDirMode=2
-nnoremap <C-n> :NERDTree .<CR>
 
 " syntastic
 execute pathogen#infect()

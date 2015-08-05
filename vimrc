@@ -19,6 +19,10 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+" status line
+set laststatus=2
+set statusline=%F
+
 
 """ Make configs
 

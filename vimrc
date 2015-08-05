@@ -13,6 +13,7 @@ set nowrap
 colorscheme lucius
 LuciusDarkLowContrast
 hi StatusLine ctermfg=white
+hi StatusLineNC ctermfg=lightgreen
 
 " indenting
 set cindent
@@ -143,3 +144,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_tex_checkers = ['lacheck']
+
+" installed: nerdtree, nerdtree-git-plugin, node, syntastic, vim-jade

@@ -13,7 +13,7 @@ set nowrap
 colorscheme lucius
 LuciusDarkLowContrast
 hi StatusLine ctermfg=white
-hi StatusLineNC ctermfg=lightgreen
+hi StatusLineNC ctermfg=black
 
 " indenting
 set cindent
@@ -81,7 +81,8 @@ map <F5> :make!<cr>
 " run mocha tests
 map <F6> :w<Cr>:!clear;istanbul<Cr>
 
-map <C-w><C-f> :vertical wincmd f<CR>
+" Doesn't work with node vim plugin
+" map <C-w><C-f> :vertical wincmd f<CR>
 
 """ Behaviour modifiers
 
@@ -145,4 +146,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_tex_checkers = ['lacheck']
 
-" installed: nerdtree, nerdtree-git-plugin, node, syntastic, vim-jade
+" Installed 
+" nerdtree		
+" nerdtree-git-plugin	
+" node			
+" syntastic		
+" vim-jade

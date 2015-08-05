@@ -12,6 +12,7 @@ set nowrap
 " set color theme
 colorscheme lucius
 LuciusDarkLowContrast
+hi StatusLine ctermfg=white
 
 " indenting
 set cindent

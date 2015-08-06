@@ -146,9 +146,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_tex_checkers = ['lacheck']
 
-" Installed 
-" nerdtree		
-" nerdtree-git-plugin	
-" node			
-" syntastic		
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" INSTALLED
+" nerdtree
+" nerdtree-git-plugin
+" node
+" syntastic
 " vim-jade
+" ctrlp

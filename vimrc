@@ -69,6 +69,9 @@ set pastetoggle=<F2>
 " insert new line
 map <Cr> O<Esc>
 
+" Toggle Syntastic
+map <F4> :SyntasticToggleMode<Cr>
+
 " make F5 compile
 map <F5> :make!<cr>
 

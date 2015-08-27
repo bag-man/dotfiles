@@ -109,6 +109,10 @@ set backspace=indent,eol,start
 map <C-l> :bn<Cr>
 map <C-h> :bp<Cr>
 
+" Bclose
+" http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
+map D :Bclose<Cr>
+
 " search settings
 set ignorecase
 set incsearch
@@ -125,6 +129,7 @@ set nospell
 
 
 """ Plugins
+execute pathogen#infect()
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -135,7 +140,6 @@ let NERDTreeChDirMode=2
 set mouse=a
 
 " syntastic
-execute pathogen#infect()
 filetype plugin indent on
 
 set statusline+=%#warningmsg#

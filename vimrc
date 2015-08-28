@@ -158,4 +158,5 @@ let g:ctrlp_prompt_mappings = {
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'richsoni/vim-ecliptic'
 call plug#end()

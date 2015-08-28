@@ -28,17 +28,9 @@ set statusline=%F
 
 """ Make configs
 
-" check perl code
-autocmd FileType perl set makeprg=clear;perl\ %
-autocmd FileType perl set autowrite
-
 " run python
 autocmd BufRead *.py set makeprg=clear;python2.7\ %
 autocmd BufRead *.py set autowrite
-
-" run go
-autocmd BufRead *.go set makeprg=clear;go\ run\ %
-autocmd BufRead *.go set autowrite
 
 " run node.js
 autocmd BufRead *.js set makeprg=clear;node\ %
@@ -47,10 +39,6 @@ autocmd BufRead *.js set autowrite
 " compile c code
 autocmd FileType c set makeprg=clear;make\ test
 autocmd FileType c set autowrite
-
-" compile rust code
-autocmd BufRead *.rs set makeprg=clear;rustc\ %\;./%<
-autocmd BufRead *.rs set autowrite
 
 " compile LaTeX
 autocmd BufRead *.tex set makeprg=clear;pdflatex\ %
@@ -69,38 +57,20 @@ set pastetoggle=<F2>
 " insert new line
 map <Cr> O<Esc>
 
-" Toggle Syntastic
-map <F4> :SyntasticToggleMode<Cr>
-
 " make F5 compile
 map <F5> :make!<cr>
 
-" push to git
-" map <F6> :w<Cr>:!push<Cr>
+" Toggle Syntastic
+map <F4> :SyntasticToggleMode<Cr>
 
-" run JUnit tests
-" map <F7> :w<Cr>:!junit %<<Cr>
-
-" run mocha tests
-map <F6> :w<Cr>:!clear;istanbul<Cr>
-
-" Doesn't work with node vim plugin
-" map <C-w><C-f> :vertical wincmd f<CR>
 
 """ Behaviour modifiers
 
 " Strip trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre *.js :%s/\s\+$//e
 
 " set read aliases
 set shellcmdflag+=i
-
-" disable arrow keys
-" map <up> <nop>
-" map <down> <nop>
-" map <left> <nop>
-" map <right> <nop>
-" I've learned now, and it makes it easier to use NERDTree with the enter key
 
 " enable backspace in insert
 set backspace=indent,eol,start
@@ -109,8 +79,7 @@ set backspace=indent,eol,start
 map <C-l> :bn<Cr>
 map <C-h> :bp<Cr>
 
-" Bclose
-" http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
+" close buffer
 map D :Bclose<Cr>
 
 " search settings
@@ -119,19 +88,41 @@ set incsearch
 set smartcase
 set scrolloff=10
 
-" ignore class files
-set wildignore=*.class
-
 " spelling
 setlocal spell spelllang=en
 nmap ss :set spell!<CR>
 set nospell
 
 
+""" Auto runs
+
+augroup vimrcEx
+  autocmd!
+  
+  " Jump to last know position in file
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  " Enable spellchecking for Markdown
+  autocmd FileType markdown setlocal spell
+
+augroup END
+
 """ Plugins
-execute pathogen#infect()
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" :source %
+" :PlugInstall
+
+call plug#begin('~/.vim/plugged')
+filetype plugin indent on
 
 " NERDTree
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -140,10 +131,8 @@ let NERDTreeChDirMode=2
 set mouse=a
 
 " syntastic
-filetype plugin indent on
-
+Plug 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -154,14 +143,19 @@ let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_tex_checkers = ['lacheck']
 
 " ctrlp
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+nnoremap <C-]> :CtrlPTag<cr>
+" Speed up ctrlp
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+  \ }
 
-" INSTALLED
-" nerdtree
-" nerdtree-git-plugin
-" node
-" syntastic
-" vim-jade
-" ctrlp
+Plug 'moll/vim-node'
+Plug 'digitaltoad/vim-jade'
+Plug 'rbgrouleff/bclose.vim'
+call plug#end()

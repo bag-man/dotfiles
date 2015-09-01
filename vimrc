@@ -66,6 +66,9 @@ map <F4> :SyntasticToggleMode<Cr>
 
 """ Behaviour modifiers
 
+" Share clipboard with system
+set clipboard=unnamed
+
 " Strip trailing whitespace
 autocmd BufWritePre *.js :%s/\s\+$//e
 

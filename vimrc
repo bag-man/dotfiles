@@ -82,6 +82,11 @@ set backspace=indent,eol,start
 map <C-l> :bn<Cr>
 map <C-h> :bp<Cr>
 
+" tab navigation 
+nnoremap <tab> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>
+inoremap <C-t> <Esc>:tabnew<CR>
+
 " close buffer
 map D :Bclose<Cr>
 

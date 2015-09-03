@@ -1,4 +1,5 @@
 """ Appearance
+" http://i.imgur.com/atfGOCZ.png
 
 " syntax highlighting
 syntax on

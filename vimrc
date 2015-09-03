@@ -164,5 +164,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+Plug 'mkitt/tabline.vim'
+Plug 'jistr/vim-nerdtree-tabs'
 
 call plug#end()

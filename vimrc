@@ -161,4 +161,7 @@ Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-repeat'
+
 call plug#end()

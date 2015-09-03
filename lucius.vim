@@ -552,7 +552,7 @@ else
     hi LineNr       guifg=#626262   guibg=#444444
     hi PmenuSel                     guibg=#005f87
     hi SignColumn                   guibg=#4e4e4e
-    hi StatusLineNC guifg=#4e4e4e
+    hi StatusLineNC guifg=#9e9e9e
     hi TabLineFill  guifg=#4e4e4e
     hi VertSplit    guifg=#626262
     hi WildMenu                     guibg=#005f87
@@ -563,7 +563,7 @@ else
         hi PmenuSbar    guifg=#8a8a8a   guibg=#bcbcbc
         hi PmenuThumb                   guibg=#585858
         hi SignColumn   guifg=#8a8a8a
-        hi StatusLine   guifg=#626262   guibg=#444444
+        hi StatusLine   guifg=#ffffff   guibg=#444444
         hi StatusLineNC                 guibg=#444444
         hi TabLine                      guibg=#8a8a8a
         hi TabLineFill                  guibg=#8a8a8a
@@ -770,4 +770,5 @@ command! LuciusBlackHighContrast call SetLucius("dark", "high", "high")
             \ | colorscheme lucius
 
 " vim: tw=78
+
 

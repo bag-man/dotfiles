@@ -10,10 +10,9 @@ set number
 set nowrap
 
 " set color theme
+" https://github.com/bag-man/xDotfiles/blob/master/lucius.vim
 colorscheme lucius
 LuciusDarkLowContrast
-hi StatusLine ctermfg=white
-hi StatusLineNC ctermfg=black
 
 " indenting
 set cindent
@@ -44,18 +43,10 @@ autocmd FileType c set autowrite
 autocmd BufRead *.tex set makeprg=clear;pdflatex\ %
 autocmd BufRead *.tex set autowrite
 
-" run java
-autocmd FileType java set makeprg=clear;javac\ \*.java;java\ %<
-autocmd FileType java set autowrite
-
-
 """ Function Keys
 
 " set paste mode
 set pastetoggle=<F2>
-
-" insert new line
-map <Cr> O<Esc>
 
 " make F5 compile
 map <F5> :make!<cr>
@@ -66,11 +57,16 @@ map <F4> :SyntasticToggleMode<Cr>
 
 """ Behaviour modifiers
 
+" insert new line
+map <Cr> O<Esc>
+
 " Share clipboard with system
 set clipboard=unnamed
 
 " Strip trailing whitespace
 autocmd BufWritePre *.js :%s/\s\+$//e
+autocmd BufWritePre *.c :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 " set read aliases
 set shellcmdflag+=i
@@ -100,25 +96,20 @@ set scrolloff=10
 setlocal spell spelllang=en
 nmap ss :set spell!<CR>
 set nospell
+autocmd FileType markdown setlocal spell
 
-
-""" Auto runs
-
+" Jump to last know position in file
 augroup vimrcEx
   autocmd!
-  
-  " Jump to last know position in file
   autocmd BufReadPost *
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
-
-  " Enable spellchecking for Markdown
-  autocmd FileType markdown setlocal spell
-
 augroup END
 
+
 """ Plugins
+"
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
@@ -146,21 +137,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_loc_list_height=5
+let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 let g:syntastic_tex_checkers = ['lacheck']
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nnoremap <C-]> :CtrlPTag<cr>
-" Speed up ctrlp
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+nnoremap <C-]> :CtrlPTag<cr>
 
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'
@@ -171,5 +162,4 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'mkitt/tabline.vim'
 Plug 'jistr/vim-nerdtree-tabs'
-
 call plug#end()

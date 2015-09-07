@@ -1,42 +1,47 @@
 cursor.theme: OpenZone
+!------------------------------------------------------------------------------
+! c o l o r -  s e t t i n g s
 
-! Default
 *background: #222222
 *foreground: #777777
+
+! Default
 ! 0: black
-*color0: #222222
-*color8: #222222
+*color0:  #222222
+*color8:  #222222
 ! 1: red
-*color1: #9f6767
-*color9: #9f6767
+*color1:  #9f6767
+*color9:  #9f6767
 ! 2: green
-*color2: #92ac68
+*color2:  #92ac68
 *color10: #92ac68
 ! 3: yellow
-*color3: #d0d293
+*color3:  #d0d293
 *color11: #d0d293
 ! 4: blue
-*color4: #117FF5
+*color4:  #117FF5
 *color12: #117FF5
 ! 5: magenta
-*color5: #bb77a4
+*color5:  #bb77a4
 *color13: #bb77a4
 ! 6: cyan
-*color6: #77bbb5
+*color6:  #77bbb5
 *color14: #77bbb5
 ! 7: white
-*color7: #999999
+*color7:  #999999
 *color15: #999999
 
-URxvt*depth: 32
-URxvt*background: #303030
-URxvt*foreground: #bcbcbc
-URxvt*scrollBar: false
-URxvt*saveLines: 5000
-URxvt*termName: rxvt-unicode
-URxvt*font: xft:Anonymous Pro Minus:size=9:antialias=true:autohint=true
-URxvt*boldFont: xft:Anonymous Pro Minus:size=9:antialias=true:autohint=true 
+URxvt.geometry: 110x41
+URxvt.depth: 32
+URxvt.background: #303030
+URxvt.foreground: #bcbcbc
+URxvt.scrollBar: false
+URxvt.saveLines: 5000
+URxvt.termName: rxvt-unicode
+URxvt.letterSpace: -2
+URxvt.font: xft:SourceCodePro:size=9:antialias=true:autohint=true
+URxvt.iconFile: /root/.themes/terminal.png
 URxvt.iso14755: False
-URxvt.url-launcher:      /usr/bin/firefox
-URxvt.matcher.button:   1
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,clipboard,matcher

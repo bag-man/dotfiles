@@ -1,4 +1,3 @@
-cursor.theme: OpenZone
 !------------------------------------------------------------------------------
 ! c o l o r -  s e t t i n g s
 
@@ -38,8 +37,9 @@ URxvt.foreground: #bcbcbc
 URxvt.scrollBar: false
 URxvt.saveLines: 5000
 URxvt.termName: rxvt-unicode
-URxvt.letterSpace: -2
-URxvt.font: xft:SourceCodePro:size=9:antialias=true:autohint=true
+URxvt.letterSpace: -1
+URxvt.font: xft:AnonymousProMinus:size=9:antialias=true:autohint=true
+URxvt.boldFont: xft:AnonymousProMinus:size=9:antialias=true:autohint=true
 URxvt.iconFile: /root/.themes/terminal.png
 URxvt.iso14755: False
 URxvt.url-launcher: /usr/bin/firefox

@@ -1,5 +1,4 @@
 """ Appearance
-" http://i.imgur.com/atfGOCZ.png
 
 " syntax highlighting
 syntax on
@@ -70,7 +69,7 @@ autocmd BufWritePre *.c :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " set read aliases
-" set shellcmdflag+=i
+set shellcmdflag+=i
 
 " enable backspace in insert
 set backspace=indent,eol,start
@@ -85,7 +84,7 @@ nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 
 " copy path
-map cp :CopyPath<Cr>
+map cp :CopyRelativePath<Cr>
 
 " close buffer
 map D :Bclose<Cr>
@@ -168,4 +167,5 @@ Plug 'tpope/vim-commentary'
 Plug 'mkitt/tabline.vim'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'justinmk/vim-gtfo'
+Plug 'bag-man/copypath.vim'
 call plug#end()

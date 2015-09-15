@@ -164,4 +164,5 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'mkitt/tabline.vim'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'justinmk/vim-gtfo'
 call plug#end()

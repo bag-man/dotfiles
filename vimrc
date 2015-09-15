@@ -84,6 +84,9 @@ nnoremap <tab> :tabnext<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 
+" copy path
+map cp :CopyPath<Cr>
+
 " close buffer
 map D :Bclose<Cr>
 

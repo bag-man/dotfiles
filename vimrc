@@ -86,6 +86,10 @@ inoremap <C-t> <Esc>:tabnew<CR>
 " copy path
 map cp :CopyRelativePath<Cr>
 
+" fugitive maps
+map gl :Gblame<Cr>
+map gb :Gbrowse<Cr>
+
 " close buffer
 map D :Bclose<Cr>
 
@@ -168,4 +172,5 @@ Plug 'mkitt/tabline.vim'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'justinmk/vim-gtfo'
 Plug 'bag-man/copypath.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()

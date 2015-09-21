@@ -176,4 +176,5 @@ Plug 'bag-man/copypath.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'can3p/incbool.vim'
 Plug 'chrisbra/Colorizer'
+Plug 'triglav/vim-visual-increment'
 call plug#end()

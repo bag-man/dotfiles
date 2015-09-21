@@ -149,6 +149,7 @@ let g:syntastic_loc_list_height=5
 let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 let g:syntastic_tex_checkers = ['lacheck']
 let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
+let g:colorizer_colornames = 0
 
 " ctrlp
 Plug 'kien/ctrlp.vim'

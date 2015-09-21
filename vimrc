@@ -148,6 +148,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
 let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 let g:syntastic_tex_checkers = ['lacheck']
+let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
@@ -174,4 +175,5 @@ Plug 'justinmk/vim-gtfo'
 Plug 'bag-man/copypath.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'can3p/incbool.vim'
+Plug 'chrisbra/Colorizer'
 call plug#end()

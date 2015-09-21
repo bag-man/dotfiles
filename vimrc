@@ -173,4 +173,5 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'justinmk/vim-gtfo'
 Plug 'bag-man/copypath.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'can3p/incbool.vim'
 call plug#end()

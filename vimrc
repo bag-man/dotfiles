@@ -74,6 +74,9 @@ set shellcmdflag+=i
 " enable backspace in insert
 set backspace=indent,eol,start
 
+" save as sudo
+cmap w!! w !sudo tee > /dev/null %
+
 " change buffer
 map <C-l> :bn<Cr>
 map <C-h> :bp<Cr>

@@ -8,5 +8,5 @@ Config {
                Run Date "%H:%M " "date" 10],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% }{ %date%" 
+   template = "%StdinReader% }{ %battery% %date%" 
  }

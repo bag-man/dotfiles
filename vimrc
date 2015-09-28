@@ -164,7 +164,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nnoremap <C-]> :CtrlPTag<cr>
+nnoremap <C-[> :CtrlPTag<cr>
 
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'

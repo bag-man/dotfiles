@@ -19,6 +19,7 @@ GRUB_ENABLE_CRYPTODISK=y
 GRUB_CMDLINE_LINUX="cryptdevice=UUID=<LUKS DEV UUID>:cryptroot root=/dev/mapper/cryptroot"
 grub-install --recheck /dev/sda --force
 grub-mkconfig -o /boot/grub/grub.cfg
+vi /etc/locale.gen
 locale-gen
 echo Alloy > /etc/hostname
 ln -sf /usr/share/zoneinfo/Eurpoe/London /etc/localtime

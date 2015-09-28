@@ -11,4 +11,5 @@ xmodmap -e "keycode 74 = F8 F8 F8" &
 xmodmap -e "keycode 133 = Escape"&
 clipit -n &
 nitrogen --restore &  
+trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --height 10 --margin 85 --transparent true --alpha 0 --tint 0x111111 &
 exec xmonad 

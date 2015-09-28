@@ -1,4 +1,4 @@
-These are the dotfiles for my Dell Chromebook 11 running XMonad. JShint and jscs@1.6.1 configs provided by work.
+These are the dotfiles for my Dell Chromebook 11 running XMonad. 
 
 ![Coding](http://a.pomf.se/ktqxxc.png)
 

@@ -1,6 +1,0 @@
-#!/bin/bash
-new=$(pacman -Q linux | awk -F " " '{print $2}')
-current=$(uname -r | awk -F "-" '{print $1 "-" $2}')
-if [[ $current != $new ]]; then
-  figlet "Kernel has been upgraded, reboot!" -f small -c | toilet -F gay -f term
-fi

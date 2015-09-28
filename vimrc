@@ -156,15 +156,12 @@ let g:colorizer_colornames = 0
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-nnoremap <C-[> :CtrlPTag<cr>
 
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'

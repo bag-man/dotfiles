@@ -1,0 +1,32 @@
+loadkeys uk
+wifi-menu
+lsblk
+cgdisk /dev/sda #100M EF01 boot
+cryptsetup -y -v luksFormat /dev/sdaX
+cryptsetup open /dev/sdaX cryptroot
+mkfs -t ext4 /dev/mapper/cryptroot
+mount -t ext4 /dev/mapper/cryptroot /mnt
+mkfs -t ext4 /dev/sdaY
+mkdir /mnt/boot
+mount -t ext4 /dev/sdaY /mnt/boot
+pacstrap /mnt base base-devel grub gvim git xorg-xinit xorg-server xf86-input-synaptics xorg-xset ttf-anonymous-pro ttf-liberation xf86-video-intel xmonad xmonad-contrib xmobar dmenu nitrogen clipit xorg-xmodmap xorg-xbacklight rxvt-unicode firefox networkmanager network-manager-applet trayer htop
+genfstab -U -p /mnt >> /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
+vi /etc/mkinitcpio.conf # add encrypt to hooks
+mkinitcpio -p linux
+vi /etc/default/grub
+GRUB_ENABLE_CRYPTODISK=y
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=<LUKS DEV UUID>:cryptroot root=/dev/mapper/cryptroot"
+grub-install --recheck /dev/sda --force
+grub-mkconfig -o /boot/grub/grub.cfg
+echo Alloy > /etc/hostname
+ln -sf /usr/share/zoneinfo/Eurpoe/London /etc/localtime
+useradd -d /home/owg1 -g wheel -m -s /bin/bash owg1
+passwd owg1
+su owg1; cd; git clone https://github.com/bag-man/xDotfiles.git
+vim /etc/sudoers # Add wheel
+passwd -l root
+exit
+umount /mnt/boot
+umount /mnt
+reboot

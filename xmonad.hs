@@ -18,7 +18,6 @@ myTerminal     = "urxvt"
 myPP = xmobarPP { 
   ppCurrent = xmobarColor "#888888" "",
   ppTitle = (\str -> ""), 
-  ppLayout = (\str -> ""),
   ppHidden = (xmobarColor "#626262" ""),
   ppHiddenNoWindows = (xmobarColor "#626262" "")
   ppLayout = 

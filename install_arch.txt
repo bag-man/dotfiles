@@ -9,7 +9,7 @@ mount -t ext4 /dev/mapper/cryptroot /mnt
 mkfs -t ext4 /dev/sdaY
 mkdir /mnt/boot
 mount -t ext4 /dev/sdaY /mnt/boot
-pacstrap /mnt base base-devel grub gvim git xorg-xinit xorg-server xf86-input-synaptics xorg-xset ttf-anonymous-pro ttf-liberation ttf-dejavu xf86-video-intel xmonad xmonad-contrib xmobar dmenu nitrogen clipit xorg-xmodmap xorg-xbacklight rxvt-unicode firefox networkmanager network-manager-applet trayer htop openssh mlocate pkgfile xclip xsel gtk-chtheme
+pacstrap /mnt base base-devel grub gvim git xorg-xinit xorg-server xf86-input-synaptics xorg-xset ttf-anonymous-pro ttf-liberation ttf-dejavu xf86-video-intel xmonad xmonad-contrib xmobar dmenu nitrogen clipit xorg-xmodmap xorg-xbacklight rxvt-unicode firefox networkmanager network-manager-applet trayer htop openssh mlocate pkgfile xclip xsel gtk-chtheme xdg-utils
 genfstab -U -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt /bin/bash
 vi /etc/mkinitcpio.conf # add encrypt to hooks

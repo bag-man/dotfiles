@@ -21,6 +21,13 @@ myPP = xmobarPP {
   ppLayout = (\str -> ""),
   ppHidden = (xmobarColor "#626262" ""),
   ppHiddenNoWindows = (xmobarColor "#626262" "")
+  ppLayout = 
+    (\x -> case x of
+    "ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/tall.xpm/>"
+    "Mirror Tall" -> "<icon=/home/owg1/.xmonad/icons/mirror.xpm/>"
+    "Full" -> "<icon=/home/owg1/.xmonad/icons/full.xpm/>"
+    _ -> x
+  )
 }
 
 myKeys = [ 
@@ -57,7 +64,14 @@ myKeys = [
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 myManageHook = composeAll[isFullscreen --> (doF W.focusDown <+> doFullFloat)]
-myLayout = smartBorders $ ResizableTall 1 (3/100) (1/2) [] ||| layoutHook defaultConfig
+myLayout = smartBorders $ ResizableTall 1 (3/100) (1/2) [] 
+           ||| Mirror tiled 
+           ||| Full
+  where
+    tiled   = Tall nmaster delta ratio
+    nmaster = 1
+    ratio   = 1/2
+    delta   = 3/100
 
 myConfig = defaultConfig {
   terminal           = myTerminal,

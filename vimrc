@@ -68,9 +68,6 @@ autocmd BufWritePre *.js :%s/\s\+$//e
 autocmd BufWritePre *.c :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 
-" set read aliases
-set shellcmdflag+=i
-
 " enable backspace in insert
 set backspace=indent,eol,start
 

@@ -49,9 +49,12 @@ autocmd BufRead *.tex set autowrite
 " set paste mode
 set pastetoggle=<F2>
 
+" set Enter to close quickfixwindow
+" I don't like this
+map <Cr> <Cr>:cclose<Cr>
+
 " Find word under cusor
-map <F3> :!clear; grep -srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags} --color=always <cword> * <Cr>
-command! -nargs=1 F !clear; grep -srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags} --color=always <q-args> * <Cr>
+map <F3> :Grep <cword> * <Cr>
 
 " Toggle Syntastic
 map <F4> :SyntasticToggleMode<Cr>
@@ -61,9 +64,6 @@ map <F5> :make!<cr>
 
 
 """ Behaviour modifiers
-
-" insert new line
-map <Cr> O<Esc>
 
 " Share clipboard with system
 set clipboard=unnamed
@@ -159,6 +159,10 @@ let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_tex_checkers = ['lacheck']
 let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
 let g:colorizer_colornames = 0
+
+" grep.vim
+Plug 'vim-scripts/grep.vim'
+let Grep_Default_Options = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
 
 " ctrlp
 Plug 'kien/ctrlp.vim'

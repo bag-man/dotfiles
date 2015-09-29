@@ -43,16 +43,20 @@ autocmd FileType c set autowrite
 autocmd BufRead *.tex set makeprg=clear;pdflatex\ %
 autocmd BufRead *.tex set autowrite
 
+
 """ Function Keys
 
 " set paste mode
 set pastetoggle=<F2>
 
-" make F5 compile
-map <F5> :make!<cr>
+" Find word under cusor
+map <F3> :!grep -srnw --binary-files=without-match --exclude-dir=.git --color=always <cword> * <Cr>
 
 " Toggle Syntastic
 map <F4> :SyntasticToggleMode<Cr>
+
+" make F5 compile
+map <F5> :make!<cr>
 
 
 """ Behaviour modifiers
@@ -147,13 +151,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
-let g:syntastic_javascript_checkers = ['jscs', 'jshint']
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_tex_checkers = ['lacheck']
 let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
 let g:colorizer_colornames = 0
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
+map <C-o> :CtrlPTag<Cr>
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_prompt_mappings = {

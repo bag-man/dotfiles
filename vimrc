@@ -50,7 +50,7 @@ autocmd BufRead *.tex set autowrite
 set pastetoggle=<F2>
 
 " Find word under cusor
-map <F3> :!grep -srnw --binary-files=without-match --exclude-dir=.git --color=always <cword> * <Cr>
+map <F3> :!clear; grep -srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags} --color=always <cword> * <Cr>
 
 " Toggle Syntastic
 map <F4> :SyntasticToggleMode<Cr>

@@ -175,4 +175,5 @@ Plug 'tpope/vim-fugitive'
 Plug 'can3p/incbool.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'triglav/vim-visual-increment'
+Plug 'bogado/file-line'
 call plug#end()

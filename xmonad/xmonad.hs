@@ -19,7 +19,7 @@ myPP = xmobarPP {
   ppCurrent = xmobarColor "#888888" "",
   ppTitle = (\str -> ""), 
   ppHidden = (xmobarColor "#626262" ""),
-  ppHiddenNoWindows = (xmobarColor "#626262" "")
+  ppHiddenNoWindows = (xmobarColor "#626262" ""),
   ppLayout = 
     (\x -> case x of
     "ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/tall.xpm/>"

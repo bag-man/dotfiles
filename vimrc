@@ -97,6 +97,9 @@ map gb :Gbrowse<Cr>
 " close buffer
 map D :Bclose<Cr>
 
+" open file in new tab
+noremap gt <C-w>gf
+
 " search settings
 set ignorecase
 set incsearch

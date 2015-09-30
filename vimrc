@@ -190,5 +190,5 @@ Plug 'chrisbra/Colorizer'
 Plug 'triglav/vim-visual-increment'
 Plug 'bogado/file-line'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim' " make 
 call plug#end()

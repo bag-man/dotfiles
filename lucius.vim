@@ -434,7 +434,7 @@ else
         hi Error        guifg=#d75f5f   guibg=#870000
         hi IncSearch                    guibg=#00afaf
         hi MatchParen                   guibg=#87af5f
-        hi Search                       guibg=#d78700
+        hi Search                       guifg=#ff8787
         hi Todo         guifg=#afaf00   guibg=#5f5f00
     elseif s:contrast == "high"
         hi Cursor                       guibg=#afd7ff
@@ -450,7 +450,7 @@ else
         hi Error        guifg=#ff8787   guibg=#870000
         hi IncSearch                    guibg=#5fd7d7
         hi MatchParen                   guibg=#afd75f
-        hi Search                       guibg=#d78700
+        hi Search                       guifg=#ff8787
         hi Todo         guifg=#d7d75f   guibg=#5f5f00
     endif
 endif

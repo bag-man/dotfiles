@@ -51,7 +51,6 @@ set pastetoggle=<F2>
 
 " Find word under cusor
 map <F3> :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=below'<Cr> 
-" -auto-preview'<CR>
 
 " Toggle Syntastic
 map <F4> :SyntasticToggleMode<Cr>
@@ -163,7 +162,6 @@ let g:colorizer_colornames = 0
 " Unite
 let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
 command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
-" -auto-preview'<CR>
 
 " ctrlp
 Plug 'kien/ctrlp.vim'

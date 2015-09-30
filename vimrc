@@ -49,12 +49,9 @@ autocmd BufRead *.tex set autowrite
 " set paste mode
 set pastetoggle=<F2>
 
-" set Enter to close quickfixwindow
-" I don't like this
-map <Cr> <Cr>:cclose<Cr>
-
 " Find word under cusor
-map <F3> :Grep <cword> * <Cr>
+map <F3> :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=below'<Cr> 
+" -auto-preview'<CR>
 
 " Toggle Syntastic
 map <F4> :SyntasticToggleMode<Cr>
@@ -64,6 +61,9 @@ map <F5> :make!<cr>
 
 
 """ Behaviour modifiers
+
+" make enter work in normal
+map <Cr> O<Esc>
 
 " Share clipboard with system
 set clipboard=unnamed
@@ -160,9 +160,10 @@ let g:syntastic_tex_checkers = ['lacheck']
 let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
 let g:colorizer_colornames = 0
 
-" grep.vim
-Plug 'vim-scripts/grep.vim'
-let Grep_Default_Options = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
+" Unite
+let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
+command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
+" -auto-preview'<CR>
 
 " ctrlp
 Plug 'kien/ctrlp.vim'
@@ -190,4 +191,6 @@ Plug 'can3p/incbool.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'triglav/vim-visual-increment'
 Plug 'bogado/file-line'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim'
 call plug#end()

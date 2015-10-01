@@ -37,6 +37,7 @@ myKeys = [
   ((0, xK_F7), spawn "xbacklight -inc 10"),
   ((0, xK_F9), spawn "touchtoggle"),
   ((0, xK_Super_L), spawn "dmenu_run"),
+  ((mod1Mask .|. shiftMask, xK_l), spawn "vlock -ans"),
 
   -- Desktop
   ((mod4Mask, xK_w), spawn "firefox"),

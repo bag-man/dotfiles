@@ -21,6 +21,7 @@ grub-install --recheck /dev/sda --force
 grub-mkconfig -o /boot/grub/grub.cfg
 vi /etc/locale.gen
 locale-gen
+localectl set-x11-keymap gb
 echo Alloy > /etc/hostname
 ln -sf /usr/share/zoneinfo/Eurpoe/London /etc/localtime
 useradd -d /home/owg1 -g wheel -m -s /bin/bash owg1

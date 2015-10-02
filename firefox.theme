@@ -34,7 +34,6 @@
     display:none !important;
 }
 
-
 @-moz-document url(chrome://browser/content/browser.xul) {
     /* URL-BAR */
     #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
@@ -52,7 +51,7 @@
     }
        #nav-bar-customization-target { width: 100% !important; }
           #urlbar-wrapper {
-              width: 100% !important; margin-top: -5px !important; /* adjust margin-top to ~ -5px if you experience gap */
+              width: 100% !important; margin-top: 0px !important; /* adjust margin-top to ~ -5px if you experience gap */
               position: absolute !important; top: 0 !important; left: 0 !important;
               border-bottom: 0px solid var(--bg-light) !important;
           }
@@ -96,22 +95,24 @@
         border-radius: 0px !important; position: relative !important; margin: 0px /* 1px */ !important;
         /*border-top: 1px solid #9472ec !important;*/
     }
+   /*
     .tabbrowser-tab[selected="true"]:before {    /* Left Triangle (of selected tab) */
         display: var(--tab-triangle); content: '' !important; position: absolute !important; z-index: 2 !important;
         top: 0 !important; left: -0px !important; width: 0 !important; height: 0 !important;
         
-        border: none !important;
+        border: none !important; */
         /*border-left: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
         border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
         border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;*/
         border-top: var(--tab-height) solid var(--bg-dark) !important;
         border-right: calc(var(--tab-height)/2) solid var(--bg-light) !important;
     }
+   /*
     .tabbrowser-tab[selected="true"]:after {    /* Right Triangle (of selected tab) */
         display: var(--tab-triangle); content: '' !important; position: absolute !important; z-index: 2 !important; 
         top: 0 !important; right: -0px !important; width: 0 !important; height: 0 !important;
         
-        border: none !important;
+        border: none !important; */
         /*border-right: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
         border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
         border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;*/
@@ -199,6 +200,7 @@
 
 /*----- Fix for white flash on new tab -----*/
 tabbrowser tabpanels, #appcontent > #content { background: var(--bg-light) !important; }
+
 
 
 

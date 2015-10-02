@@ -31,21 +31,21 @@ myPP = xmobarPP {
 
 myKeys = [ 
   -- Chromebook
-  ((mod1Mask, xK_w), spawn "firefox"),
-  ((mod1Mask, xK_q), spawn "urxvt"),
   ((0, xK_F6), spawn "xbacklight -dec 10"),
   ((0, xK_F7), spawn "xbacklight -inc 10"),
-  ((0, xK_F9), spawn "touchtoggle"),
   ((0, xK_Super_L), spawn "dmenu_run"),
-  ((mod1Mask .|. shiftMask, xK_l), spawn "vlock -ans"),
 
   -- Desktop
-  ((mod4Mask, xK_w), spawn "firefox"),
-  ((mod4Mask, xK_q), spawn "urxvt"),
   ((0, xK_F9), spawn "ncmpcpp next"),
   ((0, xK_F10), spawn "ncmpcpp toggle"),
   ((0, xK_F11),spawn "amixer set Master 5-"),
   ((0, xK_F12),spawn "amixer set Master 5+"),
+
+
+  -- Applications
+  ((mod1Mask .|. shiftMask, xK_l), spawn "vlock -ans"),
+  ((mod1Mask, xK_w), spawn "firefox"),
+  ((mod1Mask, xK_q), spawn "urxvt"),
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_End), spawn "shutdown -h now"),
   

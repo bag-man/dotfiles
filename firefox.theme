@@ -8,6 +8,9 @@
     Website: http://twily.info/
 */
 
+/* remove scrollbar */
+#content browser { margin-right:-14px!important; overflow-y:scroll; overflow-x:hidden;}
+
 :root {
     /* TAB VARIABLES */
     --bg-light: #111111; --bg-dark: #222326;

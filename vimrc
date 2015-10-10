@@ -90,9 +90,21 @@ inoremap <C-t> <Esc>:tabnew<CR>
 " copy path
 map cp :CopyRelativePath<Cr>
 
+" change dir for file completion
+autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+
+" Use j / k / tab for autocomplete
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
+
+" auto complete file paths
+imap <Tab> <C-X><C-F>
+
 " fugitive maps
 map gl :Gblame<Cr>
-map gb :Gbrowse<Cr>
+map gb :Gbrowse!<Cr>
 
 " close buffer
 map D :Bclose<Cr>

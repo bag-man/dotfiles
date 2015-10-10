@@ -23,7 +23,7 @@ set shiftwidth=2
 " status line
 set laststatus=2
 set statusline=%F
-
+set wildmenu
 
 """ Make configs
 

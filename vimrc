@@ -25,6 +25,7 @@ set laststatus=2
 set statusline=%F
 set wildmenu
 
+
 """ Make configs
 
 " run python
@@ -63,6 +64,9 @@ map <F5> :make!<cr>
 
 " make enter work in normal
 map <Cr> O<Esc>
+
+" stop the command popup
+map q: :q
 
 " Share clipboard with system
 set clipboard=unnamed

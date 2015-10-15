@@ -156,7 +156,7 @@ map <C-n> :NERDTreeTabsToggle<CR>
 map <C-f> :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeChDirMode=2
-let g:NERDTreeDirArrowExpandable = '│'
+let g:NERDTreeDirArrowExpandable = '├'
 let g:NERDTreeDirArrowCollapsible = '└'
 set mouse=a
 

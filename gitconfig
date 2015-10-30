@@ -1,24 +1,23 @@
-# This is Git's per-user configuration file.
 [core]
-# Please adapt and uncomment the following lines:
-	email = owen.garland@clock.co.uk
-	name = Owen Garland
-	editor = vim
-	excludesfile = ~/.gitignore
+  email = owen.garland@clock.co.uk
+  name = Owen Garland
+  editor = vim
+  excludesfile = ~/.gitignore
 [user]
-	email = owen.garland@clock.co.uk
-	name = Owen Garland
+  email = owen.garland@clock.co.uk
+  name = Owen Garland
 [push]
-	default = simple
+  default = simple
 [alias]
-	show = "!f() { git difftool $1^ $1; }; f"
+  show = "!f() { git difftool $1^ $1; }; f"
+  added = difftool --cached
 [tag]
-	sort = version:refname
+  sort = version:refname
 [diff]
-	tool = icdiff
+  tool = icdiff
 [difftool]
-	prompt = false
+  prompt = false
 [difftool "icdiff"]
-	cmd = /usr/bin/icdiff --line-numbers
+  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
 [pager]
-	difftool = true
+  difftool = true

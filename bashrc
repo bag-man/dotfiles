@@ -31,7 +31,7 @@ alias add="git add"
 alias branch="git branch"
 alias reset="git reset"
 alias commit="git commit"
-alias push="git push origin $(git branch-name)"
+alias push="git push origin $(git rev-parse --abbrev-ref HEAD)"
 alias check="git checkout"
 
 export TERM=xterm-256color

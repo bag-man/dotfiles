@@ -29,7 +29,7 @@ alias stat="git status"
 alias log="git log"
 alias add="git add"
 alias reset="git reset"
-alias commit="commit"
+alias commit="git commit"
 alias push="git push origin $(git branch-name)"
 alias check="git checkout"
 

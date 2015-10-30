@@ -22,6 +22,7 @@ alias pamcan="pacman"
 alias ps="ps aux | grep -v "grep" | grep "
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
+alias diff="git difftool -x 'icdiff --line-numbers' -y | less -R"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

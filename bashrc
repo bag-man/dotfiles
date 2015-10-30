@@ -23,6 +23,7 @@ alias ps="ps aux | grep -v "grep" | grep "
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
 alias diff="git difftool"
+alias show="git showtool"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

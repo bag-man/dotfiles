@@ -34,6 +34,7 @@ alias commit="git commit"
 alias push="git push origin $(git rev-parse --abbrev-ref HEAD)"
 alias check="git checkout"
 alias stash="git stash"
+alias pop="git stash pop"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

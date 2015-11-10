@@ -111,7 +111,7 @@ map gl :Gblame<Cr>
 map gb :Gbrowse!<Cr>
 
 " close buffer
-map D :Bclose<Cr>
+cmap bc :Bclose<Cr>
 
 " open file in new tab
 noremap gt <C-w>gf

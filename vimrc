@@ -208,4 +208,6 @@ Plug 'triglav/vim-visual-increment'
 Plug 'bogado/file-line'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim' " make 
+Plug 'matze/vim-move'
+let g:move_key_modifier = 'C'
 call plug#end()

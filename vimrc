@@ -117,6 +117,9 @@ cmap bc :Bclose<Cr>
 " open file in new tab
 noremap gt <C-w>gf
 
+" open ctag in new tab
+noremap <C-]> <C-w><C-]><C-w>T
+
 " search settings
 set ignorecase
 set incsearch

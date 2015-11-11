@@ -75,6 +75,7 @@ set clipboard=unnamed
 autocmd BufWritePre *.js :%s/\s\+$//e
 autocmd BufWritePre *.c :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.php :%s/\s\+$//e
 
 " enable backspace in insert
 set backspace=indent,eol,start

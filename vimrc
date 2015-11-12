@@ -14,7 +14,7 @@ set nowrap
 colorscheme lucius
 LuciusDarkLowContrast
 
-" indenting
+" " indenting
 set cindent
 set expandtab
 set tabstop=2
@@ -162,6 +162,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let NERDTreeChDirMode=2
 let g:NERDTreeDirArrowExpandable = '├'
 let g:NERDTreeDirArrowCollapsible = '└'
+let g:NERDTreeMapActivateNode = '<tab>'
 set mouse=a
 
 " syntastic
@@ -214,4 +215,5 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim' " make 
 Plug 'matze/vim-move'
 let g:move_key_modifier = 'C'
+Plug 'tpope/vim-sleuth'
 call plug#end()

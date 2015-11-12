@@ -59,6 +59,9 @@ map <F4> :SyntasticToggleMode<Cr>
 " make F5 compile
 map <F5> :make!<cr>
 
+" Toggle highlight
+map <F6> :set hlsearch!<CR>
+
 
 """ Behaviour modifiers
 

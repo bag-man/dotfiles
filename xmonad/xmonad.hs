@@ -1,3 +1,4 @@
+
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Layout.NoBorders
@@ -22,9 +23,9 @@ myPP = xmobarPP {
   ppHiddenNoWindows = (xmobarColor "#626262" ""),
   ppLayout = 
     (\x -> case x of
-    "ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/tall.xpm/>"
-    "Mirror Tall"   -> "<icon=/home/owg1/.xmonad/icons/mirror.xpm/>"
-    "Full"          -> "<icon=/home/owg1/.xmonad/icons/full.xpm/>"
+    "ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/tall.xpm/>"
+    "Mirror ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/mirror.xpm/>"
+    "Full" -> "<icon=/home/oweng/.xmonad/icons/full.xpm/>"
     _ -> x
   )
 }
@@ -44,7 +45,6 @@ myKeys = [
   -- Applications
   ((mod1Mask .|. shiftMask, xK_l), spawn "vlock -ans"),
   ((mod1Mask, xK_w), spawn "firefox"),
-  ((mod1Mask, xK_q), spawn "urxvt"),
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_End), spawn "shutdown -h now"),
   
@@ -63,14 +63,10 @@ myKeys = [
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 myManageHook = composeAll[isFullscreen --> (doF W.focusDown <+> doFullFloat)]
-myLayout = smartBorders $ ResizableTall 1 (3/100) (1/2) [] 
-           ||| Mirror tiled 
-           ||| Full
-  where
-    tiled   = Tall nmaster delta ratio
-    nmaster = 1
-    ratio   = 1/2
-    delta   = 3/100
+
+myResizable = smartBorders $ ResizableTall 1 (3/100) (1/2) [] 
+
+myLayout = myResizable ||| Mirror myResizable ||| Full
 
 myConfig = defaultConfig {
   terminal           = myTerminal,

@@ -180,10 +180,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
-if filereadable(".jshintrc") && filereadable(".jscsrc")
-  let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-elseif filereadable(".eslintrc")
+if filereadable(".eslintrc")
   let g:syntastic_javascript_checkers = ['eslint']
+elseif filereadable(".jshintrc") || filereadable(".jscsrc")
+  let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 endif
 let g:syntastic_tex_checkers = ['lacheck']
 let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'

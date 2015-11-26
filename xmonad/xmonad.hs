@@ -23,9 +23,9 @@ myPP = xmobarPP {
   ppHiddenNoWindows = (xmobarColor "#626262" ""),
   ppLayout = 
     (\x -> case x of
-    "ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/tall.xpm/>"
-    "Mirror ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/mirror.xpm/>"
-    "Full" -> "<icon=/home/oweng/.xmonad/icons/full.xpm/>"
+    "ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/tall.xpm/>"
+    "Mirror ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/mirror.xpm/>"
+    "Full" -> "<icon=/home/owg1/.xmonad/icons/full.xpm/>"
     _ -> x
   )
 }

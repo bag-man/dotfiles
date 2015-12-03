@@ -51,7 +51,7 @@ autocmd BufRead *.tex set autowrite
 set pastetoggle=<F2>
 
 " Find word under cusor
-map <F3> :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=below'<Cr> 
+map <F3> :<C-u>execute 'Unite grep:.::' .expand("<cword>"). ' -default-action=below'<Cr>
 
 " Toggle Syntastic
 map <F4> :SyntasticToggleMode<Cr>
@@ -222,7 +222,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'can3p/incbool.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'triglav/vim-visual-increment'
-Plug 'bogado/file-line'
+Plug 'kopischke/vim-fetch'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim' " make 
 Plug 'matze/vim-move'

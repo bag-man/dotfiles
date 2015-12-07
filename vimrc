@@ -131,6 +131,9 @@ noremap gt <C-w>gf
 " open ctag in new tab
 noremap <C-]> <C-w><C-]><C-w>T
 
+" Set space to toggle folds
+nnoremap <Space> za
+
 " search settings
 set ignorecase
 set incsearch
@@ -236,4 +239,5 @@ Plug 'Shougo/vimproc.vim' " make
 Plug 'matze/vim-move'
 Plug 'JazzCore/ctrlp-cmatcher' " install.sh
 Plug 'tpope/vim-sleuth'
+Plug 'jreybert/vimagit'
 call plug#end()

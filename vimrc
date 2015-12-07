@@ -131,8 +131,11 @@ noremap gt <C-w>gf
 " open ctag in new tab
 noremap <C-]> <C-w><C-]><C-w>T
 
-" Set space to toggle folds
+" set space to toggle folds
 nnoremap <Space> za
+
+" set foldmarker
+set foldmethod=marker
 
 " search settings
 set ignorecase

@@ -37,6 +37,7 @@ alias stash="git stash"
 alias pop="git stash pop"
 alias pull="git pull"
 alias clone="git clone"
+alias merge="git merge"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

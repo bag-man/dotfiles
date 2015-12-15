@@ -5,6 +5,7 @@ setxkbmap -option caps:escape &
 xmodmap -e "pointer = 1 7 3 4 5 6 2 8 9" &
 xmodmap -e "keycode 76 = Insert Insert Insert" &
 clipit -n &
+copyq &
 nitrogen --restore &  
 trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --height 10 --margin 85 --transparent true --alpha 0 --tint 0x111111 &
 pamac-tray &

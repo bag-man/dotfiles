@@ -31,7 +31,7 @@
 *color15: #999999
 
 URxvt.geometry: 110x41
-URxvt.depth: 32
+!URxvt.depth: 32 
 URxvt.background: #303030
 URxvt.foreground: #bcbcbc
 URxvt.scrollBar: false

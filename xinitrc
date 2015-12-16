@@ -1,4 +1,5 @@
 export LANG=en_US.UTF-8 
+compton --backend glx --vsync opengl &
 xset s off -dpms &
 xset r rate 250 44 &
 setxkbmap -option caps:escape &

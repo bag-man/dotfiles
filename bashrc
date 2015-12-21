@@ -7,6 +7,7 @@
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 source /usr/share/git/completion/git-prompt.sh
+source /usr/share/doc/pkgfile/command-not-found.bash
 
 WHITE="\[\e[1;37m\]"
 BLUE="\[\e[1;34m\]"

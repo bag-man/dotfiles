@@ -22,6 +22,7 @@ alias pamcan="pacman"
 alias ps="ps aux | grep -v "grep" | grep "
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
+alias size="du -sch *"
 
 alias diff="git difftool"
 alias show="git showtool"

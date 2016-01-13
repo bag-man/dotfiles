@@ -40,6 +40,8 @@ alias pop="git stash pop"
 alias pull="git pull"
 alias clone="git clone"
 alias merge="git merge"
+alias cherry="git cherry-pick"
+alias last=" git difftool HEAD^ HEAD"
 
 export TERM=xterm-256color
 export PYTHON=python2.7

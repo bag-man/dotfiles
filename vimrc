@@ -1,17 +1,27 @@
+""" Auto-installation
+
 " Install Vim-Plug & Plugins
 if empty(glob("~/.vim/autoload/plug.vim"))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   auto VimEnter * PlugInstall
-  silent !cd .vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
-  silent !cd .vim/plugged/vimproc.vim/; make; cd -
 endif
+
+" Build Plugins (On second launch)
+if empty(glob("~/.vim/plugged/vimproc.vim/lib/vimproc_linux64.so"))
+  silent !cd .vim/plugged/vimproc.vim/; make; cd -
+endif 
+
+if empty(glob("~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so"))
+  silent !cd .vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
+endif 
 
 " Install colorscheme
 if empty(glob("~/.vim/colors/lucius.vim"))
   silent !curl -fLo ~/.vim/colors/lucius.vim --create-dirs
         \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
 endif
+
 
 """ Appearance
 
@@ -25,7 +35,6 @@ set number
 set nowrap
 
 " set color theme
-" https://github.com/bag-man/xDotfiles/blob/master/lucius.vim
 colorscheme lucius
 LuciusDarkLowContrast
 
@@ -166,17 +175,11 @@ augroup vimrcEx
     \ endif
 augroup END
 
-
-""" Plugins
-"
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"
-" :source %
-" :PlugInstall
-
 call plug#begin('~/.vim/plugged')
 filetype plugin indent on
+
+
+""" Plugins 
 
 " NERDTree
 Plug 'scrooloose/nerdtree'

@@ -104,91 +104,101 @@
 """ Behaviour modifiers
 "{{{
 
-  " make enter work in normal
-  map <Cr> O<Esc>
+  " Hotkey modifiers
+  "{{{
+  
+    " make enter work in normal
+    map <Cr> O<Esc>
 
-  " stop the command popup
-  map q: :q
+    " stop the command popup
+    map q: :q
 
-  " Share clipboard with system
-  set clipboard=unnamed
+    " save as sudo
+    cmap w!! w !sudo tee > /dev/null %
 
-  " Strip trailing whitespace
-  autocmd BufWritePre *.js :%s/\s\+$//e
-  autocmd BufWritePre *.c :%s/\s\+$//e
-  autocmd BufWritePre *.py :%s/\s\+$//e
-  autocmd BufWritePre *.php :%s/\s\+$//e
+    " Share clipboard with system
+    set clipboard=unnamed
 
-  " enable backspace in insert
-  set backspace=indent,eol,start
+    " change buffer
+    map <C-l> :bn<Cr>
+    map <C-h> :bp<Cr>
 
-  " save as sudo
-  cmap w!! w !sudo tee > /dev/null %
+    " tab navigation 
+    nnoremap <tab> :tabnext<CR>
+    nnoremap <C-t> :tabnew<CR>
+    inoremap <C-t> <Esc>:tabnew<CR>
 
-  " change buffer
-  map <C-l> :bn<Cr>
-  map <C-h> :bp<Cr>
+    " copy path
+    map cp :CopyRelativePath<Cr>
+    
+    " Use j / k / tab for autocomplete
+    inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+    inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+    inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
 
-  " tab navigation 
-  nnoremap <tab> :tabnext<CR>
-  nnoremap <C-t> :tabnew<CR>
-  inoremap <C-t> <Esc>:tabnew<CR>
+    " auto complete file paths
+    imap <Tab> <C-X><C-F>
 
-  " copy path
-  map cp :CopyRelativePath<Cr>
+    " fugitive maps
+    map gl :Gblame<Cr>
+    map gb :Gbrowse!<Cr>
 
-  " change dir for file completion
-  autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-  autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+    " close buffer
+    cmap bc :Bclose<Cr>
 
-  " Use j / k / tab for autocomplete
-  inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-  inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
-  inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
+    " open file in new tab
+    noremap gt <C-w>gf
 
-  " auto complete file paths
-  imap <Tab> <C-X><C-F>
+    " open ctag in new tab
+    noremap <C-]> <C-w><C-]><C-w>T
 
-  " fugitive maps
-  map gl :Gblame<Cr>
-  map gb :Gbrowse!<Cr>
+    " set space to toggle folds
+    nnoremap <Space> za
 
-  " close buffer
-  cmap bc :Bclose<Cr>
+  "}}}
+  
+  " Auto modifiers
+  "{{{
+  
+    " Strip trailing whitespace
+    autocmd BufWritePre *.js :%s/\s\+$//e
+    autocmd BufWritePre *.c :%s/\s\+$//e
+    autocmd BufWritePre *.py :%s/\s\+$//e
+    autocmd BufWritePre *.php :%s/\s\+$//e
 
-  " open file in new tab
-  noremap gt <C-w>gf
+    " enable backspace in insert
+    set backspace=indent,eol,start
 
-  " open ctag in new tab
-  noremap <C-]> <C-w><C-]><C-w>T
+    " change dir for file completion
+    autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+    autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 
-  " set space to toggle folds
-  nnoremap <Space> za
+    " set foldmarker
+    set foldmethod=marker
 
-  " set foldmarker
-  set foldmethod=marker
+    " search settings
+    set ignorecase
+    set incsearch
+    set smartcase
+    set scrolloff=10
+    set hlsearch!
 
-  " search settings
-  set ignorecase
-  set incsearch
-  set smartcase
-  set scrolloff=10
-  set hlsearch!
+    " spelling
+    setlocal spell spelllang=en
+    nmap ss :set spell!<CR>
+    set nospell
+    autocmd FileType markdown setlocal spell
 
-  " spelling
-  setlocal spell spelllang=en
-  nmap ss :set spell!<CR>
-  set nospell
-  autocmd FileType markdown setlocal spell
+    " Jump to last know position in file
+    augroup vimrcEx
+      autocmd!
+      autocmd BufReadPost *
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+    augroup END
 
-  " Jump to last know position in file
-  augroup vimrcEx
-    autocmd!
-    autocmd BufReadPost *
-      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
-  augroup END
+  "}}}
 
 "}}}
 

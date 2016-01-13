@@ -3,8 +3,15 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   auto VimEnter * PlugInstall
+  silent !cd .vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
+  silent !cd .vim/plugged/vimproc.vim/; make; cd -
 endif
 
+" Install colorscheme
+if empty(glob("~/.vim/colors/lucius.vim"))
+  silent !curl -fLo ~/.vim/colors/lucius.vim --create-dirs
+        \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
+endif
 
 """ Appearance
 
@@ -200,6 +207,7 @@ elseif filereadable(".jshintrc") || filereadable(".jscsrc")
   let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 endif
 let g:syntastic_tex_checkers = ['lacheck']
+let g:syntastic_jade_checkers = ['jade_lint']
 let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
 let g:colorizer_colornames = 0
 

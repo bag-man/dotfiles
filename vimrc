@@ -1,13 +1,17 @@
 """ Auto-installation
+"{{{
 
 " Install Vim-Plug & Plugins
+"{{{
 if empty(glob("~/.vim/autoload/plug.vim"))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   auto VimEnter * PlugInstall
 endif
+"}}}
 
 " Build Plugins (On second launch)
+"{{{
 if empty(glob("~/.vim/plugged/vimproc.vim/lib/vimproc_linux64.so"))
   silent !cd .vim/plugged/vimproc.vim/; make; cd -
 endif 
@@ -15,15 +19,20 @@ endif
 if empty(glob("~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so"))
   silent !cd .vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
 endif 
+"}}}
 
 " Install colorscheme
+"{{{
 if empty(glob("~/.vim/colors/lucius.vim"))
   silent !curl -fLo ~/.vim/colors/lucius.vim --create-dirs
         \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
 endif
+"}}}
 
+"}}}
 
 """ Appearance
+"{{{
 
 " syntax highlighting
 syntax on
@@ -49,8 +58,10 @@ set laststatus=2
 set statusline=%F
 set wildmenu
 
+"}}}
 
 """ Make configs
+"{{{
 
 " run python
 autocmd BufRead *.py set makeprg=clear;python2.7\ %
@@ -68,8 +79,10 @@ autocmd FileType c set autowrite
 autocmd BufRead *.tex set makeprg=clear;pdflatex\ %
 autocmd BufRead *.tex set autowrite
 
+"}}}
 
 """ Function Keys
+"{{{
 
 " set paste mode
 set pastetoggle=<F2>
@@ -86,8 +99,10 @@ map <F5> :make!<cr>
 " Toggle highlight
 map <F6> :set hlsearch!<CR>
 
+"}}}
 
 """ Behaviour modifiers
+"{{{
 
 " make enter work in normal
 map <Cr> O<Esc>
@@ -175,11 +190,16 @@ augroup vimrcEx
     \ endif
 augroup END
 
-call plug#begin('~/.vim/plugged')
-filetype plugin indent on
-
+"}}}
 
 """ Plugins 
+"{{{
+
+" Plugin Configurations
+"{{{
+
+call plug#begin('~/.vim/plugged')
+filetype plugin indent on
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -232,6 +252,11 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " vim-move
 let g:move_key_modifier = 'C'
 
+"}}}
+
+" Plugins
+"{{{
+
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'
 Plug 'rbgrouleff/bclose.vim'
@@ -255,3 +280,7 @@ Plug 'JazzCore/ctrlp-cmatcher' " install.sh
 Plug 'tpope/vim-sleuth'
 Plug 'jreybert/vimagit'
 call plug#end()
+
+"}}}
+
+"}}}

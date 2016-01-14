@@ -262,6 +262,17 @@
     " vim-move
     let g:move_key_modifier = 'C'
 
+    " sneak
+    nmap s <Plug>Sneak_s
+    nmap S <Plug>Sneak_S
+    xmap s <Plug>Sneak_s
+    xmap S <Plug>Sneak_S
+    omap s <Plug>Sneak_s
+    omap S <Plug>Sneak_S
+    let g:sneak#s_next = 1
+		hi link SneakPluginTarget ErrorMsg
+
+
   "}}}
 
   " Plugins
@@ -289,6 +300,7 @@
     Plug 'JazzCore/ctrlp-cmatcher' " install.sh
     Plug 'tpope/vim-sleuth'
     Plug 'jreybert/vimagit'
+    Plug 'justinmk/vim-sneak'
     call plug#end()
 
   "}}}

@@ -270,7 +270,7 @@
     omap s <Plug>Sneak_s
     omap S <Plug>Sneak_S
     let g:sneak#s_next = 1
-		hi link SneakPluginTarget ErrorMsg
+    hi link SneakPluginTarget ErrorMsg
 
 
   "}}}

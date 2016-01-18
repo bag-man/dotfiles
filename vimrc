@@ -149,6 +149,9 @@
     " open file in new tab
     noremap gt <C-w>gf
 
+    " open file in new split
+    noremap gs <C-w>vgf
+
     " open ctag in new tab
     noremap <C-]> <C-w><C-]><C-w>T
 

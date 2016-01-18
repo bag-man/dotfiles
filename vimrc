@@ -158,6 +158,12 @@
     " set space to toggle folds
     nnoremap <Space> za
 
+    " resize splits with Ctrl+←↑→↓
+    map Od <C-w>>
+    map Oc <C-w><
+    map Oa <C-w>+ 
+    map Ob <C-w>-
+
   "}}}
   
   " Auto modifiers

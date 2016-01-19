@@ -151,6 +151,7 @@
 
     " open file in new split
     noremap gs <C-w>vgf
+    noremap gi <C-w>f
 
     " open ctag in new tab
     noremap <C-]> <C-w><C-]><C-w>T
@@ -169,11 +170,14 @@
   " Auto modifiers
   "{{{
   
-    " Strip trailing whitespace
+    " strip trailing whitespace
     autocmd BufWritePre *.js :%s/\s\+$//e
     autocmd BufWritePre *.c :%s/\s\+$//e
     autocmd BufWritePre *.py :%s/\s\+$//e
     autocmd BufWritePre *.php :%s/\s\+$//e
+
+    " strip tabs
+    autocmd BufWritePre *.js :%s/\t/  /g
 
     " enable backspace in insert
     set backspace=indent,eol,start

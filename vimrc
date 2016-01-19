@@ -176,9 +176,6 @@
     autocmd BufWritePre *.py :%s/\s\+$//e
     autocmd BufWritePre *.php :%s/\s\+$//e
 
-    " strip tabs
-    autocmd BufWritePre *.js :%s/\t/  /g
-
     " enable backspace in insert
     set backspace=indent,eol,start
 

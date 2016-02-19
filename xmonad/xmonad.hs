@@ -54,10 +54,10 @@ myKeys = [
   ((mod1Mask, xK_k), sendMessage MirrorExpand),
   
   -- Workspaces
-  ((controlMask .|. mod1Mask, xK_Right), nextWS),
-  ((controlMask .|. mod1Mask, xK_Left), prevWS),
-  ((mod1Mask .|. shiftMask, xK_Right), shiftToNext >> nextWS),
-  ((mod1Mask .|. shiftMask, xK_Left), shiftToPrev >> prevWS),
+  ((controlMask .|. mod1Mask, xK_l), nextWS),
+  ((controlMask .|. mod1Mask, xK_h), prevWS),
+  ((mod1Mask .|. shiftMask, xK_l), shiftToNext >> nextWS),
+  ((mod1Mask .|. shiftMask, xK_h), shiftToPrev >> prevWS),
   ((mod1Mask .|. shiftMask, xK_period), sendMessage(IncMasterN(-1))) -- Shift+Alt+. 
  ]
 

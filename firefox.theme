@@ -37,6 +37,10 @@
     display:none !important;
 }
 
+.autocomplete-richlistitem { height: 10px; }
+.ac-title-box, .ac-site-icon, .ac-ellipsis-after, .ac-comment, .ac-title, .ac-extra, .ac-type-icon .ac-result-type-searchengine { display: none !important; }
+.ac-url-box { height 10px;}
+
 @-moz-document url(chrome://browser/content/browser.xul) {
     /* URL-BAR */
     #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,

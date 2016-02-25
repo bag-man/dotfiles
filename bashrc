@@ -43,6 +43,7 @@ alias cherry="git cherry-pick"
 alias last="git difftool HEAD^ HEAD"
 alias fetch="git fetch"
 alias revert="git revert"
+alias bisect="git bisect"
 
 function reset() {
   git reset --hard HEAD~$1

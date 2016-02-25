@@ -30,9 +30,8 @@ alias show="git showtool"
 alias stat="git status"
 alias log="git log"
 alias add="git add"
-alias branch="git branch"
-alias reset="git reset"
 alias commit="git commit"
+alias branch="git branch"
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias check="git checkout"
 alias stash="git stash"
@@ -43,6 +42,11 @@ alias merge="git merge"
 alias cherry="git cherry-pick"
 alias last="git difftool HEAD^ HEAD"
 alias fetch="git fetch"
+alias revert="git revert"
+
+function reset() {
+  git reset --hard HEAD~$1
+}
 
 export TERM=xterm-256color
 export PYTHON=python2.7

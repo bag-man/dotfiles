@@ -108,16 +108,13 @@
   "{{{
   
     " make enter work in normal
-    map <Cr> O<Esc>
+    map <Cr> O<Esc>j
 
     " stop the command popup
     map q: :q
 
     " save as sudo
     cmap w!! w !sudo tee > /dev/null %
-
-    " Share clipboard with system
-    set clipboard=unnamed
 
     " change buffer
     map <C-l> :bn<Cr>
@@ -141,7 +138,7 @@
 
     " fugitive maps
     map gl :Gblame<Cr>
-    map gb :Gbrowse!<Cr>
+    map gb :Gbrowse<Cr>
 
     " close buffer
     cmap bc :Bclose<Cr>
@@ -169,6 +166,9 @@
   
   " Auto modifiers
   "{{{
+  "
+    " Share clipboard with system
+    set clipboard=unnamed
   
     " strip trailing whitespace
     autocmd BufWritePre *.js :%s/\s\+$//e
@@ -215,79 +215,16 @@
 """ Plugins 
 "{{{
 
-  " Plugin Configurations
+  " Plugins
   "{{{
 
     call plug#begin('~/.vim/plugged')
     filetype plugin indent on
 
-    " NERDTree
+    Plug 'kien/ctrlp.vim'
+    Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    map <C-n> :NERDTreeTabsToggle<CR>
-    map <C-f> :NERDTreeFind<CR>
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-    let NERDTreeChDirMode=2
-    let g:NERDTreeDirArrowExpandable = '├'
-    let g:NERDTreeDirArrowCollapsible = '└'
-    let g:NERDTreeMapActivateNode = '<tab>'
-    set mouse=a
-
-    " syntastic
-    Plug 'scrooloose/syntastic'
-    set statusline+=%#warningmsg#
-    set statusline+=%*
-    set statusline+=%{fugitive#statusline()}
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_aggregate_errors = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_loc_list_height=5
-    if filereadable(".eslintrc")
-      let g:syntastic_javascript_checkers = ['eslint']
-    elseif filereadable(".jshintrc") || filereadable(".jscsrc")
-      let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-    endif
-    let g:syntastic_tex_checkers = ['lacheck']
-    let g:syntastic_jade_checkers = ['jade_lint']
-    let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
-    let g:colorizer_colornames = 0
-
-    " Unite
-    let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
-    command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
-
-    " ctrlp
-    Plug 'kien/ctrlp.vim'
-    map <C-o> :CtrlPTag<Cr>
-    let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-    let g:ctrlp_use_caching = 0
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-    let g:ctrlp_prompt_mappings = {
-      \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-      \ }
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-
-    " vim-move
-    let g:move_key_modifier = 'C'
-
-    " sneak
-    nmap s <Plug>Sneak_s
-    nmap S <Plug>Sneak_S
-    xmap s <Plug>Sneak_s
-    xmap S <Plug>Sneak_S
-    omap s <Plug>Sneak_s
-    omap S <Plug>Sneak_S
-    let g:sneak#s_next = 1
-    hi link SneakPluginTarget ErrorMsg
-
-
-  "}}}
-
-  " Plugins
-  "{{{
-
     Plug 'moll/vim-node'
     Plug 'digitaltoad/vim-jade'
     Plug 'rbgrouleff/bclose.vim'
@@ -311,6 +248,69 @@
     Plug 'tpope/vim-sleuth'
     Plug 'jreybert/vimagit'
     Plug 'justinmk/vim-sneak'
+
+  "}}}
+
+  " Plugin Configurations
+  "{{{
+
+    " NERDTree
+    map <C-n> :NERDTreeTabsToggle<CR>
+    map <C-f> :NERDTreeFind<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    let NERDTreeChDirMode=2
+    let g:NERDTreeDirArrowExpandable = '├'
+    let g:NERDTreeDirArrowCollapsible = '└'
+    let g:NERDTreeMapActivateNode = '<tab>'
+    set mouse=a
+
+    " syntastic
+    set statusline+=%#warningmsg#
+    set statusline+=%*
+    set statusline+=%{fugitive#statusline()}
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_aggregate_errors = 1
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_loc_list_height=5
+    if filereadable(".eslintrc")
+      let g:syntastic_javascript_checkers = ['eslint']
+    elseif filereadable(".jshintrc") || filereadable(".jscsrc")
+      let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+    endif
+    let g:syntastic_tex_checkers = ['lacheck']
+    let g:syntastic_jade_checkers = ['jade_lint']
+    let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
+    let g:colorizer_colornames = 0
+
+    " Unite
+    let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
+    command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
+
+    " ctrlp
+    map <C-o> :CtrlPTag<Cr>
+    let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+    let g:ctrlp_use_caching = 0
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+    let g:ctrlp_prompt_mappings = {
+      \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+      \ }
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+    " vim-move
+    let g:move_key_modifier = 'C'
+
+    " sneak
+    nmap s <Plug>Sneak_s
+    nmap S <Plug>Sneak_S
+    xmap s <Plug>Sneak_s
+    xmap S <Plug>Sneak_S
+    omap s <Plug>Sneak_s
+    omap S <Plug>Sneak_S
+    let g:sneak#s_next = 1
+    hi link SneakPluginTarget ErrorMsg
+
     call plug#end()
 
   "}}}

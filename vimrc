@@ -141,7 +141,7 @@
     map gb :Gbrowse<Cr>
 
     " close buffer
-    cmap bc :Bclose<Cr>
+    map bc :Bclose<Cr>
 
     " open file in new tab
     noremap gt <C-w>gf

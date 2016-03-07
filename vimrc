@@ -110,6 +110,9 @@
     " make enter work in normal
     map <Cr> O<Esc>j
 
+    " yank to EOL like it should
+    map Y v$y
+
     " stop the command popup
     map q: :q
 

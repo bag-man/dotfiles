@@ -44,6 +44,7 @@ alias last="git difftool HEAD^ HEAD"
 alias fetch="git fetch"
 alias revert="git revert"
 alias bisect="git bisect"
+alias reflog="git reflog"
 
 function reset() {
   git reset --hard HEAD~$1
@@ -51,3 +52,4 @@ function reset() {
 
 export TERM=xterm-256color
 export PYTHON=python2.7
+export HISTSIZE=""

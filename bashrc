@@ -16,14 +16,11 @@ PS2='> '
 PS3='> '
 PS4='+ '
 
-export EDITOR=vim
 alias spr="curl -F 'sprunge=<-' http://sprunge.us | xclip"
 alias vi=vim
 alias pamcan="pacman"
-alias ps="ps aux | grep -v "grep" | grep "
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
-alias size="du -sch *"
 
 alias diff="git difftool"
 alias show="git showtool"
@@ -50,6 +47,7 @@ function reset() {
   git reset --hard HEAD~$1
 }
 
+export EDITOR=vim
 export TERM=xterm-256color
 export PYTHON=python2.7
 export HISTSIZE=""

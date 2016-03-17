@@ -130,6 +130,9 @@
 
     " copy path
     map cp :CopyRelativePath<Cr>
+
+    " checkout file
+    map ch :Gread<Cr>
     
     " Use j / k / tab for autocomplete
     inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
@@ -170,7 +173,11 @@
   " Auto modifiers
   "{{{
   "
-    " Share clipboard with system
+    " persist undos
+    set undofile
+    set undodir=~/.vim/undodir
+
+    " share clipboard with system
     set clipboard=unnamed
   
     " strip trailing whitespace
@@ -258,7 +265,8 @@
     Plug 'tpope/vim-sleuth'
     Plug 'jreybert/vimagit'
     Plug 'justinmk/vim-sneak'
-
+    Plug 'mattn/emmet-vim'
+    
   "}}}
 
   " Plugin Configurations

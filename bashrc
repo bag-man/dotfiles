@@ -42,6 +42,7 @@ alias fetch="git fetch"
 alias revert="git revert"
 alias bisect="git bisect"
 alias reflog="git reflog"
+alias apply="git apply"
 
 function reset() {
   git reset --hard HEAD~$1

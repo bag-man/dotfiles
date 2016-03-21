@@ -116,6 +116,9 @@
     " stop the command popup
     map q: :q
 
+    " paste without overwriting
+    xnoremap p "_dP
+
     " save as sudo
     cmap w!! w !sudo tee > /dev/null %
 

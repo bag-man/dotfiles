@@ -269,6 +269,8 @@
     Plug 'jreybert/vimagit'
     Plug 'justinmk/vim-sneak'
     Plug 'mattn/emmet-vim'
+    Plug 'kien/rainbow_parentheses.vim'
+    Plug 'suan/vim-instant-markdown'
     
   "}}}
 
@@ -321,6 +323,15 @@
 
     " vim-move
     let g:move_key_modifier = 'C'
+
+    " rainbow
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+   
+    " instant markdown
+    let g:instant_markdown_slow = 1
 
     " sneak
     nmap s <Plug>Sneak_s

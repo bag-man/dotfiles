@@ -270,7 +270,7 @@
     Plug 'justinmk/vim-sneak'
     Plug 'mattn/emmet-vim'
     Plug 'kien/rainbow_parentheses.vim'
-    Plug 'suan/vim-instant-markdown'
+    Plug 'suan/vim-instant-markdown' " sudo npm -g install instant-markdown-d
     
   "}}}
 

@@ -28,6 +28,13 @@
             \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
     endif
   "}}}
+  
+  " Create undo dir
+  "{{{
+    if !isdirectory($HOME . "/.vim/undodir")
+      call mkdir($HOME . "/.vim/undodir", "p")
+    endif
+  "}}}
 
 "}}}
 
@@ -180,14 +187,11 @@
     set undofile
     set undodir=~/.vim/undodir
 
-    " share clipboard with system
+    " share clipboard with system 
     set clipboard=unnamed
   
     " strip trailing whitespace
-    autocmd BufWritePre *.js :%s/\s\+$//e
-    autocmd BufWritePre *.c :%s/\s\+$//e
-    autocmd BufWritePre *.py :%s/\s\+$//e
-    autocmd BufWritePre *.php :%s/\s\+$//e
+    autocmd BufWritePre *.js, *.c, *.py, *.php :%s/\s\+$//e
 
     " enable backspace in insert
     set backspace=indent,eol,start
@@ -271,6 +275,7 @@
     Plug 'mattn/emmet-vim'
     Plug 'kien/rainbow_parentheses.vim'
     Plug 'suan/vim-instant-markdown' " sudo npm -g install instant-markdown-d
+    Plug 'undofile_warn.vim'
     
   "}}}
 

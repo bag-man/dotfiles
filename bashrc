@@ -51,4 +51,9 @@ function reset() {
 export EDITOR=vim
 export TERM=xterm-256color
 export PYTHON=python2.7
-export HISTSIZE=""
+
+export HISTCONTROL=ignoredups:erasedups  
+export HISTSIZE=100000                   
+export HISTFILESIZE=100000               
+shopt -s histappend                      
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

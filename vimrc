@@ -215,6 +215,7 @@
     nmap ss :set spell!<CR>
     set nospell
     autocmd FileType markdown setlocal spell
+    autocmd FileType markdown setlocal wrap 
 
     " Jump to last know position in file
     augroup vimrcEx

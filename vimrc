@@ -191,7 +191,7 @@
     set clipboard=unnamed
   
     " strip trailing whitespace
-    autocmd BufWritePre *.js, *.c, *.py, *.php :%s/\s\+$//e
+    autocmd BufWritePre *.js,*.c,*.py,*.php :%s/\s\+$//e
 
     " enable backspace in insert
     set backspace=indent,eol,start
@@ -215,8 +215,8 @@
     nmap ss :set spell!<CR>
     set nospell
     autocmd FileType markdown setlocal spell
-    autocmd FileType gitcommit setlocal spell
     autocmd FileType markdown setlocal wrap
+    autocmd FileType gitcommit setlocal spell
 
     " Jump to last know position in file
     autocmd BufReadPost *
@@ -336,6 +336,8 @@
    
     " instant markdown
     let g:instant_markdown_slow = 1
+    " dom.allow_scripts_to_close_windows = true
+    " euclio/instant-markdown-d@4fcd47422d
 
     " sneak
     nmap s <Plug>Sneak_s

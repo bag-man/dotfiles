@@ -43,10 +43,9 @@ myKeys = [
   ((0, xK_F12),spawn "amixer set Master 5+"),
 
   -- Applications
-  ((mod1Mask .|. shiftMask, xK_l), spawn "vlock -ans"),
   ((mod1Mask, xK_w), spawn "firefox"),
   ((mod1Mask, xK_F4), kill),
-  ((mod1Mask, xK_End), spawn "shutdown -h now"),
+  ((mod1Mask, xK_End), spawn "vlock -ans"),
   ((0, xK_Print), spawn "sleep 0.2; scrot -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   
   -- Adjust split

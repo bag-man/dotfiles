@@ -43,10 +43,8 @@ alias revert="git revert"
 alias bisect="git bisect"
 alias reflog="git reflog"
 alias apply="git apply"
+alias reset="git reset"
 
-function reset() {
-  git reset --hard HEAD~$1
-}
 
 export EDITOR=vim
 export TERM=xterm-256color

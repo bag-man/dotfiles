@@ -337,6 +337,8 @@
    
     " instant markdown
     let g:instant_markdown_slow = 1
+    " dom.allow_scripts_to_close_windows = true
+    " euclio/instant-markdown-d@4fcd47422d
 
     " sneak
     nmap s <Plug>Sneak_s

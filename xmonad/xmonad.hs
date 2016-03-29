@@ -1,4 +1,3 @@
-
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Layout.NoBorders
@@ -23,30 +22,18 @@ myPP = xmobarPP {
   ppHiddenNoWindows = (xmobarColor "#626262" ""),
   ppLayout = 
     (\x -> case x of
-    "ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/tall.xpm/>"
-    "Mirror ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/mirror.xpm/>"
-    "Full" -> "<icon=/home/owg1/.xmonad/icons/full.xpm/>"
+    "ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/tall.xpm/>"
+    "Mirror ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/mirror.xpm/>"
+    "Full" -> "<icon=/home/oweng/.xmonad/icons/full.xpm/>"
     _ -> x
   )
 }
 
 myKeys = [ 
-  -- Chromebook
-  ((0, xK_F6), spawn "xbacklight -dec 10"),
-  ((0, xK_F7), spawn "xbacklight -inc 10"),
-  ((0, xK_Super_L), spawn "dmenu_run"),
-
-  -- Audio
-  ((0, xK_F9), spawn "mpc next"),
-  ((0, xK_F10), spawn "mpc toggle"),
-  ((0, xK_F11),spawn "amixer set Master 5-"),
-  ((0, xK_F12),spawn "amixer set Master 5+"),
-
-  -- Applications
-  ((mod1Mask .|. shiftMask, xK_l), spawn "vlock -ans"),
   ((mod1Mask, xK_w), spawn "firefox"),
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_End), spawn "shutdown -h now"),
+  ((mod1Mask .|. controlMask, xK_End), spawn "dm-tool lock"),
   ((0, xK_Print), spawn "sleep 0.2; scrot -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   
   -- Adjust split

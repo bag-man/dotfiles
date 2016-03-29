@@ -215,15 +215,14 @@
     nmap ss :set spell!<CR>
     set nospell
     autocmd FileType markdown setlocal spell
+    autocmd FileType gitcommit setlocal spell
+    autocmd FileType markdown setlocal wrap
 
     " Jump to last know position in file
-    augroup vimrcEx
-      autocmd!
-      autocmd BufReadPost *
-        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
-    augroup END
+    autocmd BufReadPost *
+      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
 
     " Map macros across visual selection
     xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>

@@ -333,7 +333,7 @@
     " vim-move
     let g:move_key_modifier = 'C'
 
-    " rainbow
+    " rainbow brackets
     autocmd VimEnter * RainbowParenthesesToggle
     autocmd Syntax * RainbowParenthesesLoadRound
     autocmd Syntax * RainbowParenthesesLoadSquare

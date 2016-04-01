@@ -54,7 +54,7 @@
   colorscheme lucius
   LuciusDarkLowContrast
 
-  " " indenting
+  " indenting
   set cindent
   set expandtab
   set tabstop=2
@@ -119,6 +119,11 @@
 
     " yank to EOL like it should
     map Y y$
+
+    " paste over easier
+    map "p vi"p
+    map 'p vi'p
+    map \(p vi(p
 
     " stop the command popup
     map q: :q
@@ -268,13 +273,13 @@
     Plug 'Shougo/vimproc.vim' " make 
     Plug 'matze/vim-move'
     Plug 'JazzCore/ctrlp-cmatcher' " install.sh
-    Plug 'tpope/vim-sleuth'
     Plug 'jreybert/vimagit'
     Plug 'justinmk/vim-sneak'
     Plug 'mattn/emmet-vim'
     Plug 'kien/rainbow_parentheses.vim'
     Plug 'suan/vim-instant-markdown' " sudo npm -g install instant-markdown-d
     Plug 'undofile_warn.vim'
+    Plug 'wavded/vim-stylus'
     
   "}}}
 

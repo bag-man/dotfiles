@@ -281,6 +281,7 @@
     Plug 'suan/vim-instant-markdown' " sudo npm -g install instant-markdown-d
     Plug 'undofile_warn.vim'
     Plug 'wavded/vim-stylus'
+    Plug 'wellle/targets.vim'
     
   "}}}
 

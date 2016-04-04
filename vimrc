@@ -140,6 +140,7 @@
 
     " tab navigation 
     nnoremap <tab> :tabnext<CR>
+    nnoremap <s-tab> :tabprev<CR>
     nnoremap <C-t> :tabnew<CR>
     inoremap <C-t> <Esc>:tabnew<CR>
 

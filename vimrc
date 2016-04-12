@@ -282,6 +282,7 @@
     Plug 'undofile_warn.vim'
     Plug 'wavded/vim-stylus'
     Plug 'wellle/targets.vim'
+    Plug 'tpope/vim-abolish'
     
   "}}}
 

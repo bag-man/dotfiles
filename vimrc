@@ -13,11 +13,11 @@
   " Build Plugins (On second launch)
   "{{{
     if empty(glob("~/.vim/plugged/vimproc.vim/lib/vimproc_linux64.so"))
-      silent !cd .vim/plugged/vimproc.vim/; make; cd -
+      silent !cd ~/.vim/plugged/vimproc.vim/; make; cd -
     endif 
 
     if empty(glob("~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so"))
-      silent !cd .vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
+      silent !cd ~/.vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
     endif 
   "}}}
 

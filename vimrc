@@ -147,6 +147,9 @@
     " copy path
     map cp :CopyRelativePath<Cr>
 
+    " sprunge section or file
+    map gp :Sprunge<cr>
+
     " checkout file
     map ch :Gread<Cr>
     
@@ -283,6 +286,7 @@
     Plug 'wavded/vim-stylus'
     Plug 'wellle/targets.vim'
     Plug 'tpope/vim-abolish'
+    Plug 'chilicuil/vim-sprunge'
     
   "}}}
 

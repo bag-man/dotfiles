@@ -187,6 +187,9 @@
     map Oa <C-w>+ 
     map Ob <C-w>-
 
+    " go to last non whitespace character
+    map £ g_   
+
   "}}}
   
   " Auto modifiers
@@ -226,6 +229,8 @@
     autocmd FileType markdown setlocal spell
     autocmd FileType markdown setlocal wrap
     autocmd FileType gitcommit setlocal spell
+    autocmd BufRead *.tex setlocal spell
+    autocmd BufRead *.tex setlocal wrap
 
     " Jump to last know position in file
     autocmd BufReadPost *
@@ -282,11 +287,12 @@
     Plug 'mattn/emmet-vim'
     Plug 'kien/rainbow_parentheses.vim'
     Plug 'suan/vim-instant-markdown' " sudo npm -g install instant-markdown-d
-    Plug 'undofile_warn.vim'
-    Plug 'wavded/vim-stylus'
-    Plug 'wellle/targets.vim'
-    Plug 'tpope/vim-abolish'
+    Plug 'undofile_warn.vim'                                                 
+    Plug 'wavded/vim-stylus'                                                 
+    Plug 'wellle/targets.vim'                                                
+    Plug 'tpope/vim-abolish'    
     Plug 'chilicuil/vim-sprunge'
+    Plug 'lervag/vimtex'
     
   "}}}
 
@@ -360,6 +366,11 @@
     omap S <Plug>Sneak_S
     let g:sneak#s_next = 1
     hi link SneakPluginTarget ErrorMsg
+
+    " vimtex
+    let g:vimtex_view_general_viewer = 'zathura'
+    " community/zathura
+    " community/zathura-pdf-poppler
 
     call plug#end()
 

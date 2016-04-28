@@ -67,27 +67,6 @@
 
 "}}}
 
-""" Make configs
-"{{{
-
-  " run python
-  autocmd BufRead *.py set makeprg=clear;python2.7\ %
-  autocmd BufRead *.py set autowrite
-
-  " run node.js
-  autocmd BufRead *.js set makeprg=clear;node\ %
-  autocmd BufRead *.js set autowrite
-
-  " compile c code
-  autocmd FileType c set makeprg=clear;make\ test
-  autocmd FileType c set autowrite
-
-  " compile LaTeX
-  autocmd BufRead *.tex set makeprg=clear;pdflatex\ %
-  autocmd BufRead *.tex set autowrite
-
-"}}}
-
 """ Function Keys
 "{{{
 
@@ -111,7 +90,7 @@
 """ Behaviour modifiers
 "{{{
 
-  " Hotkey modifiers
+  " Key modifiers
   "{{{
   
     " make enter work in normal

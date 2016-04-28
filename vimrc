@@ -45,7 +45,7 @@
   syntax on
 
   " line numbers
-  set number
+  set number relativenumber
 
   " turn off text wrapping
   set nowrap
@@ -226,12 +226,15 @@
     setlocal spell spelllang=en
     nmap ss :set spell!<CR>
     set nospell
-    autocmd FileType markdown setlocal spell
-    autocmd FileType markdown setlocal wrap
     autocmd FileType gitcommit setlocal spell
-    autocmd BufRead *.tex setlocal spell
-    autocmd BufRead *.tex setlocal wrap
 
+    " word processing
+    let g:tex_flavor = 'tex'
+    autocmd FileType markdown,tex 
+      \ setlocal spell wrap |
+      \ map j gj |
+      \ map k gk |
+     
     " Jump to last know position in file
     autocmd BufReadPost *
       \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
@@ -293,6 +296,10 @@
     Plug 'tpope/vim-abolish'    
     Plug 'chilicuil/vim-sprunge'
     Plug 'lervag/vimtex'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'kana/vim-textobj-user'
+    Plug 'kana/vim-textobj-function'
+    Plug 'thinca/vim-textobj-function-javascript'
     
   "}}}
 

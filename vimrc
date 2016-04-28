@@ -261,45 +261,45 @@
     call plug#begin('~/.vim/plugged')
     filetype plugin indent on
 
-    Plug 'kien/ctrlp.vim'
-    Plug 'scrooloose/syntastic'
-    Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'moll/vim-node'
-    Plug 'digitaltoad/vim-jade'
-    Plug 'rbgrouleff/bclose.vim'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-speeddating'
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-commentary'
-    Plug 'mkitt/tabline.vim'
-    Plug 'jistr/vim-nerdtree-tabs'
-    Plug 'justinmk/vim-gtfo'
-    Plug 'bag-man/copypath.vim'
-    Plug 'tpope/vim-fugitive'
-    Plug 'can3p/incbool.vim'
-    Plug 'chrisbra/Colorizer'
-    Plug 'triglav/vim-visual-increment'
-    Plug 'kopischke/vim-fetch'
-    Plug 'Shougo/unite.vim'
-    Plug 'Shougo/vimproc.vim' " make 
-    Plug 'matze/vim-move'
-    Plug 'JazzCore/ctrlp-cmatcher' " install.sh
-    Plug 'jreybert/vimagit'
-    Plug 'justinmk/vim-sneak'
-    Plug 'mattn/emmet-vim'
-    Plug 'kien/rainbow_parentheses.vim'
-    Plug 'suan/vim-instant-markdown' " sudo npm -g install instant-markdown-d
-    Plug 'undofile_warn.vim'                                                 
-    Plug 'wavded/vim-stylus'                                                 
-    Plug 'wellle/targets.vim'                                                
-    Plug 'tpope/vim-abolish'    
-    Plug 'chilicuil/vim-sprunge'
-    Plug 'lervag/vimtex'
-    Plug 'michaeljsmith/vim-indent-object'
-    Plug 'kana/vim-textobj-user'
-    Plug 'kana/vim-textobj-function'
-    Plug 'thinca/vim-textobj-function-javascript'
+    Plug 'kien/ctrlp.vim'                                 " File searching
+    Plug 'scrooloose/syntastic'                           " Syntax checking
+    Plug 'scrooloose/nerdtree'                            " File tree browser
+    Plug 'Xuyuanp/nerdtree-git-plugin'                    " Git for NerdTree
+    Plug 'moll/vim-node'                                  " Syntax for node.js
+    Plug 'digitaltoad/vim-jade'                           " Syntax for jade
+    Plug 'rbgrouleff/bclose.vim'                          " Close current buffer
+    Plug 'tpope/vim-surround'                             " Operate on surrounding 
+    Plug 'tpope/vim-speeddating'                          " Increment dates
+    Plug 'tpope/vim-repeat'                               " Repeat plugins
+    Plug 'tpope/vim-commentary'                           " Comment out blocks
+    Plug 'mkitt/tabline.vim'                              " Cleaner tabs
+    Plug 'jistr/vim-nerdtree-tabs'                        " NerdTree independent of tabs
+    Plug 'justinmk/vim-gtfo'                              " Open file browser in location
+    Plug 'bag-man/copypath.vim'                           " Copy path of file
+    Plug 'tpope/vim-fugitive'                             " Git integration
+    Plug 'can3p/incbool.vim'                              " Toggle true/false
+    Plug 'chrisbra/Colorizer'                             " Show hex codes as colours
+    Plug 'triglav/vim-visual-increment'                   " Increment over visual selection
+    Plug 'kopischke/vim-fetch'                            " Use line numbers in file paths
+    Plug 'Shougo/unite.vim'                               " Used for grep in project
+    Plug 'Shougo/vimproc.vim'                             " Speed up unite and ctrlp
+    Plug 'matze/vim-move'                                 " Move lines up and down
+    Plug 'JazzCore/ctrlp-cmatcher'                        " Improve ctrlp
+    Plug 'jreybert/vimagit'                               " Interactive git staging
+    Plug 'justinmk/vim-sneak'                             " Multiline find
+    Plug 'mattn/emmet-vim'                                " Template HTML
+    Plug 'kien/rainbow_parentheses.vim'                   " Colour matched brackets
+    Plug 'suan/vim-instant-markdown'                      " Markdown preview instant-markdown-d
+    Plug 'undofile_warn.vim'                              " Warn old undo
+    Plug 'wavded/vim-stylus'                              " Stylus for stylus
+    Plug 'wellle/targets.vim'                             " Additional text objects                   
+    Plug 'tpope/vim-abolish'                              " Flexible search
+    Plug 'chilicuil/vim-sprunge'                          " Paste selection to sprunge
+    Plug 'lervag/vimtex'                                  " Build LaTeX files
+    Plug 'michaeljsmith/vim-indent-object'                " Indented text object
+    Plug 'kana/vim-textobj-user'                          " Add additional text objects
+    Plug 'kana/vim-textobj-function'                      " Add function based text objects
+    Plug 'thinca/vim-textobj-function-javascript'         " Add JS function object
     
   "}}}
 

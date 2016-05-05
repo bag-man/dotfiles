@@ -6,8 +6,8 @@
 
 ! Default
 ! 0: black
-*color0:  #222222
-*color8:  #222222
+*color0:  #666666
+*color8:  #666666
 ! 1: red
 *color1:  #9f6767
 *color9:  #9f6767

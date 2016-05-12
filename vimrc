@@ -110,6 +110,7 @@
     map "p vi"p
     map 'p vi'p
     map \(p vi(p
+    map \)p vi)p
 
     " stop the command popup
     map q: :q

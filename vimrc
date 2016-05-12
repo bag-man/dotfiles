@@ -1,4 +1,4 @@
-""" Auto-installation
+""" Auto Installation
 "{{{
 
   " Install Vim-Plug & Plugins
@@ -59,6 +59,7 @@
   set expandtab
   set tabstop=2
   set shiftwidth=2
+  set softtabstop=2
 
   " status line
   set laststatus=2
@@ -98,6 +99,9 @@
 
     " yank to EOL like it should
     map Y y$
+
+    " split a line
+    nmap K i<CR><Esc>d^==kg_lD
 
     " paste over easier
     map "p vi"p
@@ -231,7 +235,7 @@
 
 "}}}
 
-""" Plugins 
+""" Plugins
 "{{{
 
   " Plugins
@@ -279,6 +283,7 @@
     Plug 'kana/vim-textobj-user'                          " Add additional text objects
     Plug 'kana/vim-textobj-function'                      " Add function based text objects
     Plug 'thinca/vim-textobj-function-javascript'         " Add JS function object
+    Plug 'prendradjaja/vim-vertigo'                       " Use asdfghjkl; as numbers
     
   "}}}
 
@@ -314,6 +319,14 @@
     let g:syntastic_jade_checkers = ['jade_lint']
     let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
     let g:colorizer_colornames = 0
+
+    " vertigo
+    nnoremap <silent> j :<C-U>VertigoDown n<CR>
+    vnoremap <silent> j :<C-U>VertigoDown v<CR>
+    onoremap <silent> j :<C-U>VertigoDown o<CR>
+    nnoremap <silent> k :<C-U>VertigoUp n<CR>
+    vnoremap <silent> k :<C-U>VertigoUp v<CR>
+    onoremap <silent> k :<C-U>VertigoUp o<CR>
 
     " Unite
     let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'

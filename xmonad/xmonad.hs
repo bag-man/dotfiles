@@ -56,7 +56,10 @@ myKeys = [
   ((controlMask .|. mod1Mask, xK_h), prevWS),
   ((mod1Mask .|. shiftMask, xK_l), shiftToNext >> nextWS),
   ((mod1Mask .|. shiftMask, xK_h), shiftToPrev >> prevWS),
-  ((mod1Mask .|. shiftMask, xK_period), sendMessage(IncMasterN(-1))) -- Shift+Alt+. 
+
+  -- Master pane count
+  ((mod1Mask, xK_apostrophe), sendMessage(IncMasterN(-1))),
+  ((mod1Mask, xK_semicolon), sendMessage(IncMasterN(1)))
  ]
 
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
@@ -75,5 +78,5 @@ myConfig = defaultConfig {
   workspaces         = myWorkspaces,
   manageHook         = myManageHook,
   layoutHook         = myLayout
-} `removeKeys` [(mod1Mask, xK_period), (mod1Mask, xK_k), (mod1Mask, xK_j)] -- Removes Alt+. Alt+j Alt+k
+} `removeKeys` [(mod1Mask, xK_comma), (mod1Mask, xK_period), (mod1Mask, xK_k), (mod1Mask, xK_j)] 
   `additionalKeys` myKeys 

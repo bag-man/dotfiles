@@ -103,6 +103,9 @@
     " split a line
     nmap K i<CR><Esc>d^==kg_lD
 
+    " join without space
+    nmap J Jx
+
     " paste over easier
     map "p vi"p
     map 'p vi'p
@@ -321,12 +324,12 @@
     let g:colorizer_colornames = 0
 
     " vertigo
-    nnoremap <silent> j :<C-U>VertigoDown n<CR>
-    vnoremap <silent> j :<C-U>VertigoDown v<CR>
-    onoremap <silent> j :<C-U>VertigoDown o<CR>
-    nnoremap <silent> k :<C-U>VertigoUp n<CR>
-    vnoremap <silent> k :<C-U>VertigoUp v<CR>
-    onoremap <silent> k :<C-U>VertigoUp o<CR>
+    nnoremap <silent> <Bslash>j :<C-U>VertigoDown n<CR>
+    vnoremap <silent> <Bslash>j :<C-U>VertigoDown v<CR>
+    onoremap <silent> <Bslash>j :<C-U>VertigoDown o<CR>
+    nnoremap <silent> <Bslash>k :<C-U>VertigoUp n<CR>
+    vnoremap <silent> <Bslash>k :<C-U>VertigoUp v<CR>
+    onoremap <silent> <Bslash>k :<C-U>VertigoUp o<CR>
 
     " Unite
     let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'

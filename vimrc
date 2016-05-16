@@ -147,6 +147,7 @@
 
     " auto complete file paths
     imap <Tab> <C-X><C-F>
+    imap <s-Tab> <C-X><C-P>
 
     " fugitive maps
     map gl :Gblame<Cr>
@@ -338,10 +339,13 @@
     command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
 
     " ctrlp
+    map <C-y> :CtrlPTag<cr>
     let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
     let g:ctrlp_use_caching = 0
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
     let g:ctrlp_prompt_mappings = {
+      \ 'AcceptSelection("h")': ['<C-i>'],
+      \ 'AcceptSelection("v")': ['<C-s>'],
       \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
       \ }
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip

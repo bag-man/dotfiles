@@ -57,7 +57,6 @@
   " indenting
   set cindent
   set expandtab
-  set tabstop=2
   set shiftwidth=2
   set softtabstop=2
 
@@ -100,6 +99,10 @@
     " yank to EOL like it should
     map Y y$
 
+    " H & L to EOL
+    map H ^
+    map L $
+
     " split a line
     nmap K i<CR><Esc>d^==kg_lD
 
@@ -136,9 +139,6 @@
 
     " sprunge section or file
     map gp :Sprunge<cr>
-
-    " checkout file
-    map ch :Gread<Cr>
     
     " Use j / k / tab for autocomplete
     inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
@@ -151,9 +151,10 @@
     " fugitive maps
     map gl :Gblame<Cr>
     map gb :Gbrowse<Cr>
+    map ch :Gread<Cr>
 
     " close buffer
-    map bc :Bclose<Cr>
+    cmap bc :Bclose<Cr>
 
     " open file in new tab
     noremap gt <C-w>gf
@@ -337,7 +338,6 @@
     command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
 
     " ctrlp
-    map <C-o> :CtrlPTag<Cr>
     let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
     let g:ctrlp_use_caching = 0
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']

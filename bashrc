@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Stop Ctl+S
+stty -ixon
+
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 source /usr/share/git/completion/git-prompt.sh
 source /usr/share/doc/pkgfile/command-not-found.bash

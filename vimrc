@@ -290,6 +290,7 @@
     Plug 'kana/vim-textobj-function'                      " Add function based text objects
     Plug 'thinca/vim-textobj-function-javascript'         " Add JS function object
     Plug 'prendradjaja/vim-vertigo'                       " Use asdfghjkl; as numbers
+    Plug 'FooSoft/vim-argwrap'                            " Wrap arguments to multi-lines
     
   "}}}
 
@@ -333,6 +334,10 @@
     nnoremap <silent> <Bslash>k :<C-U>VertigoUp n<CR>
     vnoremap <silent> <Bslash>k :<C-U>VertigoUp v<CR>
     onoremap <silent> <Bslash>k :<C-U>VertigoUp o<CR>
+
+    " argwrap
+    nnoremap <silent> <Bslash>a :ArgWrap<CR>
+    let g:argwrap_padded_braces = '{'
 
     " Unite
     let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'

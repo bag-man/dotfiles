@@ -24,6 +24,7 @@ alias vi=vim
 alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
+alias entr="find . | entr -c"
 
 alias diff="git difftool"
 alias show="git showtool"

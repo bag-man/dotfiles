@@ -64,6 +64,7 @@
   set laststatus=2
   set statusline=%F
   set wildmenu
+  set showcmd
 
 "}}}
 
@@ -109,6 +110,9 @@
     " join without space
     nmap J Jx
 
+    " stamp over a word
+    nnoremap S "_diwP
+
     " paste over easier
     map "p vi"p
     map 'p vi'p
@@ -117,6 +121,9 @@
 
     " stop the command popup
     map q: :q
+
+    " center next
+    map n nzz
 
     " paste without overwriting
     xnoremap p "_dP
@@ -370,12 +377,7 @@
     " euclio/instant-markdown-d@4fcd47422d
 
     " sneak
-    nmap s <Plug>Sneak_s
-    nmap S <Plug>Sneak_S
-    xmap s <Plug>Sneak_s
-    xmap S <Plug>Sneak_S
-    omap s <Plug>Sneak_s
-    omap S <Plug>Sneak_S
+    map s <Plug>Sneak_s
     let g:sneak#s_next = 1
     hi link SneakPluginTarget ErrorMsg
 

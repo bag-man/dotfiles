@@ -107,17 +107,14 @@
     " split a line
     nmap K i<CR><Esc>d^==kg_lD
 
-    " join without space
-    nmap J Jx
-
     " stamp over a word
     nnoremap S "_diwP
 
     " paste over easier
     map "p vi"p
     map 'p vi'p
-    map \(p vi(p
-    map \)p vi)p
+    map (p vi(p
+    map )p vi)p
 
     " stop the command popup
     map q: :q

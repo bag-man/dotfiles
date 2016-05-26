@@ -144,6 +144,9 @@
     " sprunge section or file
     map gp :Sprunge<cr>
     
+    " Google section or word
+    map go :Google<cr>
+    
     " Use j / k / tab for autocomplete
     inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
     inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
@@ -267,8 +270,7 @@
     Plug 'tpope/vim-commentary'                           " Comment out blocks
     Plug 'mkitt/tabline.vim'                              " Cleaner tabs
     Plug 'jistr/vim-nerdtree-tabs'                        " NerdTree independent of tabs
-    Plug 'justinmk/vim-gtfo'                              " Open file browser in location
-    Plug 'bag-man/copypath.vim'                           " Copy path of file
+    Plug 'bag-man/copypath.vim'                           " copy path of file
     Plug 'tpope/vim-fugitive'                             " Git integration
     Plug 'can3p/incbool.vim'                              " Toggle true/false
     Plug 'chrisbra/Colorizer'                             " Show hex codes as colours
@@ -295,6 +297,7 @@
     Plug 'thinca/vim-textobj-function-javascript'         " Add JS function object
     Plug 'prendradjaja/vim-vertigo'                       " Use asdfghjkl; as numbers
     Plug 'FooSoft/vim-argwrap'                            " Wrap arguments to multi-lines
+    Plug 'szw/vim-g'                                      " Google from Vim
     
   "}}}
 

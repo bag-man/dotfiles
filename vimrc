@@ -66,6 +66,9 @@
   set wildmenu
   set showcmd
 
+  " Highlight third numbers
+  match Delimiter /\d\ze\%(\d\d\%(\d\{3}\)*\)\>/
+
 "}}}
 
 """ Function Keys

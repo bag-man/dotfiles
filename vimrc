@@ -161,7 +161,7 @@
 
     " fugitive maps
     map gl :Gblame<Cr>
-    map gb :Gbrowse<Cr>
+    map gb :Gbrowse!<Cr>
     map ch :Gread<Cr>
 
     " close buffer
@@ -364,6 +364,9 @@
       \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
       \ }
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+    " Ggrep
+    autocmd QuickFixCmdPost *grep* cwindow
 
     " vim-move
     let g:move_key_modifier = 'C'

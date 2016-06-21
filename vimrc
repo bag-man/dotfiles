@@ -119,6 +119,9 @@
     map (p vi(p
     map )p vi)p
 
+    " delete surrounding function
+    map dsf f(ds(db
+
     " stop the command popup
     map q: :q
 

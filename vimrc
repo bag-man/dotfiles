@@ -304,6 +304,7 @@
     Plug 'prendradjaja/vim-vertigo'                       " Use asdfghjkl; as numbers
     Plug 'FooSoft/vim-argwrap'                            " Wrap arguments to multi-lines
     Plug 'szw/vim-g'                                      " Google from Vim
+    Plug 'kshenoy/vim-signature'                          " Show marks
     
   "}}}
 

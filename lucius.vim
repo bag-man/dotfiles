@@ -562,7 +562,7 @@ else
         hi Pmenu                        guibg=#8a8a8a
         hi PmenuSbar    guifg=#8a8a8a   guibg=#bcbcbc
         hi PmenuThumb                   guibg=#585858
-        hi SignColumn   guifg=#8a8a8a
+        hi SignColumn   guibg=NONE
         hi StatusLine   guifg=#ffffff   guibg=#444444
         hi StatusLineNC                 guibg=#444444
         hi TabLine      guifg=#9e9e9e   guibg=#444444

@@ -224,6 +224,10 @@
     set scrolloff=10
     set hlsearch!
 
+    " complete settings
+    set wildmode=longest,list,full
+    set completeopt=longest,menuone
+
     " spelling
     setlocal spell spelllang=en
     nmap ss :set spell!<CR>

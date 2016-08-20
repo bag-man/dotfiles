@@ -42,6 +42,6 @@ URxvt.font: xft:AnonymousProMinus:size=9:antialias=true:autohint=true
 URxvt.boldFont: xft:AnonymousProMinus:size=9:antialias=true:autohint=true
 URxvt.iconFile: /root/.themes/terminal.png
 URxvt.iso14755: False
-URxvt.url-launcher: /usr/bin/firefox
+URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,clipboard,matcher

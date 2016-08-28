@@ -16,10 +16,10 @@ myWorkspaces   = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 myTerminal     = "urxvt"
 
 myPP = xmobarPP { 
-  ppCurrent = xmobarColor "#888888" "",
+  ppCurrent = (xmobarColor "#117FF5" "" . const "•"),
   ppTitle = (\str -> ""), 
-  ppHidden = (xmobarColor "#626262" ""),
-  ppHiddenNoWindows = (xmobarColor "#626262" ""),
+  ppHidden = (xmobarColor "#626262" "" . const "•"),
+  ppHiddenNoWindows = (xmobarColor "#626262" "" . const "•"),
   ppLayout = 
     (\x -> case x of
     "ResizableTall" -> "<icon=/home/oweng/.xmonad/icons/tall.xpm/>"

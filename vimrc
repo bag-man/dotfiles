@@ -309,6 +309,7 @@
     Plug 'FooSoft/vim-argwrap'                            " Wrap arguments to multi-lines
     Plug 'szw/vim-g'                                      " Google from Vim
     Plug 'kshenoy/vim-signature'                          " Show marks
+    Plug 'arkwright/vim-whiteboard'                       " Whiteboard
     
   "}}}
 
@@ -399,6 +400,10 @@
     let g:vimtex_view_general_viewer = 'zathura'
     " community/zathura
     " community/zathura-pdf-poppler
+    
+    " whiteboard
+    let g:whiteboard_temp_directory = '/tmp/'
+    let g:whiteboard_default_interpreter = 'javascript'
 
     call plug#end()
 

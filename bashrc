@@ -9,8 +9,9 @@
 stty -ixon
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-source /usr/share/git/completion/git-prompt.sh
+PKGFILE_PROMPT_INSTALL_MISSING=y
 source /usr/share/doc/pkgfile/command-not-found.bash
+source /usr/share/git/completion/git-prompt.sh
 
 WHITE="\[\e[1;37m\]"
 BLUE="\[\e[1;34m\]"
@@ -48,6 +49,7 @@ alias bisect="git bisect"
 alias reflog="git reflog"
 alias apply="git apply"
 alias reset="git reset"
+alias squash="git reset --soft "
 
 
 export EDITOR=vim

@@ -9,7 +9,7 @@
 [push]
   default = simple
 [alias]
-  show = "!f() { git difftool $1^ $1; }; f"
+  showtool = "!f() { git difftool $1^ $1; }; f"
   added = difftool --cached
 [tag]
   sort = version:refname

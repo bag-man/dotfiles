@@ -107,8 +107,12 @@
     map H ^
     map L $
 
-    " split a line
-    nmap K i<CR><Esc>d^==kg_lD
+    " navigate tabs like vimium
+    nnoremap J :tabprev<CR>
+    nnoremap K :tabnext<CR>
+
+    " join a line
+    nnoremap <leader>J J
 
     " stamp over a word
     nnoremap S "_diwP

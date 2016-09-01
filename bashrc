@@ -26,6 +26,7 @@ alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
 alias entr="find . | entr -c"
+alias where="bfs ./ -name "
 
 alias diff="git difftool"
 alias show="git showtool"

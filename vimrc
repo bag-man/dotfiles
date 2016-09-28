@@ -112,7 +112,7 @@
     nnoremap K :tabnext<CR>
 
     " join a line
-    nnoremap <leader>J J
+    nnoremap M J
 
     " stamp over a word
     nnoremap S "_diwP

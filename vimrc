@@ -242,8 +242,8 @@
     let g:tex_flavor = 'tex'
     autocmd FileType markdown,tex 
       \ setlocal spell wrap |
-      \ map j gj |
-      \ map k gk |
+      " \ map j gj |
+      " \ map k gk |
      
     " Jump to last know position in file
     autocmd BufReadPost *

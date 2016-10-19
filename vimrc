@@ -209,7 +209,7 @@
     set clipboard=unnamed
   
     " strip trailing whitespace
-    autocmd BufWritePre *.js,*.c,*.py,*.php :%s/\s\+$//e
+    autocmd BufWritePre *.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
 
     " enable backspace in insert
     set backspace=indent,eol,start

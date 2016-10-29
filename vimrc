@@ -123,9 +123,6 @@
     map (p vi(p
     map )p vi)p
 
-    " delete surrounding function
-    map dsf f(ds(db
-
     " stop the command popup
     map q: :q
 
@@ -363,7 +360,7 @@
     let g:argwrap_padded_braces = '{'
 
     " Unite
-    let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
+    let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{rb,erb,vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
     command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
 
     " ctrlp

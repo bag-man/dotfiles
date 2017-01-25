@@ -5,8 +5,9 @@ Config {
    position = Top,
    commands = [Run StdinReader,
                Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
+               Run Com "mpc" ["current"] "mpd" 10,
                Run Date "%H:%M " "date" 10],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% }{ %battery% %date%" 
+   template = "%StdinReader% : %mpd% }{ %date%" 
  }

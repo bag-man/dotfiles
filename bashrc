@@ -31,7 +31,6 @@ alias where="bfs ./ -name "
 alias diff="git difftool"
 alias show="git showtool"
 alias stat="git status"
-alias log="git log"
 alias add="git add"
 alias commit="git commit"
 alias branch="git branch"
@@ -63,3 +62,18 @@ export HISTFILESIZE=100000
 shopt -s histappend                      
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 bind -x '"\C-p": vim $(fzf);'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+log() {
+  local out sha q
+  while out=$(
+      git log --graph --color=always \
+          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
+    q=$(head -1 <<< "$out")
+    while read sha; do
+      git show --color=always $sha | less -R
+    done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+  done
+}

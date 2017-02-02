@@ -10,17 +10,6 @@
     endif
   "}}}
 
-  " Build Plugins (On second launch)
-  "{{{
-    if empty(glob("~/.vim/plugged/vimproc.vim/lib/vimproc_linux64.so"))
-      silent !cd ~/.vim/plugged/vimproc.vim/; make; cd -
-    endif 
-
-    if empty(glob("~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so"))
-      silent !cd ~/.vim/plugged/ctrlp-cmatcher; sh install.sh; cd -
-    endif 
-  "}}}
-
   " Install colorscheme
   "{{{
     if empty(glob("~/.vim/colors/lucius.vim"))
@@ -71,32 +60,24 @@
 
 "}}}
 
-""" Function Keys
-"{{{
-
-  " set paste mode
-  set pastetoggle=<F2>
-
-  " Find word under cusor
-  map <F3> :<C-u>execute 'Unite grep:.::' .expand("<cword>"). ' -default-action=below'<Cr>
-
-  " Toggle Syntastic
-  map <F4> :SyntasticToggleMode<Cr>
-
-  " make F5 compile
-  map <F5> :make!<cr>
-
-  " Toggle highlight
-  map <F6> :set hlsearch!<CR>
-
-"}}}
-
 """ Behaviour modifiers
 "{{{
 
   " Key modifiers
   "{{{
   
+    " set paste mode
+    set pastetoggle=<F2>
+
+    " Find word under cusor
+    map <F3> :F "<cword>"<cr>
+
+    " make F5 compile
+    map <F5> :make!<cr>
+
+    " Toggle highlight
+    map <F6> :set hlsearch!<CR>
+
     " make enter work in normal
     map <Cr> O<Esc>j
 
@@ -143,7 +124,16 @@
     nnoremap <tab> :tabnext<CR>
     nnoremap <s-tab> :tabprev<CR>
     nnoremap <C-t> :tabnew<CR>
-    inoremap <C-t> <Esc>:tabnew<CR>
+    inoremap <C-t> <Esc>:tabnew<CR>i
+    "
+    " Use j / k / tab for autocomplete
+    inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+    inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+    inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
+    
+    " auto complete file paths
+    imap <Tab> <C-X><C-F>
+    imap <s-Tab> <C-X><C-P>
 
     " copy path
     map cp :CopyRelativePath<Cr>
@@ -153,15 +143,6 @@
     
     " Google section or word
     map go :Google<cr>
-    
-    " Use j / k / tab for autocomplete
-    inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-    inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
-    inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
-
-    " auto complete file paths
-    imap <Tab> <C-X><C-F>
-    imap <s-Tab> <C-X><C-P>
 
     " fugitive maps
     map gl :Gblame<Cr>
@@ -204,6 +185,9 @@
 
     " share clipboard with system 
     set clipboard=unnamed
+
+    " ignore files
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
   
     " strip trailing whitespace
     autocmd BufWritePre *.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
@@ -268,49 +252,43 @@
     call plug#begin('~/.vim/plugged')
     filetype plugin indent on
 
-    Plug 'kien/ctrlp.vim'                                 " File searching
-    Plug 'scrooloose/syntastic'                           " Syntax checking
-    Plug 'scrooloose/nerdtree'                            " File tree browser
-    Plug 'Xuyuanp/nerdtree-git-plugin'                    " Git for NerdTree
-    Plug 'moll/vim-node'                                  " Syntax for node.js
-    Plug 'digitaltoad/vim-jade'                           " Syntax for jade
-    Plug 'rbgrouleff/bclose.vim'                          " Close current buffer
-    Plug 'tpope/vim-surround'                             " Operate on surrounding 
-    Plug 'tpope/vim-speeddating'                          " Increment dates
-    Plug 'tpope/vim-repeat'                               " Repeat plugins
-    Plug 'tpope/vim-commentary'                           " Comment out blocks
-    Plug 'mkitt/tabline.vim'                              " Cleaner tabs
-    Plug 'jistr/vim-nerdtree-tabs'                        " NerdTree independent of tabs
-    Plug 'bag-man/copypath.vim'                           " copy path of file
-    Plug 'tpope/vim-fugitive'                             " Git integration
-    Plug 'can3p/incbool.vim'                              " Toggle true/false
-    Plug 'chrisbra/Colorizer'                             " Show hex codes as colours
-    Plug 'triglav/vim-visual-increment'                   " Increment over visual selection
-    Plug 'kopischke/vim-fetch'                            " Use line numbers in file paths
-    Plug 'Shougo/unite.vim'                               " Used for grep in project
-    Plug 'Shougo/vimproc.vim'                             " Speed up unite and ctrlp
-    Plug 'matze/vim-move'                                 " Move lines up and down
-    Plug 'JazzCore/ctrlp-cmatcher'                        " Improve ctrlp
-    Plug 'jreybert/vimagit'                               " Interactive git staging
-    Plug 'justinmk/vim-sneak'                             " Multiline find
-    Plug 'mattn/emmet-vim'                                " Template HTML
-    Plug 'kien/rainbow_parentheses.vim'                   " Colour matched brackets
-    Plug 'suan/vim-instant-markdown'                      " Markdown preview instant-markdown-d
-    Plug 'undofile_warn.vim'                              " Warn old undo
-    Plug 'wavded/vim-stylus'                              " Stylus for stylus
-    Plug 'wellle/targets.vim'                             " Additional text objects                   
-    Plug 'tpope/vim-abolish'                              " Flexible search
-    Plug 'chilicuil/vim-sprunge'                          " Paste selection to sprunge
-    Plug 'lervag/vimtex'                                  " Build LaTeX files
-    Plug 'michaeljsmith/vim-indent-object'                " Indented text object
-    Plug 'kana/vim-textobj-user'                          " Add additional text objects
-    Plug 'kana/vim-textobj-function'                      " Add function based text objects
-    Plug 'thinca/vim-textobj-function-javascript'         " Add JS function object
-    Plug 'prendradjaja/vim-vertigo'                       " Use asdfghjkl; as numbers
-    Plug 'FooSoft/vim-argwrap'                            " Wrap arguments to multi-lines
-    Plug 'szw/vim-g'                                      " Google from Vim
-    Plug 'kshenoy/vim-signature'                          " Show marks
-    Plug 'arkwright/vim-whiteboard'                       " Whiteboard
+    Plug 'w0rp/ale'                                                      " Async linting
+    Plug 'scrooloose/nerdtree'                                           " File tree browser
+    Plug 'Xuyuanp/nerdtree-git-plugin'                                   " Git for NerdTree
+    Plug 'moll/vim-node'                                                 " Syntax for node.js
+    Plug 'digitaltoad/vim-jade'                                          " Syntax for jade
+    Plug 'rbgrouleff/bclose.vim'                                         " Close current buffer
+    Plug 'tpope/vim-surround'                                            " Operate on surrounding 
+    Plug 'tpope/vim-speeddating'                                         " Increment dates
+    Plug 'tpope/vim-repeat'                                              " Repeat plugins
+    Plug 'tpope/vim-commentary'                                          " Comment out blocks
+    Plug 'mkitt/tabline.vim'                                             " Cleaner tabs
+    Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
+    Plug 'bag-man/copypath.vim'                                          " copy path of file
+    Plug 'tpope/vim-fugitive'                                            " Git integration
+    Plug 'can3p/incbool.vim'                                             " Toggle true/false
+    Plug 'chrisbra/Colorizer'                                            " Show hex codes as colours
+    Plug 'triglav/vim-visual-increment'                                  " Increment over visual selection
+    Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
+    Plug 'matze/vim-move'                                                " Move lines up and down
+    Plug 'jreybert/vimagit'                                              " Interactive git staging
+    Plug 'justinmk/vim-sneak'                                            " Multiline find
+    Plug 'kien/rainbow_parentheses.vim'                                  " Colour matched brackets
+    Plug 'suan/vim-instant-markdown'                                     " Markdown preview instant-markdown-d
+    Plug 'undofile_warn.vim'                                             " Warn old undo
+    Plug 'wavded/vim-stylus'                                             " Stylus for stylus
+    Plug 'wellle/targets.vim'                                            " Additional text objects                   
+    Plug 'tpope/vim-abolish'                                             " Flexible search
+    Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
+    Plug 'lervag/vimtex'                                                 " Build LaTeX files
+    Plug 'michaeljsmith/vim-indent-object'                               " Indented text object
+    Plug 'kana/vim-textobj-user'                                         " Add additional text objects
+    Plug 'kana/vim-textobj-function'                                     " Add function based text objects
+    Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
+    Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
+    Plug 'szw/vim-g'                                                     " Google from Vim
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
+    Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
     
   "}}}
 
@@ -327,56 +305,44 @@
     let g:NERDTreeMapActivateNode = '<tab>'
     set mouse=a
 
-    " syntastic
-    set statusline+=%#warningmsg#
-    set statusline+=%*
-    set statusline+=%{fugitive#statusline()}
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_aggregate_errors = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_loc_list_height=5
-    if filereadable(".eslintrc")
-      let g:syntastic_javascript_checkers = ['eslint']
-    elseif filereadable(".jshintrc") || filereadable(".jscsrc")
-      let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-    endif
-    let g:syntastic_tex_checkers = ['lacheck']
-    let g:syntastic_jade_checkers = ['jade_lint']
-    let g:colorizer_auto_filetype='css,html,stylus,jade,js,php'
-    let g:colorizer_colornames = 0
-
-    " vertigo
-    nnoremap <silent> <Bslash>j :<C-U>VertigoDown n<CR>
-    vnoremap <silent> <Bslash>j :<C-U>VertigoDown v<CR>
-    onoremap <silent> <Bslash>j :<C-U>VertigoDown o<CR>
-    nnoremap <silent> <Bslash>k :<C-U>VertigoUp n<CR>
-    vnoremap <silent> <Bslash>k :<C-U>VertigoUp v<CR>
-    onoremap <silent> <Bslash>k :<C-U>VertigoUp o<CR>
+    " Ale
+    let g:ale_sign_error = ' '
+    let g:ale_sign_warning = ' '
+    let g:ale_sign_column_always = 1
+    let g:ale_linters = {
+    \   'javascript': ['eslint'],
+    \}
 
     " argwrap
     nnoremap <silent> <Bslash>a :ArgWrap<CR>
     let g:argwrap_padded_braces = '{'
 
-    " Unite
-    let g:unite_source_grep_default_opts = '-srnw --binary-files=without-match --exclude-dir={build,vendor,node_modules,.git} --include=*.{rb,erb,vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags}'
-    command! -nargs=1 F execute 'Unite grep:.::' .<q-args>. ' -default-action=below'
+    " fzf config
+    let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-i': 'split',
+      \ 'ctrl-s': 'vsplit' }
+    let g:fzf_layout = { 'down': '~20%' }
 
-    " ctrlp
-    map <C-y> :CtrlPTag<cr>
-    let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-    let g:ctrlp_use_caching = 0
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-    let g:ctrlp_prompt_mappings = {
-      \ 'AcceptSelection("h")': ['<C-i>'],
-      \ 'AcceptSelection("v")': ['<C-s>'],
-      \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-      \ }
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+    function! s:escape(path)
+      return substitute(a:path, ' ', '\\ ', 'g')
+    endfunction
 
-    " Ggrep
-    autocmd QuickFixCmdPost *grep* cwindow
+    function! GrepHandler(line)
+      let parts = split(a:line, ':')
+      let [fn, lno] = parts[0 : 1]
+      execute 'e '. s:escape(fn)
+      execute lno
+      normal! zz
+    endfunction
+
+    command! -nargs=+ F call fzf#run({
+      \ 'source': 'grep -srnw --exclude-dir={build,vendor,node_modules,.git} --include=*.{rb,erb,vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags} "<args>"',
+      \ 'sink': function('GrepHandler'),
+    \ })
+
+    nmap <C-p> :FZF<cr>
+    imap <c-x><c-l> <plug>(fzf-complete-line)
 
     " vim-move
     let g:move_key_modifier = 'C'
@@ -386,11 +352,6 @@
     autocmd Syntax * RainbowParenthesesLoadRound
     autocmd Syntax * RainbowParenthesesLoadSquare
     autocmd Syntax * RainbowParenthesesLoadBraces
-   
-    " instant markdown
-    let g:instant_markdown_slow = 1
-    " dom.allow_scripts_to_close_windows = true
-    " euclio/instant-markdown-d@4fcd47422d
 
     " sneak
     map s <Plug>Sneak_s
@@ -402,10 +363,11 @@
     " community/zathura
     " community/zathura-pdf-poppler
     
-    " whiteboard
-    let g:whiteboard_temp_directory = '/tmp/'
-    let g:whiteboard_default_interpreter = 'javascript'
-
+    " instant markdown
+    let g:instant_markdown_slow = 1
+    " dom.allow_scripts_to_close_windows = true
+    " euclio/instant-markdown-d@4fcd47422d
+    
     call plug#end()
 
   "}}}

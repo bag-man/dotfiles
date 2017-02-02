@@ -70,7 +70,7 @@
     set pastetoggle=<F2>
 
     " Find word under cusor
-    map <F3> :F "<cword>"<cr>
+    map <F3> :F <C-r><C-w><Cr>
 
     " make F5 compile
     map <F5> :make!<cr>
@@ -318,31 +318,21 @@
     let g:argwrap_padded_braces = '{'
 
     " fzf config
+    nmap <C-p> :FZF<cr>
+    imap <c-x><c-l> <plug>(fzf-complete-line)
+
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-i': 'split',
       \ 'ctrl-s': 'vsplit' }
     let g:fzf_layout = { 'down': '~20%' }
 
-    function! s:escape(path)
-      return substitute(a:path, ' ', '\\ ', 'g')
-    endfunction
+    let g:rg_command = '
+      \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+      \ -t js -t json
+      \ -g "!.git/*" -g "!node_modules/*" '
 
-    function! GrepHandler(line)
-      let parts = split(a:line, ':')
-      let [fn, lno] = parts[0 : 1]
-      execute 'e '. s:escape(fn)
-      execute lno
-      normal! zz
-    endfunction
-
-    command! -nargs=+ F call fzf#run({
-      \ 'source': 'grep -srnw --exclude-dir={build,vendor,node_modules,.git} --include=*.{rb,erb,vcl,conf,jade,js,styl,php,json,config,html} --exclude={*.min.js,tags} "<args>"',
-      \ 'sink': function('GrepHandler'),
-    \ })
-
-    nmap <C-p> :FZF<cr>
-    imap <c-x><c-l> <plug>(fzf-complete-line)
+    command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
     " vim-move
     let g:move_key_modifier = 'C'

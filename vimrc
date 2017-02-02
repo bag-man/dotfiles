@@ -8,6 +8,15 @@
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
       auto VimEnter * PlugInstall
     endif
+
+    if !empty(glob("~/.fzf/bin/fzf"))
+      if empty(glob("~/.fzf/bin/rg"))
+        silent !curl -fLo /tmp/rg.tar.gz
+              \ https://github.com/BurntSushi/ripgrep/releases/download/0.4.0/ripgrep-0.4.0-x86_64-unknown-linux-musl.tar.gz
+        silent !tar xzvf /tmp/rg.tar.gz --directory /tmp
+        silent !cp /tmp/ripgrep-0.4.0-x86_64-unknown-linux-musl/rg ~/.fzf/bin/rg
+      endif
+    endif
   "}}}
 
   " Install colorscheme
@@ -17,7 +26,7 @@
             \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
     endif
   "}}}
-  
+
   " Create undo dir
   "{{{
     if !isdirectory($HOME . "/.vim/undodir")

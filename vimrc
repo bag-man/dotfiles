@@ -298,6 +298,7 @@
     Plug 'szw/vim-g'                                                     " Google from Vim
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
     Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
+    Plug 'tweekmonster/fzf-filemru'                                      " Use recent files in fzf
     
   "}}}
 
@@ -327,7 +328,7 @@
     let g:argwrap_padded_braces = '{'
 
     " fzf config
-    nmap <C-p> :FZF<cr>
+    nmap <C-p> :FilesMru<cr>
     imap <c-x><c-l> <plug>(fzf-complete-line)
 
     let g:fzf_action = {
@@ -339,8 +340,8 @@
     let g:rg_command = '
       \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
       \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-      \ -g "!*.min.js" 
-      \ -g "!.git/*" -g "!node_modules/*" -g "!vendor/*" '
+      \ -g "!*.{min.js,swp,o,zip}" 
+      \ -g "!{.git,node_modules,vendor}/*" '
 
     command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 

@@ -342,7 +342,6 @@
       \ -g "!*.min.js" 
       \ -g "!.git/*" -g "!node_modules/*" -g "!vendor/*" '
 
-
     command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
     " vim-move

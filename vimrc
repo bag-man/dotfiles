@@ -298,7 +298,6 @@
     Plug 'szw/vim-g'                                                     " Google from Vim
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
     Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-    Plug 'tweekmonster/fzf-filemru'                                      " Use recent files in fzf
     
   "}}}
 

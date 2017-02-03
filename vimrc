@@ -77,11 +77,17 @@
 
   map <C-l> :bn<Cr>
   map <C-h> :bp<Cr>
+  cmap bc :Bclose<Cr>
 
   nnoremap <tab> :tabnext<CR>
   nnoremap <s-tab> :tabprev<CR>
   nnoremap <C-t> :tabnew<CR>
   inoremap <C-t> <Esc>:tabnew<CR>i
+
+  noremap gt <C-w>gf
+  noremap gs <C-w>vgf
+  noremap gi <C-w>f
+  noremap <C-]> <C-w><C-]><C-w>T
 
   inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
   inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
@@ -96,15 +102,9 @@
   map gl :Gblame<Cr>
   map gb :Gbrowse!<Cr>
   map ch :Gread<Cr>
-  cmap bc :Bclose<Cr>
-  noremap gt <C-w>gf
-  noremap gs <C-w>vgf
-  noremap gi <C-w>f
 
-  noremap <C-]> <C-w><C-]><C-w>T
   nnoremap <Space> za
 
-  " resize splits with Ctrl+←↑→↓
   map Od <C-w>>
   map Oc <C-w><
   map Oa <C-w>+ 

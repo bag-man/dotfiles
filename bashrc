@@ -65,6 +65,7 @@ bind -x '"\C-p": vim $(fzf);'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='--bind J:down,K:up'
 
 log() {
   local out sha q

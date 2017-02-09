@@ -75,7 +75,7 @@ log() {
       fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
     q=$(head -1 <<< "$out")
     while read sha; do
-      git show --color=always $sha | less -R
+      git showtool $sha | less -R
     done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
   done
 }

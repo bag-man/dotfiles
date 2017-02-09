@@ -9,5 +9,6 @@ copyq &
 nitrogen --restore &  
 trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --height 10 --margin 85 --transparent true --alpha 0 --tint 0x111111 &
 pamac-tray &
-xmodmap -e "keycode 76 = Insert Insert Insert"
+xmodmap -e "keycode 76 = Insert Insert Insert" &
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec xmonad 

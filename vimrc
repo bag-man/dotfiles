@@ -192,7 +192,6 @@
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
     \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-    \ -g "!*.{min.js,swp,o,zip}" 
     \ -g "!{.git,node_modules,vendor}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
@@ -261,6 +260,5 @@
   Plug 'szw/vim-g'                                                     " Google from Vim
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  Plug 'metakirby5/codi.vim'
 
   call plug#end()

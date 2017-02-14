@@ -13,7 +13,7 @@ main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
 myBorderColour = "#333333"
 myBorderWidth  = 2
 myWorkspaces   = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-myTerminal     = "urxvt"
+myTerminal     = "st"
 
 myPP = xmobarPP { 
   ppCurrent = (xmobarColor "#117FF5" "" . const "•"),

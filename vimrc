@@ -60,8 +60,9 @@
   map L $
   map £ g_   
 
-  nnoremap J :tabprev<CR>
-  nnoremap K :tabnext<CR>
+  " So I can use tmux, use tab/s-tab
+  " nnoremap J :tabprev<CR>
+  " nnoremap K :tabnext<CR>
 
   nnoremap M J
   nnoremap S "_diwP
@@ -219,7 +220,7 @@
   endfunc
 
   " vim-move
-  let g:move_key_modifier = 'C'
+  let g:move_key_modifier = 'S'
 
   " rainbow brackets
   autocmd VimEnter * RainbowParenthesesToggle
@@ -286,5 +287,6 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   Plug 'proteinFasta.vim'                                              " Fasta syntax
+  Plug 'christoomey/vim-tmux-navigator'                                " Tmux split navigation with hjkl
 
   call plug#end()

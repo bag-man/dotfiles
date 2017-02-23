@@ -207,7 +207,7 @@
       set norelativenumber nonumber
       hi FoldColumn ctermbg=none
       hi LineNr ctermfg=0 ctermbg=none
-      hi NonText ctermfg=0
+      hi NonText ctermfg=bg
     else
       set laststatus=2
       set numberwidth=4

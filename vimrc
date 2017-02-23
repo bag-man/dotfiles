@@ -227,6 +227,9 @@
   autocmd Syntax * RainbowParenthesesLoadSquare
   autocmd Syntax * RainbowParenthesesLoadBraces
 
+  " fasta syntax
+  autocmd BufNewFile,BufRead *.fa set filetype=proteinFasta
+
   " sneak
   map s <Plug>Sneak_s
   let g:sneak#s_next = 1
@@ -282,5 +285,6 @@
   Plug 'szw/vim-g'                                                     " Google from Vim
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
+  Plug 'proteinFasta.vim'                                              " Fasta syntax
 
   call plug#end()

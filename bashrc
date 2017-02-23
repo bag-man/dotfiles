@@ -51,6 +51,7 @@ alias apply="git apply"
 alias reset="git reset"
 alias squash="git reset --soft "
 alias clean="git clean -f"
+alias log="fzf_log"
 
 export EDITOR=vim
 export TERM=xterm-256color
@@ -65,19 +66,12 @@ bind -x '"\C-p": vim $(fzf);'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-export FZF_DEFAULT_OPTS='--bind J:down,K:up'
+export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi '
 
-log() {
-  local out sha q
-  while out=$(
-      git log --graph --color=always \
-          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-      fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
-    q=$(head -1 <<< "$out")
-    while read sha; do
-      git showtool $sha | less -R
-    done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-  done
+fzf_log() {
+  hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
+  echo $hash | xclip
+  git showtool $hash
 }
 
 tm() {

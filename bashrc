@@ -50,7 +50,7 @@ alias reflog="git reflog"
 alias apply="git apply"
 alias reset="git reset"
 alias squash="git reset --soft "
-
+alias clean="git clean -f"
 
 export EDITOR=vim
 export TERM=xterm-256color

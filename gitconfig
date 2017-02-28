@@ -1,10 +1,10 @@
 [core]
-  email = owen.garland@clock.co.uk
+  email = garland.owen@gmail.com
   name = Owen Garland
   editor = vim
   excludesfile = ~/.gitignore
 [user]
-  email = owen.garland@clock.co.uk
+  email = garland.owen@gmail.com
   name = Owen Garland
 [push]
   default = simple

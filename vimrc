@@ -220,7 +220,7 @@
   endfunc
 
   " vim-move
-  let g:move_key_modifier = 'S'
+  let g:move_key_modifier = 'C'
 
   " rainbow brackets
   autocmd VimEnter * RainbowParenthesesToggle

@@ -287,6 +287,5 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   Plug 'proteinFasta.vim'                                              " Fasta syntax
-  Plug 'christoomey/vim-tmux-navigator'                                " Tmux split navigation with hjkl
 
   call plug#end()

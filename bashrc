@@ -27,6 +27,8 @@ alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color"
 alias entr="find . | entr sh -c"
 alias where="bfs ./ -name "
+alias orphans="pacman -Qdt"
+alias explicit="pacman -Qet"
 
 alias diff="git difftool"
 alias show="git showtool"

@@ -102,7 +102,7 @@
   map gp :Sprunge<cr>
   map go :Google<cr>
   map gl :Gblame<Cr>
-  map gb :Gbrowse!<Cr>
+  map gb :Gbrowse<Cr>
   map ch :Gread<Cr>
 
   nnoremap <Space> za

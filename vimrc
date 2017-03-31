@@ -231,6 +231,9 @@
   " fasta syntax
   autocmd BufNewFile,BufRead *.fa set filetype=proteinFasta
 
+  " Highlight jump points
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
   " sneak
   map s <Plug>Sneak_s
   let g:sneak#s_next = 1
@@ -287,5 +290,6 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   Plug 'proteinFasta.vim'                                              " Fasta syntax
+  Plug 'unblevable/quick-scope'                                        " Highlight jump characters
 
   call plug#end()

@@ -308,7 +308,7 @@
   Plug 'jceb/vim-textobj-uri'                                          " URL objects
   Plug 'glts/vim-textobj-comment'                                      " Comment text objects
   Plug 'kana/vim-textobj-function'                                     " Add function based text objects
-  Plug 'vimtaku/vim-textobj-keyvalue'                                  " Key value object
+  Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
 
   call plug#end()

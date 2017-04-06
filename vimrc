@@ -219,6 +219,9 @@
     endif
   endfunc
 
+  " Eslint fix
+  autocmd BufWritePre *.js execute 'call ESLintFix()'
+
   " vim-move
   let g:move_key_modifier = 'C'
 
@@ -252,44 +255,60 @@
   call plug#begin('~/.vim/plugged')
   filetype plugin indent on
 
+  " Features
   Plug 'w0rp/ale'                                                      " Async linting
   Plug 'scrooloose/nerdtree'                                           " File tree browser
   Plug 'Xuyuanp/nerdtree-git-plugin'                                   " Git for NerdTree
-  Plug 'moll/vim-node'                                                 " Syntax for node.js
-  Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
+  Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
+  Plug 'jreybert/vimagit'                                              " Interactive git staging
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
+  Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
+
+  " Small utilities
+  Plug 'bag-man/copypath.vim'                                          " copy path of file
   Plug 'rbgrouleff/bclose.vim'                                         " Close current buffer
+  Plug 'can3p/incbool.vim'                                             " Toggle true/false
+  Plug 'triglav/vim-visual-increment'                                  " Increment over visual selection
+  Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
+  Plug 'matze/vim-move'                                                " Move lines up and down
+  Plug 'justinmk/vim-sneak'                                            " Multiline find
+  Plug 'undofile_warn.vim'                                             " Warn old undo
+  Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
+  Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
+  Plug 'szw/vim-g'                                                     " Google from Vim
+
+  " Languages
+  Plug 'moll/vim-node'                                                 " Syntax for node.js
+  Plug 'wavded/vim-stylus'                                             " Stylus for stylus
+  Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
+  Plug 'lervag/vimtex'                                                 " Build LaTeX files
+  Plug 'proteinFasta.vim'                                              " Fasta syntax
+  Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
+
+  " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 
   Plug 'tpope/vim-speeddating'                                         " Increment dates
   Plug 'tpope/vim-repeat'                                              " Repeat plugins
   Plug 'tpope/vim-commentary'                                          " Comment out blocks
-  Plug 'mkitt/tabline.vim'                                             " Cleaner tabs
-  Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
-  Plug 'bag-man/copypath.vim'                                          " copy path of file
   Plug 'tpope/vim-fugitive'                                            " Git integration
-  Plug 'can3p/incbool.vim'                                             " Toggle true/false
+  Plug 'tpope/vim-abolish'                                             " Flexible search
+  Plug 'tpope/vim-jdaddy'                                              " JSON text object
+
+  " Appearance
+  Plug 'mkitt/tabline.vim'                                             " Cleaner tabs
   Plug 'chrisbra/Colorizer'                                            " Show hex codes as colours
-  Plug 'triglav/vim-visual-increment'                                  " Increment over visual selection
-  Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
-  Plug 'matze/vim-move'                                                " Move lines up and down
-  Plug 'jreybert/vimagit'                                              " Interactive git staging
-  Plug 'justinmk/vim-sneak'                                            " Multiline find
   Plug 'kien/rainbow_parentheses.vim'                                  " Colour matched brackets
   Plug 'suan/vim-instant-markdown'                                     " Markdown preview instant-markdown-d
-  Plug 'undofile_warn.vim'                                             " Warn old undo
-  Plug 'wavded/vim-stylus'                                             " Stylus for stylus
+  Plug 'unblevable/quick-scope'                                        " Highlight jump characters
+
+  " Text objects
   Plug 'wellle/targets.vim'                                            " Additional text objects                   
-  Plug 'tpope/vim-abolish'                                             " Flexible search
-  Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
-  Plug 'lervag/vimtex'                                                 " Build LaTeX files
   Plug 'michaeljsmith/vim-indent-object'                               " Indented text object
   Plug 'kana/vim-textobj-user'                                         " Add additional text objects
+  Plug 'jceb/vim-textobj-uri'                                          " URL objects
+  Plug 'glts/vim-textobj-comment'                                      " Comment text objects
   Plug 'kana/vim-textobj-function'                                     " Add function based text objects
+  Plug 'vimtaku/vim-textobj-keyvalue'                                  " Key value object
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
-  Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
-  Plug 'szw/vim-g'                                                     " Google from Vim
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
-  Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  Plug 'proteinFasta.vim'                                              " Fasta syntax
-  Plug 'unblevable/quick-scope'                                        " Highlight jump characters
 
   call plug#end()

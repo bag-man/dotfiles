@@ -242,6 +242,9 @@
   let g:sneak#s_next = 1
   hi link SneakPluginTarget ErrorMsg
 
+  " snippet trigger key
+  let g:UltiSnipsExpandTrigger="<C-R><tab>"
+
   " vimtex
   let g:vimtex_view_general_viewer = 'zathura'
   " community/zathura
@@ -284,6 +287,11 @@
   Plug 'lervag/vimtex'                                                 " Build LaTeX files
   Plug 'proteinFasta.vim'                                              " Fasta syntax
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
+
+  " Snippets
+  Plug 'SirVer/ultisnips'                                              " Snippet engine
+  Plug 'isRuslan/vim-es6'                                              " ES6 snippets
+  Plug 'mmozuras/snipmate-mocha'                                       " Snippets for Mocha tests
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 

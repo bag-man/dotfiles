@@ -291,7 +291,7 @@
   " Snippets
   Plug 'SirVer/ultisnips'                                              " Snippet engine
   Plug 'isRuslan/vim-es6'                                              " ES6 snippets
-  Plug 'mmozuras/snipmate-mocha'                                       " Snippets for Mocha tests
+  Plug 'bag-man/snipmate-mocha'                                        " Snippets for Mocha tests
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 

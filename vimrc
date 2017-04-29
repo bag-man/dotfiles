@@ -279,6 +279,7 @@
   Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
   Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
   Plug 'szw/vim-g'                                                     " Google from Vim
+  Plug 'google/vim-searchindex'                                        " Number of search results
 
   " Languages
   Plug 'moll/vim-node'                                                 " Syntax for node.js

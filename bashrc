@@ -24,7 +24,7 @@ alias spr="curl -F 'sprunge=<-' http://sprunge.us | xclip"
 alias vi=vim
 alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
-alias ls="ls -lah --color"
+alias ls="ls -lah --color --group-directories-first"
 alias entr="find . | entr sh -c"
 alias where="bfs ./ -name "
 alias orphans="pacman -Qdt"

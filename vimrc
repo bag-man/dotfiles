@@ -143,8 +143,8 @@
   let g:tex_flavor = 'tex'
   autocmd FileType markdown,tex 
     \ setlocal spell wrap |
-    \ map j gj |
-    \ map k gk |
+    \ nnoremap <expr> k v:count == 0 ? 'gk' : 'k' |
+    \ nnoremap <expr> j v:count == 0 ? 'gj' : 'j' |
    
   autocmd BufReadPost *
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |

@@ -319,5 +319,6 @@
   Plug 'kana/vim-textobj-function'                                     " Add function based text objects
   Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
+  Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
 
   call plug#end()

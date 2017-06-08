@@ -60,9 +60,8 @@
   map L $
   map £ g_   
 
-  " So I can use tmux, use tab/s-tab
-  " nnoremap J :tabprev<CR>
-  " nnoremap K :tabnext<CR>
+  nnoremap J :tabprev<CR>
+  nnoremap K :tabnext<CR>
 
   nnoremap M J
   nnoremap S "_diwP
@@ -77,8 +76,7 @@
   xnoremap p "_dP
   cmap w!! w !sudo tee > /dev/null %
 
-  map <C-l> :bn<Cr>
-  map <C-h> :bp<Cr>
+  nnoremap <C-b> :Buffers<cr>
   cmap bc :Bclose<Cr>
 
   nnoremap <tab> :tabnext<CR>
@@ -194,7 +192,7 @@
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
     \ -g "*.{js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst}"
-    \ -g "!{.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee}/*" '
+    \ -g "!{.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 

@@ -194,7 +194,7 @@
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
     \ -g "*.{js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst}"
-    \ -g "!{.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst}/*" '
+    \ -g "!{.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
@@ -275,7 +275,6 @@
   Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
   Plug 'matze/vim-move'                                                " Move lines up and down
   Plug 'justinmk/vim-sneak'                                            " Multiline find
-  Plug 'undofile_warn.vim'                                             " Warn old undo
   Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
   Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
   Plug 'szw/vim-g'                                                     " Google from Vim
@@ -286,7 +285,6 @@
   Plug 'wavded/vim-stylus'                                             " Stylus for stylus
   Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
   Plug 'lervag/vimtex'                                                 " Build LaTeX files
-  Plug 'proteinFasta.vim'                                              " Fasta syntax
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
 
   " Snippets
@@ -302,6 +300,7 @@
   Plug 'tpope/vim-fugitive'                                            " Git integration
   Plug 'tpope/vim-abolish'                                             " Flexible search
   Plug 'tpope/vim-jdaddy'                                              " JSON text object
+  Plug 'tpope/vim-rhubarb'                                             " Github browse
 
   " Appearance
   Plug 'mkitt/tabline.vim'                                             " Cleaner tabs

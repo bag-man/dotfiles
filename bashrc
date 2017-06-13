@@ -64,7 +64,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=100000               
 shopt -s histappend                      
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-bind -x '"\C-p": vim $(fzf);'
+bind -x '"\C-p": fvim'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
@@ -92,4 +92,10 @@ branch() {
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+fvim() {
+  local IFS=$'\n'
+  local files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }

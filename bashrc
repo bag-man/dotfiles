@@ -87,7 +87,7 @@ tm() {
     tmux attach-session -t "$session" || tmux new-session -s $newsession
 }
 
-fcheck() {
+checkf() {
   local branches branch
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
   branch=$(echo "$branches" |

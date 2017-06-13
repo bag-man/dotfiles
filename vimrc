@@ -47,7 +47,6 @@
 
 """ Key modifiers
 
-  map <F1> :call ToggleFocusMode()<cr>
   set pastetoggle=<F2>
   map <F3> :F <C-r><C-w><Cr>
   map <F5> :make!<cr>
@@ -196,27 +195,6 @@
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
-  " focus mode
-  function! ToggleFocusMode()
-    if (&foldcolumn != 12)
-      set laststatus=0
-      set numberwidth=10
-      set foldcolumn=12
-      set noruler
-      set norelativenumber nonumber
-      hi FoldColumn ctermbg=none
-      hi LineNr ctermfg=0 ctermbg=none
-      hi NonText ctermfg=bg
-    else
-      set laststatus=2
-      set numberwidth=4
-      set foldcolumn=0
-      set ruler
-      set relativenumber number
-      execute 'colorscheme ' . g:colors_name
-    endif
-  endfunc
-
   " Eslint fix
   autocmd BufWritePre *.js execute 'call ESLintFix()'
 
@@ -229,29 +207,17 @@
   autocmd Syntax * RainbowParenthesesLoadSquare
   autocmd Syntax * RainbowParenthesesLoadBraces
 
-  " fasta syntax
-  autocmd BufNewFile,BufRead *.fa set filetype=proteinFasta
-
   " Highlight jump points
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-  " sneak
-  map s <Plug>Sneak_s
-  let g:sneak#s_next = 1
-  hi link SneakPluginTarget ErrorMsg
 
   " snippet trigger key
   let g:UltiSnipsExpandTrigger="<C-R><tab>"
 
   " vimtex
   let g:vimtex_view_general_viewer = 'zathura'
-  " community/zathura
-  " community/zathura-pdf-poppler
 
   " instant markdown
   let g:instant_markdown_slow = 1
-  " dom.allow_scripts_to_close_windows = true
-  " euclio/instant-markdown-d@4fcd47422d
 
   call plug#begin('~/.vim/plugged')
   filetype plugin indent on
@@ -269,10 +235,8 @@
   Plug 'bag-man/copypath.vim'                                          " copy path of file
   Plug 'rbgrouleff/bclose.vim'                                         " Close current buffer
   Plug 'can3p/incbool.vim'                                             " Toggle true/false
-  Plug 'triglav/vim-visual-increment'                                  " Increment over visual selection
   Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
   Plug 'matze/vim-move'                                                " Move lines up and down
-  Plug 'justinmk/vim-sneak'                                            " Multiline find
   Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
   Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
   Plug 'szw/vim-g'                                                     " Google from Vim

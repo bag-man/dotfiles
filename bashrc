@@ -25,7 +25,7 @@ alias vi=vim
 alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color --group-directories-first"
-alias entr="find . | entr sh -c"
+alias entr="find . -not -path './node_modules/*' | entr sh -c"
 alias where="bfs ./ -name "
 alias orphans="pacman -Qdt"
 alias explicit="pacman -Qet"
@@ -58,6 +58,7 @@ alias log="fzf_log"
 export EDITOR=vim
 export TERM=xterm-256color
 export PYTHON=python2.7
+export PATH=~/.npm-global/bin:$PATH
 
 export HISTCONTROL=ignoredups:erasedups  
 export HISTSIZE=100000                   
@@ -84,4 +85,12 @@ tm() {
   session=$(tmux list-sessions -F "#{session_name}" | \
     fzf --query="$1" --select-1 --exit-0) &&
     tmux attach-session -t "$session" || tmux new-session -s $newsession
+}
+
+fcheck() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }

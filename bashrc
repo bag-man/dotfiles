@@ -35,7 +35,6 @@ alias show="git showtool"
 alias stat="git status"
 alias add="git add"
 alias commit="git commit"
-alias branch="git branch"
 alias push='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias check="git checkout"
 alias stash="git stash -u"
@@ -87,7 +86,7 @@ tm() {
     tmux attach-session -t "$session" || tmux new-session -s $newsession
 }
 
-checkf() {
+branch() {
   local branches branch
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
   branch=$(echo "$branches" |

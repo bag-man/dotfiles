@@ -196,7 +196,7 @@
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
   " Eslint fix
-  autocmd BufWritePre *.js execute 'call ESLintFix()'
+  " autocmd BufWritePre *.js execute 'call ESLintFix()'
 
   " vim-move
   let g:move_key_modifier = 'C'

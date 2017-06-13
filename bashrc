@@ -64,13 +64,13 @@ export HISTSIZE=100000
 export HISTFILESIZE=100000               
 shopt -s histappend                      
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-bind -x '"\C-p": fvim'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
 export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi '
+bind -x '"\C-p": fvim'
 
 fzf_log() {
   hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')

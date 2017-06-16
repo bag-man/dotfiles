@@ -25,8 +25,10 @@ alias vi=vim
 alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color --group-directories-first"
-alias entr="find . -not -path './node_modules/*' | entr sh -c"
+alias entr="find . -not -path './node_modules/*' -not -name '*.swp' | entr sh -c"
 alias where="bfs ./ -name "
+alias rg="rg -p"
+alias less="less -R"
 alias orphans="pacman -Qdt"
 alias explicit="pacman -Qet"
 

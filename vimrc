@@ -74,6 +74,7 @@
   map n nzz
   xnoremap p "_dP
   cmap w!! w !sudo tee > /dev/null %
+  map <C-s> magcii`a
 
   nnoremap <C-b> :Buffers<cr>
   cmap bc :Bclose<Cr>

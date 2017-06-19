@@ -74,6 +74,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi '
 bind -x '"\C-p": fvim'
 
+sf() {
+  rg_command='rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst}" -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist}/*"'
+  local files=`eval $rg_command $1 | fzf | awk -F ':' '{print $1":"$2":"$3}'`
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
 fzf_log() {
   hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
   echo $hash | xclip

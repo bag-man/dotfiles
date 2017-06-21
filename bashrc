@@ -80,6 +80,11 @@ sf() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
+fc() {
+  hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
+  git checkout $hash
+}
+
 fzf_log() {
   hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
   echo $hash | xclip

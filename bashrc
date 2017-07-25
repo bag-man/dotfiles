@@ -71,7 +71,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
 export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi '
+export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi --multi'
 bind -x '"\C-p": fvim'
 
 sf() {

@@ -92,11 +92,8 @@ fzf_log() {
 }
 
 tm() {
-  local session
-  newsession=${1:-new}
-  session=$(tmux list-sessions -F "#{session_name}" | \
-    fzf --query="$1" --select-1 --exit-0) &&
-    tmux attach-session -t "$session" || tmux new-session -s $newsession
+  if [ $1 ]; then tmux attach-session -t "$1" || tmux new-session -s $1; return; fi
+  session=$(tmux list-sessions -F "#{session_name}" | fzf --exit-0) && tmux attach-session -t "$session" 
 }
 
 branch() {

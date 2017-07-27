@@ -93,7 +93,7 @@ fzf_log() {
 
 tm() {
   if [ $1 ]; then tmux attach-session -t "$1" || tmux new-session -s $1; return; fi
-  session=$(tmux list-sessions -F "#{session_name}" | fzf --exit-0) && tmux attach-session -t "$session" 
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) && tmux attach-session -t "$session" || echo "No sessions found."
 }
 
 branch() {

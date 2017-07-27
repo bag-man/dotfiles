@@ -65,7 +65,7 @@ export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=100000                   
 export HISTFILESIZE=100000               
 shopt -s histappend                      
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
@@ -92,8 +92,11 @@ fzf_log() {
 }
 
 tm() {
-  if [ $1 ]; then tmux attach-session -t "$1" || tmux new-session -s $1; return; fi
-  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) && tmux attach-session -t "$session" || echo "No sessions found."
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then 
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
 branch() {

@@ -105,11 +105,6 @@
 
   nnoremap <Space> za
 
-  map Od <C-w>>
-  map Oc <C-w><
-  map Oa <C-w>+ 
-  map Ob <C-w>-
-
 """ Behaviour modifiers
 
   set undofile

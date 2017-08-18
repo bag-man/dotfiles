@@ -31,6 +31,7 @@ alias rg="rg -p"
 alias less="less -R"
 alias orphans="pacman -Qdt"
 alias explicit="pacman -Qet"
+alias json="python -m json.tool"
 
 alias diff="git difftool"
 alias show="git showtool"

@@ -86,6 +86,11 @@ fc() {
   git checkout $hash
 }
 
+gc() {
+  hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
+  gopen $hash
+}
+
 fzf_log() {
   hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
   echo $hash | xclip
@@ -132,4 +137,10 @@ c() {
      from urls order by last_visit_time desc" |
   awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
   fzf --ansi --multi --query="!localhost " | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+}
+
+gopen() {
+    project=$(git config --local remote.origin.url | sed s/git@github.com\:// | sed s/\.git//)
+    url="http://github.com/$project/commit/$1"
+    xdg-open $url
 }

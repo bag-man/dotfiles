@@ -21,7 +21,7 @@
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
-          "BTTShortcutToSend" : "56,55,20",
+          "BTTShortcutToSend" : "59,56,55,20",
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 105,
           "BTTShortcutModifierKeys" : 131072,
@@ -90,7 +90,7 @@
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
-          "BTTShortcutToSend" : "56,55,21",
+          "BTTShortcutToSend" : "59,56,55,21",
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 105,
           "BTTShortcutModifierKeys" : 0,

@@ -25,7 +25,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 105,
           "BTTShortcutModifierKeys" : 131072,
-          "BTTOrder" : 11
+          "BTTOrder" : 10
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -33,7 +33,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 35,
           "BTTShortcutModifierKeys" : 524288,
-          "BTTOrder" : 4,
+          "BTTOrder" : 3,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
         },
@@ -43,7 +43,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 119,
           "BTTShortcutModifierKeys" : 0,
-          "BTTOrder" : 6,
+          "BTTOrder" : 5,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
         },
@@ -63,7 +63,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 115,
           "BTTShortcutModifierKeys" : 0,
-          "BTTOrder" : 5,
+          "BTTOrder" : 4,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
         },
@@ -84,7 +84,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 111,
           "BTTShortcutModifierKeys" : 262144,
-          "BTTOrder" : 8,
+          "BTTOrder" : 7,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
         },
@@ -94,7 +94,34 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 105,
           "BTTShortcutModifierKeys" : 0,
-          "BTTOrder" : 10
+          "BTTOrder" : 9
+        },
+        {
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTPredefinedActionType" : 151,
+          "BTTPredefinedActionName" : "Move Window One Space\/Desktop Left",
+          "BTTEnabled" : 1,
+          "BTTShortcutKeyCode" : 4,
+          "BTTShortcutModifierKeys" : 655360,
+          "BTTOrder" : 14
+        },
+        {
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTPredefinedActionType" : 152,
+          "BTTPredefinedActionName" : "Move Window One Space\/Desktop Right",
+          "BTTEnabled" : 1,
+          "BTTShortcutKeyCode" : 37,
+          "BTTShortcutModifierKeys" : 655360,
+          "BTTOrder" : 15
+        },
+        {
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTPredefinedActionType" : 102,
+          "BTTPredefinedActionName" : "Close Window Below Cursor (Works in Mission Control)",
+          "BTTEnabled" : 1,
+          "BTTShortcutKeyCode" : 8,
+          "BTTShortcutModifierKeys" : 655360,
+          "BTTOrder" : 12
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -107,7 +134,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 36,
           "BTTShortcutModifierKeys" : 655360,
-          "BTTOrder" : 9,
+          "BTTOrder" : 8,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
         },
@@ -117,7 +144,16 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 117,
           "BTTShortcutModifierKeys" : 0,
-          "BTTOrder" : 12
+          "BTTOrder" : 11
+        },
+        {
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTPredefinedActionType" : 158,
+          "BTTPredefinedActionName" : "Lock Screen",
+          "BTTEnabled" : 1,
+          "BTTShortcutKeyCode" : 119,
+          "BTTShortcutModifierKeys" : 786432,
+          "BTTOrder" : 13
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -131,21 +167,11 @@
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
-          "BTTShortcutToSend" : "56,50",
-          "BTTEnabled" : 1,
-          "BTTShortcutKeyCode" : 10,
-          "BTTShortcutModifierKeys" : 131072,
-          "BTTOrder" : 3,
-          "BTTIconData" : "",
-          "BTTAlternateIconData" : ""
-        },
-        {
-          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
           "BTTShortcutToSend" : "55,9",
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 111,
           "BTTShortcutModifierKeys" : 131072,
-          "BTTOrder" : 7,
+          "BTTOrder" : 6,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
         }

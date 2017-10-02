@@ -103,7 +103,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 4,
           "BTTShortcutModifierKeys" : 655360,
-          "BTTOrder" : 14
+          "BTTOrder" : 13
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -112,7 +112,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 37,
           "BTTShortcutModifierKeys" : 655360,
-          "BTTOrder" : 15
+          "BTTOrder" : 14
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -121,7 +121,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 8,
           "BTTShortcutModifierKeys" : 655360,
-          "BTTOrder" : 12
+          "BTTOrder" : 11
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -139,12 +139,12 @@
           "BTTAlternateIconData" : ""
         },
         {
+          "BTTTriggerType" : -1,
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
-          "BTTShortcutToSend" : "55,51",
           "BTTEnabled" : 1,
-          "BTTShortcutKeyCode" : 117,
-          "BTTShortcutModifierKeys" : 0,
-          "BTTOrder" : 11
+          "BTTShortcutKeyCode" : -1,
+          "BTTShortcutModifierKeys" : -1,
+          "BTTOrder" : 15
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -153,7 +153,7 @@
           "BTTEnabled" : 1,
           "BTTShortcutKeyCode" : 119,
           "BTTShortcutModifierKeys" : 786432,
-          "BTTOrder" : 13
+          "BTTOrder" : 12
         },
         {
           "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
@@ -338,6 +338,25 @@
           "BTTOrder" : 0,
           "BTTIconData" : "",
           "BTTAlternateIconData" : ""
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.apple.finder",
+      "BTTAppName" : "Finder",
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Finder",
+      "BTTTriggers" : [
+        {
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTShortcutToSend" : "55,51",
+          "BTTEnabled" : 1,
+          "BTTShortcutKeyCode" : 117,
+          "BTTShortcutModifierKeys" : 0,
+          "BTTOrder" : 0,
+          "BTTKeySequence" : {
+
+          }
         }
       ]
     }

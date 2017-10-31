@@ -59,6 +59,8 @@
   map L $
   map £ g_   
 
+  nmap <silent> <C-e> <Plug>(ale_next_wrap)
+
   nnoremap J :tabprev<CR>
   nnoremap K :tabnext<CR>
 

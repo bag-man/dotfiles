@@ -7,7 +7,7 @@ xmodmap -e "pointer = 1 7 3 4 5 6 2 8 9" &
 xss-lock -- lock -lock &
 copyq &
 nitrogen --restore &  
-trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --height 10 --margin 85 --transparent true --alpha 0 --tint 0x111111 &
+trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --height 18 --margin 85 --transparent true --alpha 0 --tint 0x111111 &
 pamac-tray &
 xmodmap ~/.Xmodmap & 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

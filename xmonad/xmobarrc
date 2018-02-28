@@ -4,10 +4,21 @@ Config {
    fgColor  = "#888888",
    position = Top,
    commands = [Run StdinReader,
+               Run Cpu ["--template" ,"<bar>"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "90"        -- units: %
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "blue"
+                             , "--high"     , "darkred" ] 10,
+               Run Memory ["--template" ,"<usedbar>"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "90"        -- units: %
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "blue"
+                             , "--high"     , "darkred" ] 10,
                Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
-               Run Com "mpc" ["current"] "mpd" 10,
                Run Date "%H:%M " "date" 10],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% : %mpd% }{ %date%" 
+   template = "%StdinReader% : %memory% : %cpu% }{ %battery% %date%" 
  }

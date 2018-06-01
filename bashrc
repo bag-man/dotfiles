@@ -1,6 +1,7 @@
 #
 # /etc/bash.bashrc
 #
+xmodmap -e "keycode 96 = Insert Insert Insert"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -30,7 +31,9 @@ alias where="bfs ./ -name "
 alias rg="rg -p"
 alias less="less -R"
 alias orphans="pacman -Qdt"
+alias cleanorphans="pacman -Rns $(pacman -Qtdq)"
 alias explicit="pacman -Qet"
+alias mirrors="sudo pacman-mirrors --fasttrack && sudo pacman -Syy"
 alias json="python -m json.tool"
 
 alias diff="git difftool"
@@ -70,7 +73,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
-export FZF_ALT_C_COMMAND="cd ~/; bfs -type d -nohidden | sed s/^\./\~/"
+export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi --multi'
 bind -x '"\C-p": fvim'

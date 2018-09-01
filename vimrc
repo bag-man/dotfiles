@@ -116,7 +116,7 @@
   set foldmethod=marker
   set backspace=indent,eol,start
 
-  autocmd BufWritePre *.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
+  autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
 
   autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
   autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
@@ -170,6 +170,7 @@
   let g:ale_sign_column_always = 1
   let g:ale_linters = {
   \   'javascript': ['eslint'],
+  \   'typescript': ['tsserver', 'tslint']
   \}
 
   " argwrap
@@ -246,6 +247,7 @@
   Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
   Plug 'lervag/vimtex'                                                 " Build LaTeX files
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
+  Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
 
   " Snippets
   Plug 'SirVer/ultisnips'                                              " Snippet engine

@@ -173,6 +173,9 @@
   \   'typescript': ['tsserver', 'tslint']
   \}
 
+  " Typescript completion
+  let g:tsuquyomi_completion_detail = 1
+
   " argwrap
   nnoremap <silent> <Bslash>a :ArgWrap<CR>
   let g:argwrap_padded_braces = '{'
@@ -248,6 +251,7 @@
   Plug 'lervag/vimtex'                                                 " Build LaTeX files
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
   Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
+  Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
 
   " Snippets
   Plug 'SirVer/ultisnips'                                              " Snippet engine

@@ -49,8 +49,9 @@
 
   set pastetoggle=<F2>
   map <F3> :F <C-r><C-w><Cr>
-  map <F5> :make!<cr>
+  map <F5> :make!<CR>
   map <F6> :set hlsearch!<CR>
+  map <F7> :Fixmyjs<CR>
 
   map <Cr> O<Esc>j
 
@@ -197,8 +198,8 @@
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
-  " Eslint fix
-  " autocmd BufWritePre *.js execute 'call ESLintFix()'
+  " JS lint fix
+  let g:fixmyjs_engine = 'tslint'
 
   " vim-move
   let g:move_key_modifier = 'C'
@@ -252,6 +253,7 @@
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
   Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
   Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
+  Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
 
   " Snippets
   Plug 'SirVer/ultisnips'                                              " Snippet engine

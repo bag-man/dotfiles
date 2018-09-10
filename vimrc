@@ -173,7 +173,10 @@
   \   'javascript': ['eslint'],
   \   'typescript': ['tsserver', 'tslint']
   \}
-
+  let g:ale_pattern_options = {
+  \   '.*\.d.ts$': {'ale_enabled': 0},
+  \}
+"
   " Typescript completion
   let g:tsuquyomi_completion_detail = 1
   let g:tsuquyomi_disable_quickfix = 1

@@ -56,7 +56,7 @@ alias bisect="git bisect"
 alias reflog="git reflog"
 alias apply="git apply"
 alias reset="git reset"
-alias rebase="git rebase"
+alias rebase="git rebase -i master"
 alias clean="git clean -f"
 alias log="fzf_log"
 

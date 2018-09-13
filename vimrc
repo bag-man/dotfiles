@@ -171,15 +171,16 @@
   let g:ale_sign_column_always = 1
   let g:ale_linters = {
   \   'javascript': ['eslint'],
-  \   'typescript': ['tsserver', 'tslint']
+  \   'typescript': ['tsserver'] ,
   \}
   let g:ale_pattern_options = {
   \   '.*\.d.ts$': {'ale_enabled': 0},
   \}
-"
+ 
   " Typescript completion
   let g:tsuquyomi_completion_detail = 1
   let g:tsuquyomi_disable_quickfix = 1
+  let g:tsuquyomi_definition_split = 3
 
   " argwrap
   nnoremap <silent> <Bslash>a :ArgWrap<CR>

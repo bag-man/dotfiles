@@ -16,7 +16,7 @@ source /usr/share/git/completion/git-prompt.sh
 
 WHITE="\[\e[1;37m\]"
 BLUE="\[\e[1;34m\]"
-PS1="$WHITE\W\$(__git_ps1 ' (%s)') $BLUE> $WHITE"
+PS1="$WHITE\W\$(__git_ps1 ' (%s)') $BLUEλ $WHITE"
 PS2='> '
 PS3='> '
 PS4='+ '

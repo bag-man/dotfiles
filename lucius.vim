@@ -248,13 +248,13 @@ let s:normal_items = [
             \ "IncSearch", "LineNr", "MatchParen", "ModeMsg", "MoreMsg",
             \ "NonText", "Pmenu", "PmenuSbar", "PmenuSel",
             \ "PmenuThumb", "PreProc", "Question", "Search", "SignColumn",
-            \ "Special", "SpecialKey", "Statement", "StatusLineNC", "TabLine",
+            \ "Special", "SpecialKey", "Statement", "StatusLineNC", "StatusLineTermNC", "TabLine",
             \ "TabLineFill", "Todo", "Type", "VertSplit", "Visual",
             \ "WarningMsg", "WildMenu",
             \ ]
 
 let s:bold_items = [
-            \ "DiffText", "FoldColumn", "Folded", "StatusLine", "TabLineSel",
+            \ "DiffText", "FoldColumn", "Folded", "StatusLine", "StatusLineTerm", "TabLineSel",
             \ "Title", "CursorLineNr",
             \ ]
 
@@ -514,6 +514,7 @@ if s:style == "light"
     hi PmenuSel                     guibg=#afd7ff
     hi SignColumn                   guibg=#d0d0d0
     hi StatusLineNC guifg=#dadada
+    hi StatusLineNC guifg=#dadada
     hi TabLineFill  guifg=#dadada
     hi VertSplit    guifg=#e4e4e4
     hi WildMenu                     guibg=#afd7ff
@@ -565,6 +566,8 @@ else
         hi SignColumn   guibg=NONE
         hi StatusLine   guifg=#ffffff   guibg=#444444
         hi StatusLineNC                 guibg=#444444
+        hi StatusLineTerm   guifg=#ffffff   guibg=#444444
+        hi StatusLineTermNC                 guibg=#444444
         hi TabLine      guifg=#9e9e9e   guibg=#444444
         hi TabLineFill  guifg=#9e9e9e   guibg=#444444
         hi TabLineSel   guifg=#ffffff  guibg=#444444

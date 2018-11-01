@@ -79,6 +79,8 @@
   cmap w!! w !sudo tee > /dev/null %
   map <C-s> magcii`a
 
+  tmap <Esc> <C-w>N
+
   nnoremap <C-b> :Buffers<cr>
   cmap bc :Bclose<Cr>
 
@@ -259,6 +261,7 @@
   Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
   Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
   Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
+  Plug 'jparise/vim-graphql'                                           " Syntax for graphql
 
   " Snippets
   Plug 'SirVer/ultisnips'                                              " Snippet engine

@@ -81,6 +81,9 @@
 
   tmap <Esc> <C-w>N
 
+  nnoremap + <C-w>+
+  nnoremap - <C-w>-
+
   nnoremap <C-b> :Buffers<cr>
   cmap bc :Bclose<Cr>
 

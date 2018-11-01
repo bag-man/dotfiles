@@ -79,17 +79,15 @@
   cmap w!! w !sudo tee > /dev/null %
   map <C-s> magcii`a
 
-  tmap <Esc> <C-w>N
-
-  nnoremap + <C-w>+
-  nnoremap - <C-w>-
+  map <Esc> <C-w>N
+  nnoremap <C-t> :term ++curwin<CR>
 
   nnoremap <C-b> :Buffers<cr>
   cmap bc :Bclose<Cr>
 
   nnoremap <tab> :tabnext<CR>
   nnoremap <s-tab> :tabprev<CR>
-  nnoremap <C-t> :tabnew<CR>
+  "nnoremap <C-t> :tabnew<CR>
   inoremap <C-t> <Esc>:tabnew<CR>i
 
   noremap gt <C-w>gf
@@ -170,6 +168,20 @@
   let g:NERDTreeMapActivateNode = '<tab>'
   set mouse=a
 
+  " Tiler
+  map <F12> <Plug>TilerRotateBackwards
+  map <F11> <Plug>TilerRotateForwards
+  map <F10> <plug>TinerNew
+  map <F9> :TilerReorder<cr>
+  let g:tiler#master#size = 20
+  let g:tiler#master#count = 1
+  let g:tiler#layout = 'bottom'
+  let g:tiler#popup#windows = {
+  \    'fzf': { 'position': 'bottom', 'size': 10, 'filetype': 'fzf', 'order': 3 },
+  \    'nerdtree': { 'position': 'left', 'size': 10, 'filetype': 'nerdtree', 'order': 2 },
+  \    'tagbar': { 'position': 'right', 'size': 10, 'filetype': 'tagbar', 'order': 1 },
+  \ }
+
   " Ale
   let g:ale_sign_error = ' '
   let g:ale_sign_warning = ' '
@@ -243,6 +255,7 @@
   Plug 'jreybert/vimagit'                                              " Interactive git staging
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
+  Plug 'zhamlin/tiler.vim'                                             " Window manager
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file

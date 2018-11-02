@@ -79,15 +79,12 @@
   cmap w!! w !sudo tee > /dev/null %
   map <C-s> magcii`a
 
-  map <Esc> <C-w>N
-  nnoremap <C-t> :term ++curwin<CR>
-
   nnoremap <C-b> :Buffers<cr>
   cmap bc :Bclose<Cr>
 
   nnoremap <tab> :tabnext<CR>
   nnoremap <s-tab> :tabprev<CR>
-  "nnoremap <C-t> :tabnew<CR>
+  nnoremap <C-t> :tabnew<CR>
   inoremap <C-t> <Esc>:tabnew<CR>i
 
   noremap gt <C-w>gf
@@ -121,6 +118,7 @@
   set backspace=indent,eol,start
 
   autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
+  au BufWritePost ~/.vimrc source %
 
   autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
   autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
@@ -169,10 +167,13 @@
   set mouse=a
 
   " Tiler
-  map <F12> <Plug>TilerRotateBackwards
-  map <F11> <Plug>TilerRotateForwards
-  map <F10> <plug>TinerNew
-  map <F9> :TilerReorder<cr>
+  "tmap <Esc> <C-w>N
+  tmap <C-q> <C-w>N
+  nnoremap <C-x> :bd<cr>:TilerReorder<cr>
+  nnoremap <C-\> :term ++curwin<CR>
+  map <C-h> <Plug>TilerRotateBackwards
+  map <C-l> <Plug>TilerRotateForwards
+  map <C-@> <plug>TilerNew
   let g:tiler#master#size = 20
   let g:tiler#master#count = 1
   let g:tiler#layout = 'bottom'
@@ -225,6 +226,7 @@
 
   " vim-move
   let g:move_key_modifier = 'C'
+  let g:move_map_keys = 0
 
   " rainbow brackets
   autocmd VimEnter * RainbowParenthesesToggle

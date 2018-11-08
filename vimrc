@@ -53,6 +53,7 @@
   map <F6> :set hlsearch!<CR>
   map <F7> :Fixmyjs<CR>
   map <F8> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
+  map <F9> :TsuRenameSymbol<CR>
 
   map <Cr> O<Esc>j
 
@@ -201,7 +202,7 @@
   " Typescript completion
   let g:tsuquyomi_completion_detail = 1
   let g:tsuquyomi_disable_quickfix = 1
-  let g:tsuquyomi_definition_split = 3
+  let g:tsuquyomi_definition_split = 2
 
   " argwrap
   nnoremap <silent> <Bslash>a :ArgWrap<CR>

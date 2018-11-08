@@ -44,6 +44,7 @@ myKeys = [
   ((mod1Mask, xK_w), spawn "google-chrome-stable"),
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_End), spawn "vlock -ans"),
+  ((mod1Mask, xK_o), spawn "passmenu"),
   ((mod1Mask, xK_p), spawn "rofi -show run"),
   ((0, xK_Print), spawn "sleep 0.2; scrot -q 100 -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   ((controlMask, xK_Print), spawn "scrot -q 100 /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),

@@ -52,6 +52,7 @@
   map <F5> :make!<CR>
   map <F6> :set hlsearch!<CR>
   map <F7> :Fixmyjs<CR>
+  map <F8> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
 
   map <Cr> O<Esc>j
 
@@ -169,10 +170,12 @@
   " Tiler
   "tmap <Esc> <C-w>N
   tmap <C-q> <C-w>N
+  nnoremap + <C-w>3+
+  nnoremap _ <C-w>3-
   nnoremap <C-x> :bd<cr>:TilerReorder<cr>
   nnoremap <C-\> :term ++curwin<CR>
-  map <C-h> <Plug>TilerRotateBackwards
-  map <C-l> <Plug>TilerRotateForwards
+  map <C-l> <Plug>TilerRotateBackwards
+  map <C-h> <Plug>TilerRotateForwards
   map <C-@> <plug>TilerNew
   let g:tiler#master#size = 20
   let g:tiler#master#count = 1
@@ -262,7 +265,7 @@
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file
   Plug 'rbgrouleff/bclose.vim'                                         " Close current buffer
-  Plug 'can3p/incbool.vim'                                             " Toggle true/false
+  "Plug 'can3p/incbool.vim'                                             " Toggle true/false
   Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
   Plug 'matze/vim-move'                                                " Move lines up and down
   Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge

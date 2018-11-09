@@ -42,6 +42,7 @@
   set statusline=%F
   set wildmenu
   set showcmd
+  set lazyredraw
 
   match Delimiter /\d\ze\%(\d\d\%(\d\{3}\)*\)\>/
 

@@ -251,6 +251,45 @@
   " instant markdown
   let g:instant_markdown_slow = 1
 
+  " Writing mode
+  let g:limelight_paragraph_span = 0  
+  let g:limelight_priority = -1
+
+  function! s:goyo_enter() 
+    set noshowcmd
+    set noshowmode 
+    set scrolloff=999
+    Limelight
+    colo seoul256-light
+    set linespace=7
+    if exists('$TMUX') 
+      silent !tmux set status off
+    endif
+    let &l:statusline = '%M'
+                            
+    hi StatusLine
+          \ ctermfg=137
+          \ guifg=#be9873
+          \ cterm=NONE
+          \ gui=NONE
+    call pencil#init()
+  endfunction
+
+  function! s:goyo_leave() 
+    set showcmd  
+    set showmode  
+    set scrolloff=1
+    Limelight!      
+    LuciusDarkLowContrast
+    set linespace=3    
+    if exists('$TMUX') 
+      silent !tmux set status on
+    endif
+  endfunction
+
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
   call plug#begin('~/.vim/plugged')
   filetype plugin indent on
 
@@ -318,5 +357,11 @@
   Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
+
+  "wring mode
+  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/limelight.vim'
+  Plug 'junegunn/seoul256.vim'
+  Plug 'reedes/vim-pencil'
 
   call plug#end()

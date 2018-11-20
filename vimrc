@@ -55,6 +55,7 @@
   map <F7> :Fixmyjs<CR>
   map <F8> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
   map <F9> :TsuRenameSymbol<CR>
+  map <F10> :echo tsuquyomi#hint()<cr>
 
   map <Cr> O<Esc>j
 
@@ -170,14 +171,10 @@
   set mouse=a
 
   " Tiler
-  "tmap <Esc> <C-w>N
   tmap <C-q> <C-w>N
   nnoremap + <C-w>3+
   nnoremap _ <C-w>3-
-  nnoremap <C-x> :bd<cr>:TilerReorder<cr>
-  nnoremap <C-\> :term ++curwin<CR>
-  map <C-l> <Plug>TilerRotateBackwards
-  map <C-h> <Plug>TilerRotateForwards
+  nnoremap <C-\> :term<CR><C-w>N:call tiler#reorder()<cr>i
   map <C-@> <plug>TilerNew
   let g:tiler#master#size = 20
   let g:tiler#master#count = 1
@@ -231,7 +228,6 @@
 
   " vim-move
   let g:move_key_modifier = 'C'
-  let g:move_map_keys = 0
 
   " rainbow brackets
   autocmd VimEnter * RainbowParenthesesToggle
@@ -306,7 +302,7 @@
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file
   Plug 'rbgrouleff/bclose.vim'                                         " Close current buffer
-  "Plug 'can3p/incbool.vim'                                             " Toggle true/false
+  Plug 'can3p/incbool.vim'                                             " Toggle true/false
   Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
   Plug 'matze/vim-move'                                                " Move lines up and down
   Plug 'chilicuil/vim-sprunge'                                         " Paste selection to sprunge
@@ -358,7 +354,7 @@
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
 
-  "wring mode
+  "writing mode
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
   Plug 'junegunn/seoul256.vim'

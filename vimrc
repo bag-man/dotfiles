@@ -340,7 +340,7 @@
   Plug 'mkitt/tabline.vim'                                             " Cleaner tabs
   Plug 'chrisbra/Colorizer'                                            " Show hex codes as colours
   Plug 'kien/rainbow_parentheses.vim'                                  " Colour matched brackets
-  Plug 'suan/vim-instant-markdown'                                     " Markdown preview instant-markdown-d
+  "Plug 'suan/vim-instant-markdown'                                     " Markdown preview instant-markdown-d
   Plug 'unblevable/quick-scope'                                        " Highlight jump characters
 
   " Text objects

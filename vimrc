@@ -168,7 +168,7 @@
   let g:NERDTreeDirArrowExpandable = '├'
   let g:NERDTreeDirArrowCollapsible = '└'
   let g:NERDTreeMapActivateNode = '<tab>'
-  set mouse=a
+  set mouse=
 
   " Tiler
   tmap <C-q> <C-w>N
@@ -191,7 +191,7 @@
   let g:ale_sign_column_always = 1
   let g:ale_linters = {
   \   'javascript': ['eslint'],
-  \   'typescript': ['tsserver'] ,
+  \   'typescript': ['tsserver', 'tslint'] ,
   \}
   let g:ale_pattern_options = {
   \   '.*\.d.ts$': {'ale_enabled': 0},
@@ -286,8 +286,17 @@
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+  " nuake
+  nnoremap <F4> :Nuake<CR>
+  inoremap <F4> <C-\><C-n>:Nuake<CR>
+  tnoremap <F4> <C-\><C-n>:Nuake<CR>
+  let g:nuake_position = 0
+  let g:nuake_size = 0.3
+  let g:nuake_location = 1
+
   call plug#begin('~/.vim/plugged')
   filetype plugin indent on
+
 
   " Features
   Plug 'w0rp/ale'                                                      " Async linting
@@ -298,6 +307,8 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   Plug 'zhamlin/tiler.vim'                                             " Window manager
+  Plug 'bag-man/nuake'                                                 " quake term
+
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file

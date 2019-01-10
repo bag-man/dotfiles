@@ -353,6 +353,7 @@
   Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
+  Plug 'coderifous/textobj-word-column.vim'                            " Word columns
 
   "writing mode
   Plug 'junegunn/goyo.vim'

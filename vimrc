@@ -57,6 +57,8 @@
   map <F9> :TsuRenameSymbol<CR>
   map <F10> :echo tsuquyomi#hint()<cr>
 
+  imap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>
+  map <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
   map <Cr> O<Esc>j
 
   map Y y$
@@ -226,6 +228,10 @@
   " JS lint fix
   let g:fixmyjs_engine = 'tslint'
 
+  " long-roll
+  let g:lognroll_js_console = 'log'
+  let g:lognroll_js_actions = [ 'info', 'warn', 'error', 'debug' ]
+
   " vim-move
   let g:move_key_modifier = 'C'
 
@@ -325,6 +331,7 @@
   Plug 'SirVer/ultisnips'                                              " Snippet engine
   Plug 'isRuslan/vim-es6'                                              " ES6 snippets
   Plug 'bag-man/snipmate-mocha'                                        " Snippets for Mocha tests
+  Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 

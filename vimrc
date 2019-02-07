@@ -50,12 +50,12 @@
 
   set pastetoggle=<F2>
   map <F3> :F <C-r><C-w><Cr>
+  map <F4> :echo tsuquyomi#hint()<cr>
   map <F5> :make!<CR>
   map <F6> :set hlsearch!<CR>
   map <F7> :Fixmyjs<CR>
   map <F8> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
   map <F9> :TsuRenameSymbol<CR>
-  map <F10> :echo tsuquyomi#hint()<cr>
 
   imap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>
   map <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>

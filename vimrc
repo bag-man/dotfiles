@@ -67,6 +67,8 @@
   map £ g_   
 
   nmap <silent> <C-e> <Plug>(ale_next_wrap)
+  
+  nnoremap <BS> :noh<CR>
 
   nnoremap J :tabprev<CR>
   nnoremap K :tabnext<CR>
@@ -198,6 +200,9 @@
   let g:ale_pattern_options = {
   \   '.*\.d.ts$': {'ale_enabled': 0},
   \}
+  highlight ALEError ctermbg=none cterm=underline,bold
+  highlight ALEWarning ctermbg=none cterm=underline,bold
+  let g:ale_type_map = {'tslint': {'ES': 'WS', 'E': 'W'}}
  
   " Typescript completion
   let g:tsuquyomi_completion_detail = 1

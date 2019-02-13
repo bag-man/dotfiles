@@ -183,11 +183,6 @@
   let g:tiler#master#size = 20
   let g:tiler#master#count = 1
   let g:tiler#layout = 'bottom'
-  let g:tiler#popup#windows = {
-  \    'fzf': { 'position': 'bottom', 'size': 10, 'filetype': 'fzf', 'order': 3 },
-  \    'nerdtree': { 'position': 'left', 'size': 10, 'filetype': 'nerdtree', 'order': 2 },
-  \    'tagbar': { 'position': 'right', 'size': 10, 'filetype': 'tagbar', 'order': 1 },
-  \ }
 
   " Ale
   let g:ale_sign_error = ' '

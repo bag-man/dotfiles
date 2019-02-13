@@ -174,15 +174,16 @@
   let g:NERDTreeMapActivateNode = '<tab>'
   set mouse=
 
-  " Tiler
+  " Nuake
   tmap <C-q> <C-w>N
   nnoremap + <C-w>3+
   nnoremap _ <C-w>3-
-  nnoremap <C-\> :term<CR><C-w>N:call tiler#reorder()<cr>i
-  map <C-@> <plug>TilerNew
-  let g:tiler#master#size = 20
-  let g:tiler#master#count = 1
-  let g:tiler#layout = 'bottom'
+  nnoremap <C-\> :Nuake<CR>
+  inoremap <C-\> <C-\><C-n>:Nuake<CR>
+  tnoremap <C-\> <C-\><C-n>:Nuake<CR>
+  let g:nuake_position = 2
+  let g:nuake_size = 0.2
+  let g:nuake_per_tab = 1
 
   " Ale
   let g:ale_sign_error = ' '
@@ -303,7 +304,7 @@
   Plug 'jreybert/vimagit'                                              " Interactive git staging
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  Plug 'zhamlin/tiler.vim'                                             " Window manager
+  Plug 'bag-man/nuake'                                                 " Quake term
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file

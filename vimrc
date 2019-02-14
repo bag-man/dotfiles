@@ -1,11 +1,13 @@
 """ Auto Installation
 
+  " Install plugins
   if empty(glob("~/.vim/autoload/plug.vim"))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     auto VimEnter * PlugInstall
   endif
 
+  " Install fzf and rg
   if !empty(glob("~/.fzf/bin/fzf"))
     if empty(glob("~/.fzf/bin/rg"))
       silent !curl -fLo /tmp/rg.tar.gz
@@ -15,98 +17,113 @@
     endif
   endif
   
+  " Install theme
   if empty(glob("~/.vim/colors/lucius.vim"))
     silent !curl -fLo ~/.vim/colors/lucius.vim --create-dirs
           \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
   endif
   
+  " Create undo directory
   if !isdirectory($HOME . "/.vim/undodir")
     call mkdir($HOME . "/.vim/undodir", "p")
   endif
 
 """ Appearance
 
+  " Syntax and lines
   syntax on
   set number relativenumber
   set nowrap
 
+  " Theme
   colorscheme lucius
   LuciusDarkLowContrast
 
+  " Indentation
   set cindent
   set expandtab
   set shiftwidth=2
   set softtabstop=2
 
+  " Status
   set laststatus=2
   set statusline=%F
   set wildmenu
   set showcmd
-  set lazyredraw
 
+  " Highlight 100's
   match Delimiter /\d\ze\%(\d\d\%(\d\{3}\)*\)\>/
 
 """ Key modifiers
 
-  set pastetoggle=<F2>
+  " Find word in project
   map <F3> :F <C-r><C-w><Cr>
-  map <F4> :echo tsuquyomi#hint()<cr>
-  map <F5> :make!<CR>
-  map <F6> :set hlsearch!<CR>
-  map <F7> :Fixmyjs<CR>
-  map <F8> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
-  map <F9> :TsuRenameSymbol<CR>
 
+  " Typescript langauge tools
+  map <F5> :echo tsuquyomi#hint()<cr>
+  map <F6> :Fixmyjs<CR>
+  map <F7> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
+  map <F8> :TsuRenameSymbol<CR>
+
+  " Generate UUID 
   imap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>
   map <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
-  map <Cr> O<Esc>j
 
+  " Sensible shortcuts for movement
+  map <Cr> O<Esc>j
   map Y y$
   map H ^
   map L $
   map £ g_   
+  map M J
 
+  " Clear search
+  map <BS> :noh<CR>
+
+  " Jump to next error
   nmap <silent> <C-e> <Plug>(ale_next_wrap)
   
-  nnoremap <BS> :noh<CR>
-
-  nnoremap J :tabprev<CR>
-  nnoremap K :tabnext<CR>
-
-  nnoremap M J
-  nnoremap S "_diwP
-
+  " Paste over quotes and brakets
   map "p vi"p
   map 'p vi'p
   map (p vi(p
   map )p vi)p
 
+  " Fix typo
   map q: :q
+
+  " Center next item
   map n nzz
-  xnoremap p "_dP
+
+  " Write as sudo
   cmap w!! w !sudo tee > /dev/null %
+  
+  " Toggle comment block
   map <C-s> magcii`a
 
-  nnoremap <C-b> :Buffers<cr>
-  cmap bc :Bclose<Cr>
+  " View fzf buffers
+  map <C-b> :Buffers<cr>
 
+  " Tab navigation
   nnoremap <tab> :tabnext<CR>
   nnoremap <s-tab> :tabprev<CR>
   nnoremap <C-t> :tabnew<CR>
   inoremap <C-t> <Esc>:tabnew<CR>i
-
   noremap gt <C-w>gf
   noremap gs <C-w>vgf
   noremap gi <C-w>f
   noremap <C-]> <C-w><C-]><C-w>T
+  map J :tabprev<CR>
+  map K :tabnext<CR>
 
+  " Autocomplete navigation
   inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
   inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
   inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
-  
   imap <Tab> <C-X><C-F>
   imap <s-Tab> <C-X><C-P>
 
+  " External item maps
   map cp :CopyRelativePath<Cr>
   map gp :Sprunge<cr>
   map go :Google<cr>
@@ -114,6 +131,7 @@
   map gb :Gbrowse<Cr>
   map ch :Gread<Cr>
 
+  " Open fold
   nnoremap <Space> za
 
 """ Behaviour modifiers
@@ -124,43 +142,38 @@
   set wildignore+=*/tmp/*,*.so,*.swp,*.zip
   set foldmethod=marker
   set backspace=indent,eol,start
+  set wildmode=longest,list,full
+  set completeopt=longest,menuone
+  set mouse=
+  set lazyredraw
 
+  " Strip whitespace
   autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
+
+  " Auto load vimrc on save
   au BufWritePost ~/.vimrc source %
 
+  " Maintain cwd
   autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
   autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 
+  " Search settings
   set ignorecase
   set incsearch
   set smartcase
   set scrolloff=10
   set hlsearch!
 
-  set wildmode=longest,list,full
-  set completeopt=longest,menuone
-
+  " Spelling
   setlocal spell spelllang=en
   nmap ss :set spell!<CR>
   set nospell
   autocmd FileType gitcommit setlocal spell
 
-  let g:tex_flavor = 'tex'
-  autocmd FileType markdown,tex 
-    \ setlocal spell wrap |
-    \ nnoremap <expr> k v:count == 0 ? 'gk' : 'k' |
-    \ nnoremap <expr> j v:count == 0 ? 'gj' : 'j' |
-   
   autocmd BufReadPost *
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
-
-  xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
-  function! ExecuteMacroOverVisualRange()
-    echo "@".getcmdline()
-    execute ":'<,'>normal @".nr2char(getchar())
-  endfunction
 
 """ Plugins
     
@@ -172,7 +185,6 @@
   let g:NERDTreeDirArrowExpandable = '├'
   let g:NERDTreeDirArrowCollapsible = '└'
   let g:NERDTreeMapActivateNode = '<tab>'
-  set mouse=
 
   " Nuake
   tmap <C-q> <C-w>N
@@ -237,61 +249,17 @@
   let g:move_key_modifier = 'C'
 
   " rainbow brackets
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd Syntax * RainbowParenthesesLoadRound
-  autocmd Syntax * RainbowParenthesesLoadSquare
-  autocmd Syntax * RainbowParenthesesLoadBraces
+  if !empty(glob("~/.vim/plugged/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim"))
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
+  endif 
 
   " Highlight jump points
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-  " snippet trigger key
-  let g:UltiSnipsExpandTrigger="<C-R><tab>"
-
-  " vimtex
-  let g:vimtex_view_general_viewer = 'zathura'
-
-  " instant markdown
-  let g:instant_markdown_slow = 1
-
-  " Writing mode
-  let g:limelight_paragraph_span = 0  
-  let g:limelight_priority = -1
-
-  function! s:goyo_enter() 
-    set noshowcmd
-    set noshowmode 
-    set scrolloff=999
-    Limelight
-    colo seoul256-light
-    set linespace=7
-    if exists('$TMUX') 
-      silent !tmux set status off
-    endif
-    let &l:statusline = '%M'
-                            
-    hi StatusLine
-          \ ctermfg=137
-          \ guifg=#be9873
-          \ cterm=NONE
-          \ gui=NONE
-    call pencil#init()
-  endfunction
-
-  function! s:goyo_leave() 
-    set showcmd  
-    set showmode  
-    set scrolloff=1
-    Limelight!      
-    LuciusDarkLowContrast
-    set linespace=3    
-    if exists('$TMUX') 
-      silent !tmux set status on
-    endif
-  endfunction
-
-  autocmd! User GoyoEnter nested call <SID>goyo_enter()
-  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+""" Plugins 
 
   call plug#begin('~/.vim/plugged')
   filetype plugin indent on
@@ -308,7 +276,6 @@
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file
-  Plug 'rbgrouleff/bclose.vim'                                         " Close current buffer
   Plug 'can3p/incbool.vim'                                             " Toggle true/false
   Plug 'kopischke/vim-fetch'                                           " Use line numbers in file paths
   Plug 'matze/vim-move'                                                " Move lines up and down
@@ -316,23 +283,17 @@
   Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
   Plug 'szw/vim-g'                                                     " Google from Vim
   Plug 'google/vim-searchindex'                                        " Number of search results
+  Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
 
   " Languages
   Plug 'moll/vim-node'                                                 " Syntax for node.js
   Plug 'wavded/vim-stylus'                                             " Stylus for stylus
   Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
-  Plug 'lervag/vimtex'                                                 " Build LaTeX files
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
   Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
   Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
   Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
   Plug 'jparise/vim-graphql'                                           " Syntax for graphql
-
-  " Snippets
-  Plug 'SirVer/ultisnips'                                              " Snippet engine
-  Plug 'isRuslan/vim-es6'                                              " ES6 snippets
-  Plug 'bag-man/snipmate-mocha'                                        " Snippets for Mocha tests
-  Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 
@@ -348,7 +309,6 @@
   Plug 'mkitt/tabline.vim'                                             " Cleaner tabs
   Plug 'chrisbra/Colorizer'                                            " Show hex codes as colours
   Plug 'kien/rainbow_parentheses.vim'                                  " Colour matched brackets
-  "Plug 'suan/vim-instant-markdown'                                     " Markdown preview instant-markdown-d
   Plug 'unblevable/quick-scope'                                        " Highlight jump characters
 
   " Text objects
@@ -362,11 +322,5 @@
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
   Plug 'coderifous/textobj-word-column.vim'                            " Word columns
-
-  "writing mode
-  Plug 'junegunn/goyo.vim'
-  Plug 'junegunn/limelight.vim'
-  Plug 'junegunn/seoul256.vim'
-  Plug 'reedes/vim-pencil'
 
   call plug#end()

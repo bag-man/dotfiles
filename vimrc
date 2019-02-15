@@ -156,6 +156,7 @@
   set incsearch
   set smartcase
   set scrolloff=10
+  set hlsearch
 
   " Spelling
   setlocal spell spelllang=en

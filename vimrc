@@ -11,9 +11,9 @@
   if !empty(glob("~/.fzf/bin/fzf"))
     if empty(glob("~/.fzf/bin/rg"))
       silent !curl -fLo /tmp/rg.tar.gz
-            \ https://github.com/BurntSushi/ripgrep/releases/download/0.4.0/ripgrep-0.4.0-x86_64-unknown-linux-musl.tar.gz
+            \ https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
       silent !tar xzvf /tmp/rg.tar.gz --directory /tmp
-      silent !cp /tmp/ripgrep-0.4.0-x86_64-unknown-linux-musl/rg ~/.fzf/bin/rg
+      silent !cp /tmp/ripgrep-0.10.0-x86_64-unknown-linux-musl/rg ~/.fzf/bin/rg
     endif
   endif
   
@@ -40,7 +40,7 @@
   LuciusDarkLowContrast
 
   " Indentation
-  set cindent
+  set autoindent
   set expandtab
   set shiftwidth=2
   set softtabstop=2
@@ -57,79 +57,83 @@
 """ Key modifiers
 
   " Find word in project
-  map <F3> :F <C-r><C-w><Cr>
+  nnoremap <F3> :F <C-r><C-w><Cr>
 
-  " Typescript langauge tools
-  map <F5> :echo tsuquyomi#hint()<cr>
-  map <F6> :Fixmyjs<CR>
-  map <F7> :TsuImport<CR>:w<cr>:Fixmyjs<cr>
-  map <F8> :TsuRenameSymbol<CR>
+  " Typescript language tools
+  nnoremap <F6> :echo tsuquyomi#hint()<cr>
+  nnoremap <F7> :TsuImport<CR>
+  nnoremap <F8> :TsuRenameSymbol<CR>
 
   " Generate UUID 
-  imap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>
-  map <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
+  inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>
+  nnoremap <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
 
-  " Sensible shortcuts for movement
-  map <Cr> O<Esc>j
-  map Y y$
-  map H ^
-  map L $
-  map £ g_   
-  map M J
+  " Shortcuts for movement and manipulation
+  nnoremap <Cr> O<Esc>j
+  nnoremap Y y$
+  nnoremap H ^
+  nnoremap L $
+  nnoremap £ g_   
+  nnoremap M J
 
   " Clear search
-  map <BS> :noh<CR>
+  nnoremap <BS> :noh<CR>
 
   " Jump to next error
   nmap <silent> <C-e> <Plug>(ale_next_wrap)
   
-  " Paste over quotes and brakets
-  map "p vi"p
-  map 'p vi'p
-  map (p vi(p
-  map )p vi)p
+  " Paste over quotes and brackets (Hacky)
+  nnoremap "p vi"p
+  nnoremap 'p vi'p
+  nnoremap (p vi(p
+  nnoremap )p vi)p
 
   " Fix typo
-  map q: :q
+  nnoremap q: :q
 
   " Center next item
-  map n nzz
+  nnoremap n nzz
 
   " Write as sudo
-  cmap w!! w !sudo tee > /dev/null %
+  cnoremap w!! w !sudo tee > /dev/null %
   
-  " Toggle comment block
-  map <C-s> magcii`a
-
   " View fzf buffers
-  map <C-b> :Buffers<cr>
+  nnoremap <C-b> :Buffers<cr>
 
   " Tab navigation
-  nnoremap <tab> :tabnext<CR>
-  nnoremap <s-tab> :tabprev<CR>
   nnoremap <C-t> :tabnew<CR>
   inoremap <C-t> <Esc>:tabnew<CR>i
-  noremap gt <C-w>gf
-  noremap gs <C-w>vgf
-  noremap gi <C-w>f
-  noremap <C-]> <C-w><C-]><C-w>T
-  map J :tabprev<CR>
-  map K :tabnext<CR>
+  nnoremap J :tabprev<CR>
+  nnoremap K :tabnext<CR>
+
+  " Open file from link
+  nnoremap gt <C-w>gf
+  nnoremap gs <C-w>vgf
+  nnoremap gi <C-w>f
 
   " Autocomplete navigation
   inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
   inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
   inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
-  imap <Tab> <C-X><C-F>
-  imap <s-Tab> <C-X><C-P>
+  inoremap <Tab> <C-x><C-o>
+  inoremap <s-Tab> <C-X><C-F>
 
   " External item maps
-  map cp :CopyRelativePath<Cr>
-  map gp :Sprunge<cr>
-  map go :Google<cr>
-  map gl :Gblame<Cr>
-  map gb :Gbrowse<Cr>
-  map ch :Gread<Cr>
+  nnoremap cp :CopyRelativePath<Cr>
+
+  vnoremap gp :Sprunge<cr>
+  nnoremap gp :Sprunge<cr>
+
+  vnoremap go :Google<cr>
+  nnoremap go :Google<cr>
+
+  vnoremap gl :Gblame<Cr>
+  nnoremap gl :Gblame<Cr>
+
+  vnoremap gb :Gbrowse<Cr>
+  nnoremap gb :Gbrowse<Cr>
+
+  nnoremap ch :Gread<Cr>
 
   " Open fold
   nnoremap <Space> za
@@ -138,7 +142,7 @@
 
   set undofile
   set undodir=~/.vim/undodir
-  set clipboard=unnamed
+  set clipboard^=unnamed
   set wildignore+=*/tmp/*,*.so,*.swp,*.zip
   set foldmethod=marker
   set backspace=indent,eol,start
@@ -146,48 +150,66 @@
   set completeopt=longest,menuone
   set mouse=
   set lazyredraw
-
-  " Strip whitespace
-  autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
-
-  " Auto load vimrc on save
-  au BufWritePost ~/.vimrc source %
-
-  " Maintain cwd
-  autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
-  autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
-
+  
   " Search settings
   set ignorecase
   set incsearch
   set smartcase
   set scrolloff=10
-  set hlsearch!
 
   " Spelling
   setlocal spell spelllang=en
-  nmap ss :set spell!<CR>
+  nnoremap ss :set spell!<CR>
   set nospell
-  autocmd FileType gitcommit setlocal spell
 
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+  " Autocommands
+  augroup AutoCommands
+    autocmd! 
+    
+    " Strip whitespace
+    autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
+    autocmd BufWritePost *.ts :Fixmyjs
+
+    " Auto load vimrc on save
+    autocmd BufWritePost ~/.vimrc source %
+
+    " Maintain cwd
+    autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+    autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+
+    " Set spell on commits
+    autocmd FileType gitcommit setlocal spell
+    autocmd BufReadPost *
+      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+
+    " Nerdtree config
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    
+    " rainbow brackets
+    if !empty(glob("~/.vim/plugged/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim"))
+      autocmd VimEnter * RainbowParenthesesToggle
+      autocmd Syntax * RainbowParenthesesLoadRound
+      autocmd Syntax * RainbowParenthesesLoadSquare
+      autocmd Syntax * RainbowParenthesesLoadBraces
+    endif 
+  augroup END
 
 """ Plugins
     
   " NERDTree
-  map <C-n> :NERDTreeTabsToggle<CR>
-  map <C-f> :NERDTreeFind<CR>
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  nnoremap <C-n> :NERDTreeTabsToggle<CR>
+  nnoremap <C-f> :NERDTreeFind<CR>
   let NERDTreeChDirMode=2
   let g:NERDTreeDirArrowExpandable = '├'
   let g:NERDTreeDirArrowCollapsible = '└'
   let g:NERDTreeMapActivateNode = '<tab>'
 
   " Nuake
-  tmap <C-q> <C-w>N
+  tnoremap <C-q> <C-w>N
+  tnoremap + <C-q><C-w>3+i
+  tnoremap _ <C-q><C-w>3-i
   nnoremap + <C-w>3+
   nnoremap _ <C-w>3-
   nnoremap <C-\> :Nuake<CR>
@@ -210,7 +232,7 @@
   \}
   highlight ALEError ctermbg=none cterm=underline,bold
   highlight ALEWarning ctermbg=none cterm=underline,bold
-  let g:ale_type_map = {'tslint': {'ES': 'WS', 'E': 'W'}}
+  let g:ale_type_map = { 'tslint': { 'ES': 'WS', 'E': 'W' } }
  
   " Typescript completion
   let g:tsuquyomi_completion_detail = 1
@@ -222,8 +244,7 @@
   let g:argwrap_padded_braces = '{'
 
   " fzf config
-  nmap <C-p> :Files<cr>
-  imap <c-x><c-l> <plug>(fzf-complete-line)
+  nnoremap <C-p> :Files<cr>
 
   let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
@@ -233,8 +254,8 @@
 
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-    \ -g "*.{ts,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst}"
-    \ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist}/*" '
+    \ -g "*.{ts,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
+    \ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,build,dist}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
@@ -247,14 +268,6 @@
 
   " vim-move
   let g:move_key_modifier = 'C'
-
-  " rainbow brackets
-  if !empty(glob("~/.vim/plugged/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim"))
-    autocmd VimEnter * RainbowParenthesesToggle
-    autocmd Syntax * RainbowParenthesesLoadRound
-    autocmd Syntax * RainbowParenthesesLoadSquare
-    autocmd Syntax * RainbowParenthesesLoadBraces
-  endif 
 
   " Highlight jump points
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

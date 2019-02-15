@@ -62,7 +62,7 @@
   " Typescript language tools
   nnoremap <F5> :echo tsuquyomi#hint()<cr>
   nnoremap <F6> :TsuImport<CR>
-  nnoremap <F7> :Fixmyjs<CR>
+  nnoremap <F7> :w<cr>:Fixmyjs<CR>:w<cr>
   nnoremap <F8> :TsuRenameSymbol<CR>
 
   " Generate UUID 

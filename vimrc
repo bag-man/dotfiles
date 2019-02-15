@@ -61,9 +61,9 @@
 
   " Typescript language tools
   nnoremap <F5> :echo tsuquyomi#hint()<cr>
-  nnoremap <F6> :TsuImport<CR>
+  nnoremap <F6> :TsuRenameSymbol<CR>
   nnoremap <F7> :w<cr>:Fixmyjs<CR>:w<cr>
-  nnoremap <F8> :TsuRenameSymbol<CR>
+  nnoremap <F8> :TsuImport<CR>
 
   " Generate UUID 
   inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>

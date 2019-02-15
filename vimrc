@@ -60,8 +60,9 @@
   nnoremap <F3> :F <C-r><C-w><Cr>
 
   " Typescript language tools
-  nnoremap <F6> :echo tsuquyomi#hint()<cr>
-  nnoremap <F7> :TsuImport<CR>
+  nnoremap <F5> :echo tsuquyomi#hint()<cr>
+  nnoremap <F6> :TsuImport<CR>
+  nnoremap <F7> :Fixmyjs<CR>
   nnoremap <F8> :TsuRenameSymbol<CR>
 
   " Generate UUID 
@@ -169,7 +170,6 @@
     
     " Strip whitespace
     autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
-    autocmd BufWritePost *.ts :Fixmyjs
 
     " Auto load vimrc on save
     autocmd BufWritePost ~/.vimrc source %

@@ -72,9 +72,9 @@
   " Shortcuts for movement and manipulation
   nnoremap <Cr> O<Esc>j
   nnoremap Y y$
-  nnoremap H ^
-  nnoremap L $
-  nnoremap £ g_   
+  map H ^
+  map L $
+  map £ g_   
   nnoremap M J
 
   " Clear search
@@ -117,7 +117,8 @@
   inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
   inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
   inoremap <Tab> <C-x><C-o>
-  inoremap <s-Tab> <C-X><C-F>
+  inoremap <s-Tab> <C-X><C-P>
+
 
   " External item maps
   nnoremap cp :CopyRelativePath<Cr>

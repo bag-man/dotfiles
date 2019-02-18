@@ -300,6 +300,7 @@
   Plug 'szw/vim-g'                                                     " Google from Vim
   Plug 'google/vim-searchindex'                                        " Number of search results
   Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
+  Plug 'sickill/vim-pasta'                                             " Paste format
 
   " Languages
   Plug 'moll/vim-node'                                                 " Syntax for node.js

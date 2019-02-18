@@ -240,6 +240,7 @@
   let g:tsuquyomi_completion_detail = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:tsuquyomi_definition_split = 2
+  let g:tsuquyomi_single_quote_import = 1
 
   " argwrap
   nnoremap <silent> <Bslash>a :ArgWrap<CR>
@@ -336,6 +337,5 @@
   Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'thinca/vim-textobj-function-javascript'                        " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
-  Plug 'coderifous/textobj-word-column.vim'                            " Word columns
 
   call plug#end()

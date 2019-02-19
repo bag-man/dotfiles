@@ -293,7 +293,7 @@
   Plug 'jreybert/vimagit'                                              " Interactive git staging
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  if v:version >= 810
+  if v:version >= 801
     Plug 'bag-man/nuake'                                                 " Quake term
   endif
 

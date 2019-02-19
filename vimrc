@@ -210,13 +210,11 @@
 
   " Nuake
   tnoremap <C-q> <C-w>N
-  tnoremap + <C-q><C-w>3+i
-  tnoremap _ <C-q><C-w>3-i
+  tnoremap <C-\> <C-\><C-n>:Nuake<CR>
   nnoremap + <C-w>3+
   nnoremap _ <C-w>3-
   nnoremap <C-\> :Nuake<CR>
   inoremap <C-\> <C-\><C-n>:Nuake<CR>
-  tnoremap <C-\> <C-\><C-n>:Nuake<CR>
   let g:nuake_position = 2
   let g:nuake_size = 0.2
   let g:nuake_per_tab = 1

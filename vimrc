@@ -10,10 +10,17 @@
   " Install fzf and rg
   if !empty(glob("~/.fzf/bin/fzf"))
     if empty(glob("~/.fzf/bin/rg"))
-      silent !curl -fLo /tmp/rg.tar.gz
-            \ https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
-      silent !tar xzvf /tmp/rg.tar.gz --directory /tmp
-      silent !cp /tmp/ripgrep-0.10.0-x86_64-unknown-linux-musl/rg ~/.fzf/bin/rg
+      if system('uname')=~'Darwin'
+        silent !curl -fLo /tmp/rg.tar.gz
+              \ https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-apple-darwin.tar.gz
+        silent !tar xzvf /tmp/rg.tar.gz --directory /tmp
+        silent !cp /tmp/ripgrep-0.10.0-x86_64-apple-darwin/rg ~/.fzf/bin/rg
+      else
+        silent !curl -fLo /tmp/rg.tar.gz
+              \ https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
+        silent !tar xzvf /tmp/rg.tar.gz --directory /tmp
+        silent !cp /tmp/ripgrep-0.10.0-x86_64-unknown-linux-musl/rg ~/.fzf/bin/rg
+      endif
     endif
   endif
   
@@ -286,7 +293,9 @@
   Plug 'jreybert/vimagit'                                              " Interactive git staging
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  Plug 'bag-man/nuake'                                                 " Quake term
+  if v:version >= 810
+    Plug 'bag-man/nuake'                                                 " Quake term
+  endif
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file

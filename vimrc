@@ -65,6 +65,9 @@
 
   " Find word in project
   nnoremap <F3> :F <C-r><C-w><Cr>
+ 
+  " Replace word in buffers
+  nnoremap <F4> :R <C-r><C-w>
 
   " Typescript language tools
   nnoremap <F5> :echo tsuquyomi#hint()<cr>
@@ -204,6 +207,26 @@
       autocmd Syntax * RainbowParenthesesLoadBraces
     endif 
   augroup END
+
+  " operate on word in all buffers
+  function! OperateBuffers(find, ...)
+      let operation=join(a:000, ' ')
+      execute 'bufdo g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
+  endfunction
+  command! -bang -nargs=* OB call OperateBuffers(<f-args>)
+  
+  " operate on word in all buffers
+  function! Operate(find, ...)
+      let operation=join(a:000, ' ')
+      execute 'g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
+  endfunction
+  command! -bang -nargs=* O call Operate(<f-args>)
+
+  " Find and replace in all buffers
+  function! Replace(find, replace)
+      execute 'bufdo %s/'. a:find . '/'. a:replace . '/gc | update'
+  endfunction
+  command! -bang -nargs=* R call Replace(<f-args>)
 
 """ Plugins
     

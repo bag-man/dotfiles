@@ -67,7 +67,7 @@
   nnoremap <F3> :F <C-r><C-w><Cr>
  
   " Replace word in buffers
-  nnoremap <F4> :R <C-r><C-w>
+  nnoremap <F4> :R <C-r><C-w> 
 
   " Typescript language tools
   nnoremap <F5> :echo tsuquyomi#hint()<cr>
@@ -227,6 +227,13 @@
       execute 'bufdo %s/'. a:find . '/'. a:replace . '/gc | update'
   endfunction
   command! -bang -nargs=* R call Replace(<f-args>)
+
+  " Convert TS enum to strings (Requires vim-indent-object)
+  function! TSEnum()
+    execute "norm vii" 
+    execute ":'<,'>norm^ywysiw'Hhpa = "
+  endfunction
+  command! -bang -nargs=* TSEnum call TSEnum()
 
 """ Plugins
     

@@ -237,8 +237,13 @@
   let g:ale_pattern_options = {
   \   '.*\.d.ts$': {'ale_enabled': 0},
   \}
-  highlight ALEError ctermbg=none cterm=underline,bold
-  highlight ALEWarning ctermbg=none cterm=underline,bold
+
+  augroup AleHighlights
+    autocmd!
+    autocmd ColorScheme * highlight ALEError ctermbg=none cterm=underline,bold
+                      \ | highlight ALEWarning ctermbg=none cterm=underline,bold
+  augroup END
+
   let g:ale_type_map = { 'tslint': { 'ES': 'WS', 'E': 'W' } }
  
   " Typescript completion

@@ -290,7 +290,6 @@
 
   " fzf config
   nnoremap <C-p> :Files<cr>
-
   let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-i': 'split',
@@ -302,7 +301,8 @@
     \ -g "*.{ts,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
     \ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,build,dist}/*" '
 
-  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
+  command! -bang -nargs=* FU call fzf#vim#grep(g:rg_command . '-m1 ' . shellescape(<q-args>), 1, <bang>0)
 
   " JS lint fix
   let g:fixmyjs_engine = 'tslint'

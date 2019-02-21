@@ -182,6 +182,9 @@
     " Strip whitespace
     autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
 
+    " Reload Tsuqyomi after write so imports always work
+    autocmd BufWritePre *.ts :TsuReload
+
     " Auto load vimrc on save
     autocmd BufWritePost ~/.vimrc source %
 

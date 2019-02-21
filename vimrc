@@ -211,6 +211,8 @@
     endif 
   augroup END
 
+""" Functions 
+
   " Operate on word (line) in all buffers
   function! OperateBuffers(find, ...)
       let operation=join(a:000, ' ')

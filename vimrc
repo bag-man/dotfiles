@@ -208,14 +208,14 @@
     endif 
   augroup END
 
-  " Operate on word in all buffers
+  " Operate on word (line) in all buffers
   function! OperateBuffers(find, ...)
       let operation=join(a:000, ' ')
       execute 'bufdo g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
   endfunction
   command! -bang -nargs=* OB call OperateBuffers(<f-args>)
   
-  " Operate on word in all buffers
+  " Operate on word (line)
   function! Operate(find, ...)
       let operation=join(a:000, ' ')
       execute 'g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'

@@ -246,6 +246,7 @@
   let g:NERDTreeMapActivateNode = '<tab>'
 
   " Nuake
+  tnoremap <C-d> <C-w>N:Nuake<CR>
   tnoremap <C-q> <C-w>N
   tnoremap <C-\> <C-\><C-n>:Nuake<CR>
   nnoremap + <C-w>3+

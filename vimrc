@@ -252,9 +252,10 @@
   nnoremap _ <C-w>3-
   nnoremap <C-\> :Nuake<CR>
   inoremap <C-\> <C-\><C-n>:Nuake<CR>
-  let g:nuake_position = 2
+  let g:nuake_position = 'top'
   let g:nuake_size = 0.2
   let g:nuake_per_tab = 1
+  let g:syntax_on = 1
 
   " Ale
   let g:ale_sign_error = ' '

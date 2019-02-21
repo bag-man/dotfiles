@@ -199,7 +199,7 @@
     " Nerdtree config
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     
-    " rainbow brackets
+    " Rainbow brackets
     if !empty(glob("~/.vim/plugged/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim"))
       autocmd VimEnter * RainbowParenthesesToggle
       autocmd Syntax * RainbowParenthesesLoadRound
@@ -208,14 +208,14 @@
     endif 
   augroup END
 
-  " operate on word in all buffers
+  " Operate on word in all buffers
   function! OperateBuffers(find, ...)
       let operation=join(a:000, ' ')
       execute 'bufdo g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
   endfunction
   command! -bang -nargs=* OB call OperateBuffers(<f-args>)
   
-  " operate on word in all buffers
+  " Operate on word in all buffers
   function! Operate(find, ...)
       let operation=join(a:000, ' ')
       execute 'g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
@@ -228,10 +228,10 @@
   endfunction
   command! -bang -nargs=* R call Replace(<f-args>)
 
-  " Convert TS enum to strings (Requires vim-indent-object)
+  " Convert TS enum to strings (Requires tpope/vim-surround and michaeljsmith/vim-indent-object)
   function! TSEnum()
     execute "norm vii" 
-    execute ":'<,'>norm^ywysiw'Hhpa = "
+    execute ":'<,'>norm^ywysiw'^hpa = "
   endfunction
   command! -bang -nargs=* TSEnum call TSEnum()
 

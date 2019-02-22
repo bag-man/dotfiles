@@ -228,8 +228,9 @@
   command! -bang -nargs=* O call Operate(<f-args>)
 
   " Find and replace in all buffers
-  function! Replace(find, replace)
-      execute 'bufdo %s/'. a:find . '/'. a:replace . '/gc | update'
+  function! Replace(find, ...)
+      let replace=join(a:000, ' ')
+      execute 'bufdo %s/'. a:find . '/'. replace . '/gc | update'
   endfunction
   command! -bang -nargs=* R call Replace(<f-args>)
 

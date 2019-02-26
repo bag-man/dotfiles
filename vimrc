@@ -208,6 +208,7 @@
       autocmd Syntax * RainbowParenthesesLoadRound
       autocmd Syntax * RainbowParenthesesLoadSquare
       autocmd Syntax * RainbowParenthesesLoadBraces
+      syntax on
     endif 
   augroup END
 
@@ -261,7 +262,6 @@
   let g:nuake_position = 'top'
   let g:nuake_size = 0.2
   let g:nuake_per_tab = 1
-  let g:nuake_syntax_on = 1
 
   " Ale
   let g:ale_sign_error = ' '

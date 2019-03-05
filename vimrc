@@ -210,6 +210,9 @@
       autocmd Syntax * RainbowParenthesesLoadBraces
       syntax on
     endif 
+
+    " Don't fold commits
+    autocmd FileType git,gitcommit setlocal nofoldenable
   augroup END
 
 """ Functions 
@@ -267,6 +270,9 @@
   let g:ale_sign_error = ' '
   let g:ale_sign_warning = ' '
   let g:ale_sign_column_always = 1
+  let g:ale_lint_on_text_changed = 'normal'
+  let g:ale_lint_on_insert_leave = 1
+  let g:ale_lint_delay = 0
   let g:ale_linters = {
   \   'javascript': ['eslint'],
   \   'typescript': ['tsserver', 'tslint'] ,
@@ -303,7 +309,7 @@
 
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-    \ -g "*.{ts,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
+    \ -g "*.{ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
     \ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,build,dist}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
@@ -332,7 +338,6 @@
   Plug 'scrooloose/nerdtree'                                           " File tree browser
   Plug 'Xuyuanp/nerdtree-git-plugin'                                   " Git for NerdTree
   Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
-  Plug 'jreybert/vimagit'                                              " Interactive git staging
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   if v:version >= 801
@@ -350,6 +355,7 @@
   Plug 'google/vim-searchindex'                                        " Number of search results
   Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
   Plug 'sickill/vim-pasta'                                             " Paste format
+  Plug 'cohama/agit.vim'                                               " Git log
 
   " Languages
   Plug 'moll/vim-node'                                                 " Syntax for node.js
@@ -376,6 +382,8 @@
   Plug 'chrisbra/Colorizer'                                            " Show hex codes as colours
   Plug 'kien/rainbow_parentheses.vim'                                  " Colour matched brackets
   Plug 'unblevable/quick-scope'                                        " Highlight jump characters
+  Plug 'drzel/vim-in-proportion'                                       " Maintain splits when windows gets resized
+  Plug 'breuckelen/vim-resize'                                         " Use Ctrl+arrows to resize splits 
 
   " Text objects
   Plug 'wellle/targets.vim'                                            " Additional text objects                   

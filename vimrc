@@ -162,6 +162,10 @@
   set completeopt=longest,menuone
   set mouse=
   set lazyredraw
+
+  " js/ts filejumps
+  set path=.,..,src,node_modules
+  set suffixesadd=.js,.jsx,.ts,.tsx
   
   " Search settings
   set ignorecase

@@ -63,6 +63,9 @@
 
 """ Key modifiers
 
+  " View git history for file
+  nnoremap <F2> :AgitFile <Cr>
+  
   " Find word in project
   nnoremap <F3> :F <C-r><C-w><Cr>
  
@@ -215,8 +218,8 @@
       syntax on
     endif 
 
-    " Don't fold commits
-    autocmd FileType git,gitcommit setlocal nofoldenable
+    autocmd FileType agit nmap <silent><buffer> J :tabprev<cr>
+    autocmd FileType agit nmap <silent><buffer> K :tabnext<cr>
   augroup END
 
 """ Functions 
@@ -313,7 +316,7 @@
 
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-    \ -g "*.{ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
+    \ -g "*.{tsx,ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
     \ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,build,dist}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
@@ -331,6 +334,9 @@
 
   " Highlight jump points
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+  " Agit
+  let g:agit_enable_auto_refresh = 1
 
 """ Plugins 
 

@@ -157,6 +157,10 @@
 
   set undofile
   set undodir=~/.vim/undodir
+  set backup
+  set backupdir=~/.vim/backup/
+  set writebackup
+  set backupcopy=yes
   set clipboard^=unnamed
   set wildignore+=*/tmp/*,*.so,*.swp,*.zip
   set foldmethod=marker
@@ -316,8 +320,8 @@
 
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-    \ -g "*.{tsx,ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
-    \ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,build,dist}/*" '
+    \ -g "*.{vim,viml,tsx,ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
+    \ -g "!{.config,.git,node_modules,vendor,yarn.lock,*.sty,*.bst,build,dist}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
   command! -bang -nargs=* FU call fzf#vim#grep(g:rg_command . '-m1 ' . shellescape(<q-args>), 1, <bang>0)
@@ -376,6 +380,8 @@
   Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
   Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
   Plug 'jparise/vim-graphql'                                           " Syntax for graphql
+  Plug 'maxmellon/vim-jsx-pretty'                                      " React highlighting
+
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 

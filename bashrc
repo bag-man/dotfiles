@@ -60,6 +60,7 @@ alias rebase="git rebase -i master"
 alias clean="git clean -f"
 alias log="fzf_log"
 alias squash="git reset --soft HEAD~2 && git commit"
+alias theirs="git merge --strategy-option theirs"
 
 export EDITOR=vim
 export TERM=xterm-256color

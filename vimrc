@@ -79,7 +79,7 @@
   nnoremap <F8> :TsuImport<CR>
 
   " Generate UUID 
-  inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>
+  inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>'a'
   nnoremap <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
 
   " Shortcuts for movement and manipulation
@@ -286,7 +286,7 @@
   let g:ale_lint_delay = 0
   let g:ale_linters = {
   \   'javascript': ['eslint'],
-  \   'typescript': ['tsserver', 'tslint'] ,
+  \   'typescript': ['tsserver', 'eslint', 'tslint'] ,
   \}
   let g:ale_pattern_options = {
   \   '.*\.d.ts$': {'ale_enabled': 0},
@@ -355,7 +355,7 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   if v:version >= 801
-    Plug 'bag-man/nuake'                                                 " Quake term
+    Plug 'bag-man/nuake'                                               " Quake term
   endif
 
   " Small utilities
@@ -370,6 +370,7 @@
   Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
   Plug 'sickill/vim-pasta'                                             " Paste format
   Plug 'cohama/agit.vim'                                               " Git log
+  Plug 'kamykn/spelunker.vim'                                          " Clever spell check
 
   " Languages
   Plug 'moll/vim-node'                                                 " Syntax for node.js
@@ -380,8 +381,6 @@
   Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
   Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
   Plug 'jparise/vim-graphql'                                           " Syntax for graphql
-  Plug 'maxmellon/vim-jsx-pretty'                                      " React highlighting
-
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 
@@ -409,7 +408,7 @@
   Plug 'glts/vim-textobj-comment'                                      " Comment text objects
   Plug 'kana/vim-textobj-function'                                     " Add function based text objects
   Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
-  Plug 'bag-man/vim-textobj-function-javascript'                        " Add JS function object
+  Plug 'bag-man/vim-textobj-function-javascript'                       " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
 
   call plug#end()

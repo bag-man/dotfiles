@@ -41,6 +41,7 @@
   syntax on
   set number relativenumber
   set nowrap
+  set signcolumn=yes
 
   " Theme
   colorscheme lucius
@@ -68,16 +69,16 @@
   
   " Find word in project
   nnoremap <F3> :F <C-r><C-w><Cr>
+
+  " coc bindings
+  nnoremap <F4> :call CocActionAsync('rename')<cr>
+  nnoremap <F5> :call CocActionAsync('doHover')<cr>
+  nnoremap <F6> :call CocAction('jumpReferences')<cr>
+  nnoremap <F7> :call CocActionAsync('runCommand', 'prettier.formatFile')<cr>
+  nnoremap <F8> :CocAction<cr>,
+  nnoremap <C-e> :call CocActionAsync('diagnosticNext', 'error')<cr>
+  nnoremap <C-]> :call CocActionAsync('jumpTypeDefinition')<cr>
  
-  " Replace word in buffers
-  nnoremap <F4> :R <C-r><C-w> 
-
-  " Typescript language tools
-  nnoremap <F5> :echo tsuquyomi#hint()<cr>
-  nnoremap <F6> :TsuRenameSymbol<CR>
-  nnoremap <F7> :w<cr>:Fixmyjs<CR>:w<cr>
-  nnoremap <F8> :TsuImport<CR>
-
   " Generate UUID 
   inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>'a'
   nnoremap <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
@@ -92,15 +93,6 @@
 
   " Clear search
   nnoremap <BS> :noh<CR>
-
-  " Jump to next error
-  nmap <silent> <C-e> <Plug>(ale_next_wrap)
-  
-  " Paste over quotes and brackets (Hacky)
-  nnoremap "p vi"p
-  nnoremap 'p vi'p
-  nnoremap (p vi(p
-  nnoremap )p vi)p
 
   " Fix typo
   nnoremap q: :q
@@ -128,10 +120,6 @@
   " Autocomplete navigation
   inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
   inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
-  inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
-  inoremap <Tab> <C-x><C-o>
-  inoremap <s-Tab> <C-X><C-P>
-
 
   " External item maps
   nnoremap cp :CopyRelativePath<Cr>
@@ -193,9 +181,6 @@
     " Strip whitespace
     autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
 
-    " Reload Tsuqyomi after write so imports always work
-    autocmd BufWritePre *.ts :TsuReload
-
     " Auto load vimrc on save
     autocmd BufWritePost ~/.vimrc source %
 
@@ -224,30 +209,19 @@
 
     autocmd FileType agit nmap <silent><buffer> J :tabprev<cr>
     autocmd FileType agit nmap <silent><buffer> K :tabnext<cr>
+
+    " Coc errors
+    highlight CocErrorHighlight ctermfg=Red guifg=#ff0000
+
   augroup END
 
 """ Functions 
-
-  " Operate on word (line) in all buffers
-  function! OperateBuffers(find, ...)
-      let operation=join(a:000, ' ')
-      execute 'bufdo g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
-  endfunction
-  command! -bang -nargs=* OB call OperateBuffers(<f-args>)
-  
   " Operate on word (line)
   function! Operate(find, ...)
       let operation=join(a:000, ' ')
       execute 'g/' . a:find . '/exe "norm /' . a:find . '\<cr>\' . operation . '" | update'
   endfunction
   command! -bang -nargs=* O call Operate(<f-args>)
-
-  " Find and replace in all buffers
-  function! Replace(find, ...)
-      let replace=join(a:000, ' ')
-      execute 'bufdo %s/'. a:find . '/'. replace . '/gc | update'
-  endfunction
-  command! -bang -nargs=* R call Replace(<f-args>)
 
   " Convert TS enum to strings (Requires tpope/vim-surround and michaeljsmith/vim-indent-object)
   function! TSEnum()
@@ -276,36 +250,7 @@
   let g:nuake_position = 'top'
   let g:nuake_size = 0.2
   let g:nuake_per_tab = 1
-
-  " Ale
-  let g:ale_sign_error = ' '
-  let g:ale_sign_warning = ' '
-  let g:ale_sign_column_always = 1
-  let g:ale_lint_on_text_changed = 'normal'
-  let g:ale_lint_on_insert_leave = 1
-  let g:ale_lint_delay = 0
-  let g:ale_linters = {
-  \   'javascript': ['eslint'],
-  \   'typescript': ['tsserver', 'eslint', 'tslint'] ,
-  \}
-  let g:ale_pattern_options = {
-  \   '.*\.d.ts$': {'ale_enabled': 0},
-  \}
-
-  augroup AleHighlights
-    autocmd!
-    autocmd ColorScheme * highlight ALEError ctermbg=none cterm=underline,bold
-                      \ | highlight ALEWarning ctermbg=none cterm=underline,bold
-  augroup END
-
-  let g:ale_type_map = { 'tslint': { 'ES': 'WS', 'E': 'W' } }
  
-  " Typescript completion
-  let g:tsuquyomi_completion_detail = 1
-  let g:tsuquyomi_disable_quickfix = 1
-  let g:tsuquyomi_definition_split = 2
-  let g:tsuquyomi_single_quote_import = 1
-
   " argwrap
   nnoremap <silent> <Bslash>a :ArgWrap<CR>
   let g:argwrap_padded_braces = '{'
@@ -326,13 +271,6 @@
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
   command! -bang -nargs=* FU call fzf#vim#grep(g:rg_command . '-m1 ' . shellescape(<q-args>), 1, <bang>0)
 
-  " JS lint fix
-  let g:fixmyjs_engine = 'tslint'
-
-  " long-roll
-  let g:lognroll_js_console = 'log'
-  let g:lognroll_js_actions = [ 'info', 'warn', 'error', 'debug' ]
-
   " vim-move
   let g:move_key_modifier = 'C'
 
@@ -342,18 +280,22 @@
   " Agit
   let g:agit_enable_auto_refresh = 1
 
+  " coc extensions
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier', 'coc-json', 'coc-python', 'coc-tslint-plugin']
+
+
 """ Plugins 
 
   call plug#begin('~/.vim/plugged')
   filetype plugin indent on
 
   " Features
-  Plug 'w0rp/ale'                                                      " Async linting
   Plug 'scrooloose/nerdtree'                                           " File tree browser
   Plug 'Xuyuanp/nerdtree-git-plugin'                                   " Git for NerdTree
   Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " Language server
   if v:version >= 801
     Plug 'bag-man/nuake'                                               " Quake term
   endif
@@ -367,7 +309,6 @@
   Plug 'FooSoft/vim-argwrap'                                           " Wrap arguments to multi-lines
   Plug 'szw/vim-g'                                                     " Google from Vim
   Plug 'google/vim-searchindex'                                        " Number of search results
-  Plug 'glippi/lognroll-vim'                                           " Auto console.log vars
   Plug 'sickill/vim-pasta'                                             " Paste format
   Plug 'cohama/agit.vim'                                               " Git log
   Plug 'kamykn/spelunker.vim'                                          " Clever spell check
@@ -378,7 +319,6 @@
   Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
   Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
   Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
-  Plug 'Quramy/tsuquyomi'                                              " TypeScript autocompletion
   Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
   Plug 'jparise/vim-graphql'                                           " Syntax for graphql
 

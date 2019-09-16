@@ -71,10 +71,9 @@
   nnoremap <F3> :F <C-r><C-w><Cr>
 
   " coc bindings
-  nnoremap <F4> :call CocActionAsync('rename')<cr>
   nnoremap <F5> :call CocActionAsync('doHover')<cr>
-  nnoremap <F6> :call CocAction('jumpReferences')<cr>
-  nnoremap <F7> :call CocActionAsync('runCommand', 'prettier.formatFile')<cr>
+  nnoremap <F6> :call CocActionAsync('rename')<cr>
+  nnoremap <F7> :call CocAction('jumpReferences')<cr>
   nnoremap <F8> :CocAction<cr>,
   nnoremap <C-e> :call CocActionAsync('diagnosticNext', 'error')<cr>
   nnoremap <C-]> :call CocActionAsync('jumpTypeDefinition')<cr>
@@ -281,7 +280,7 @@
   let g:agit_enable_auto_refresh = 1
 
   " coc extensions
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-prettier', 'coc-json', 'coc-python', 'coc-tslint-plugin']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-python', 'coc-tslint-plugin']
 
 
 """ Plugins 

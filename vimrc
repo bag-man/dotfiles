@@ -76,10 +76,10 @@
   nnoremap <F7> :call CocAction('jumpReferences')<cr>
   nnoremap <F8> :CocAction<cr>,
   nnoremap <C-e> :call CocActionAsync('diagnosticNext', 'error')<cr>
-  nnoremap <C-]> :call CocActionAsync('jumpTypeDefinition')<cr>
+  nnoremap <C-]> :call CocActionAsync('jumpDefinition')<cr>
  
   " Generate UUID 
-  inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>'a'
+  inoremap <C-u> <esc>:exe 'norm a' . system('/usr/bin/newuuid')<cr>a
   nnoremap <C-u> :exe 'norm a' . system('/usr/bin/newuuid')<cr>
 
   " Shortcuts for movement and manipulation

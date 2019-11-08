@@ -7,6 +7,7 @@ import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Layout.ResizableTile
+import XMonad.Actions.CopyWindow
 
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
 
@@ -16,10 +17,10 @@ myWorkspaces   = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 myTerminal     = "st"
 
 myPP = xmobarPP { 
-  ppCurrent = (xmobarColor "#117FF5" "" . const "•"),
+  ppCurrent = (xmobarColor "#117FF5" ""),
   ppTitle = (\str -> ""), 
-  ppHidden = (xmobarColor "#626262" "" . const "•"),
-  ppHiddenNoWindows = (xmobarColor "#626262" "" . const "•"),
+  ppHidden = (xmobarColor "#626262" ""),
+  ppHiddenNoWindows = (xmobarColor "#626262" ""),
   ppLayout = 
     (\x -> case x of
     "ResizableTall" -> "<icon=/home/owg1/.xmonad/icons/tall.xpm/>"
@@ -30,22 +31,22 @@ myPP = xmobarPP {
 }
 
 myKeys = [ 
-  -- Chromebook
-  ((0, xK_F6), spawn "xbacklight -dec 10"),
-  ((0, xK_F7), spawn "xbacklight -inc 10"),
 
-  -- Audio
-  ((0, xK_F9), spawn "mpc next"),
-  ((0, xK_F10), spawn "mpc toggle"),
-  ((0, xK_F11),spawn "amixer set Master 5-"),
-  ((0, xK_F12),spawn "amixer set Master 5+"),
+  -- Functions
+  ((mod1Mask, xK_Up), spawn "xbacklight -inc 5"),
+  ((mod1Mask, xK_Down), spawn "xbacklight -dec 5"),
+  ((0, xK_F11),spawn "amixer -D pulse sset Master 5%-"),
+  ((0, xK_Insert),spawn "amixer -D pulse sset Master 5%+"),
 
   -- Applications
   ((mod1Mask, xK_w), spawn "google-chrome-stable"),
   ((mod1Mask, xK_F4), kill),
-  ((mod1Mask, xK_End), spawn "vlock -ans"),
-  ((mod1Mask, xK_o), spawn "pass clip --rofi"),
+  ((mod1Mask, xK_i), spawn "rofi-copyq"),
   ((mod1Mask, xK_p), spawn "rofi -show run"),
+  ((mod1Mask, xK_o), spawn "pass clip --rofi"),
+  ((mod1Mask, xK_End), spawn "slock"),
+  ((mod1Mask, xK_v ), windows copyToAll),
+  ((controlMask .|. mod1Mask, xK_v ), killAllOtherCopies),
   ((0, xK_Print), spawn "sleep 0.2; scrot -o -q 100 -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   ((controlMask, xK_Print), spawn "scrot -o -q 100 /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   
@@ -66,7 +67,11 @@ myKeys = [
 
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
-myManageHook = composeAll[isFullscreen --> (doF W.focusDown <+> doFullFloat)]
+myManageHook = 
+  composeAll[
+    isFullscreen --> (doF W.focusDown <+> doFullFloat),
+    className =? "mpv" --> doRectFloat (W.RationalRect 0.9 0.02 0.09 0.13) <+> doF copyToAll
+  ]
 
 myResizable = smartBorders $ ResizableTall 1 (3/100) (1/2) [] 
 

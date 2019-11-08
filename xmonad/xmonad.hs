@@ -77,6 +77,9 @@ myResizable = smartBorders $ ResizableTall 1 (3/100) (1/2) []
 
 myLayout = myResizable ||| Mirror myResizable ||| Full
 
+startup = do
+  spawn "mpv ~/pikachu.webm"
+
 myConfig = defaultConfig {
   terminal           = myTerminal,
   borderWidth        = myBorderWidth,
@@ -84,6 +87,7 @@ myConfig = defaultConfig {
   focusedBorderColor = myBorderColour,
   workspaces         = myWorkspaces,
   manageHook         = myManageHook,
+  startupHook        = startup,
   layoutHook         = myLayout
 } `removeKeys` [(mod1Mask, xK_comma), (mod1Mask, xK_period), (mod1Mask, xK_k), (mod1Mask, xK_j)] 
   `additionalKeys` myKeys 

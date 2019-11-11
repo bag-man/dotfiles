@@ -70,7 +70,7 @@ toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 myManageHook = 
   composeAll[
     isFullscreen --> (doF W.focusDown <+> doFullFloat),
-    className =? "mpv" --> doRectFloat (W.RationalRect 0.9 0.02 0.09 0.13) <+> doF copyToAll
+    className =? "mpv" --> doRectFloat (W.RationalRect 0.9 0.84 0.09 0.13) <+> doF copyToAll
   ]
 
 myResizable = smartBorders $ ResizableTall 1 (3/100) (1/2) [] 

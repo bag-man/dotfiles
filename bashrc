@@ -1,3 +1,4 @@
+
 #
 # /etc/bash.bashrc
 #
@@ -14,12 +15,27 @@ PKGFILE_PROMPT_INSTALL_MISSING=y
 source /usr/share/doc/pkgfile/command-not-found.bash
 source /usr/share/git/completion/git-prompt.sh
 
+PROJECT=$(gcloud config get-value project)
 WHITE="\[\e[1;37m\]"
 BLUE="\[\e[1;34m\]"
+RED="\[\e[1;31m\]"
 PS1="$WHITE\W\$(__git_ps1 ' (%s)') $BLUEλ $WHITE"
 PS2='> '
 PS3='> '
 PS4='+ '
+
+prompt_cmd () {
+  LAST_STATUS=$?
+  history -a; history -c; history -r;
+  if [[ $PROJECT == "a6s-dev" ]]; then
+    COLOUR=$BLUE;
+  else
+    COLOUR=$RED;
+  fi
+  PS1="$WHITE\W\$(__git_ps1 ' (%s)') $COLOURλ $WHITE"
+}
+
+export PROMPT_COMMAND=prompt_cmd
 
 alias spr="curl -F 'sprunge=<-' http://sprunge.us | xclip"
 alias vi=vim
@@ -35,8 +51,23 @@ alias cleanorphans="pacman -Rns $(pacman -Qtdq)"
 alias explicit="pacman -Qet"
 alias mirrors="sudo pacman-mirrors --fasttrack && sudo pacman -Syy"
 alias json="python -m json.tool"
+alias build="npm --silent run build"
+alias test="npm --silent run test"
+alias start="npm --silent run start"
+alias nuke="rm -rf build node_modules/ && npm i && npm run build"
+alias stage="gcloud config set project a6s-stage; export PROJECT=a6s-stage"
+alias dev="gcloud config set project a6s-dev; export PROJECT=a6s-dev"
 
-alias diff="git difftool"
+
+#alias dev="tsc-watch --onSuccess 'node --inspect ./build/bin/server.js'"
+alias debug="tsc-watch --onSuccess 'node inspect ./build/bin/server.js'"
+alias cleartestdb="PGPASSWORD=123 psql -U postgres -h localhost -d advinans -c 'DROP SCHEMA company_benefit_next_test CASCADE; CREATE SCHEMA company_benefit_next_test;'"
+alias cleardb="PGPASSWORD=123 psql -U postgres -h localhost -d advinans -c 'DROP SCHEMA company_benefit_next CASCADE; CREATE SCHEMA company_benefit_next;'"
+alias clearcdb="PGPASSWORD=123 psql -U postgres -h localhost -d advinans -c 'DROP SCHEMA company CASCADE; CREATE SCHEMA company;'"
+alias test="npm run test --silent --"
+alias psql="pgcli"
+
+alias diff="git difftool -- ':!package-lock.json'"
 alias show="git showtool"
 alias stat="git status"
 alias add="git add"
@@ -61,17 +92,18 @@ alias clean="git clean -f"
 alias log="fzf_log"
 alias squash="git reset --soft HEAD~2 && git commit"
 alias theirs="git merge --strategy-option theirs"
+alias removelocal="git reset --hard @{u}"
+alias amend="git commit --amend -C @"
 
 export EDITOR=vim
 export TERM=xterm-256color
 export PYTHON=python2.7
-export PATH=~/.npm-global/bin:$PATH
+export PATH=~/.npm-global/bin:/home/owg1/.gem/ruby/2.5.0/bin:$PATH
 
 export HISTCONTROL=ignoredups:erasedups  
-export HISTSIZE=100000                   
-export HISTFILESIZE=100000               
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 shopt -s histappend                      
-export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
@@ -79,12 +111,13 @@ export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi --multi'
 bind -x '"\C-p": fvim'
+bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
 
 sf() {
   if [ "$#" -lt 1 ]; then echo "Supply string to search for!"; return 1; fi
   printf -v search "%q" "$*"
-  include="ts,yml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst"
-  exclude=".config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist"
+  include="tsx,vim,ts,yml,yaml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst,graphql"
+  exclude=".config,.git,node_modules,vendor,build/,yarn.lock,*.sty,*.bst,*.coffee,dist"
   rg_command='rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{'$include'}" -g "!{'$exclude'}/*"'
   files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
   [[ -n "$files" ]] && ${EDITOR:-vim} $files
@@ -99,7 +132,6 @@ sfu() {
   files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
   [[ -n "$files" ]] && ${EDITOR:-vim} $files
 }
-
 
 
 fc() {
@@ -144,8 +176,14 @@ c() {
   local cols sep google_history open
   cols=$(( COLUMNS / 3 ))
   sep='{::}'
-  google_history="$HOME/.config/google-chrome/Profile 1/History"
-  open=xdg-open
+
+  if [ "$(uname)" = "Darwin" ]; then
+    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+    open=open
+  else
+    google_history="$HOME/.config/google-chrome/Profile 1/History"
+    open=xdg-open
+  fi
   cp -f "$google_history" /tmp/h
   sqlite3 -separator $sep /tmp/h \
     "select substr(title, 1, $cols), url
@@ -159,3 +197,11 @@ gopen() {
     url="http://github.com/$project/commit/$1"
     xdg-open $url
 }
+
+# [[ -s "/home/owg1/.gvm/scripts/gvm" ]] && source "/home/owg1/.gvm/scripts/gvm"
+
+# export NVM_DIR="$HOME/.nvm"
+
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

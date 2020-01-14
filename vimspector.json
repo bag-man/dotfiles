@@ -1,0 +1,31 @@
+{
+  "configurations": {
+    "run": {
+      "adapter": "vscode-node",
+      "configuration": {
+        "stopOnEntry": false,
+        "console": "integratedTerminal",
+        "name": "Node Inspector",
+        "type": "node",
+        "request": "launch",
+        "args": ["${workspaceRoot}/src/bin/server.ts"],
+        "runtimeArgs": ["-r", "~/.npm-global/lib/node_modules/ts-node/register/index.js"],
+        "cwd": "${workspaceRoot}",
+        "protocol": "inspector",
+        "internalConsoleOptions": "openOnSessionStart",
+        "env": {
+          "TS_NODE_IGNORE": "false",
+          "TS_NODE_FILES": "true"
+        }
+      },
+      "breakpoints": {
+        "exception": {
+          "caught": "N",
+          "uncaught": "N",
+          "all": "N"
+        }
+      }
+    }
+  }
+}
+

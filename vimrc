@@ -64,17 +64,25 @@
 
 """ Key modifiers
 
-  " View git history for file
-  nnoremap <F2> :AgitFile <Cr>
+  " debugger keys
+  nnoremap <F1> :call vimspector#ToggleBreakpoint()<CR>
+  nnoremap <F2> :call vimspector#Continue()<CR>
+  nnoremap <F3> :call vimspector#Restart()<CR>
+  nnoremap <F4> :call vimspector#Reset()<CR>
   
-  " Find word in project
-  nnoremap <F3> :F <C-r><C-w><Cr>
-
   " coc bindings
   nnoremap <F5> :call CocActionAsync('doHover')<cr>
+  nnoremap <S-F5> :call CocActionAsync('showSignatureHelp')<cr>
   nnoremap <F6> :call CocActionAsync('rename')<cr>
   nnoremap <F7> :call CocAction('jumpReferences')<cr>
   nnoremap <F8> :CocAction<cr>,
+  
+  " View git history for file
+  nnoremap <F9> :AgitFile <Cr>
+  
+  " Find word in project
+  nnoremap <F10> :F <C-r><C-w><Cr>
+
   nnoremap <C-e> :call CocActionAsync('diagnosticNext', 'error')<cr>
   nnoremap <C-]> :call CocActionAsync('jumpDefinition')<cr>
  
@@ -119,6 +127,16 @@
   " Autocomplete navigation
   inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
   inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+  
+  " use <tab> for trigger completion and navigate to the next complete item
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+  inoremap <silent><expr> <Tab>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
 
   " External item maps
   nnoremap cp :CopyRelativePath<Cr>
@@ -132,8 +150,8 @@
   vnoremap gl :Gblame<Cr>
   nnoremap gl :Gblame<Cr>
 
-  vnoremap gb :Gbrowse<Cr>
-  nnoremap gb :Gbrowse<Cr>
+  vnoremap gb :Gbrowse!<Cr>
+  nnoremap gb :Gbrowse!<Cr>
 
   nnoremap ch :Gread<Cr>
 
@@ -264,7 +282,7 @@
 
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-    \ -g "*.{vim,viml,tsx,ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
+    \ -g "*.{tf,yml,yaml,vim,viml,tsx,ts,js,jsx,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,graphql,gql,sql}"
     \ -g "!{.config,.git,node_modules,vendor,yarn.lock,*.sty,*.bst,build,dist}/*" '
 
   command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
@@ -280,8 +298,7 @@
   let g:agit_enable_auto_refresh = 1
 
   " coc extensions
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-python', 'coc-tslint-plugin']
-
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-python', 'coc-tslint-plugin', 'coc-rls']
 
 """ Plugins 
 
@@ -298,6 +315,8 @@
   if v:version >= 801
     Plug 'bag-man/nuake'                                               " Quake term
   endif
+  Plug 'gillyb/stable-windows'                                         " Stable windows!
+  Plug 'puremourning/vimspector'                                       " Debugger
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file
@@ -349,5 +368,5 @@
   Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'bag-man/vim-textobj-function-javascript'                       " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
-
+  
   call plug#end()

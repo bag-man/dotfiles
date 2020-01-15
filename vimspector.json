@@ -1,6 +1,6 @@
 {
   "configurations": {
-    "run": {
+    "ts-node": {
       "adapter": "vscode-node",
       "configuration": {
         "stopOnEntry": false,
@@ -17,6 +17,28 @@
           "TS_NODE_IGNORE": "false",
           "TS_NODE_FILES": "true"
         }
+      },
+      "breakpoints": {
+        "exception": {
+          "caught": "N",
+          "uncaught": "N",
+          "all": "N"
+        }
+      }
+    },
+    "jest": {
+      "adapter": "vscode-node",
+      "configuration": {
+        "stopOnEntry": false,
+        "console": "integratedTerminal",
+        "name": "Node Inspector",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/.bin/jest",
+        "args": ["${file}"],
+        "cwd": "${workspaceRoot}",
+        "protocol": "inspector",
+        "internalConsoleOptions": "openOnSessionStart"
       },
       "breakpoints": {
         "exception": {

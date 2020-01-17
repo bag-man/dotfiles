@@ -35,7 +35,7 @@
         "type": "node",
         "request": "launch",
         "program": "${workspaceFolder}/node_modules/.bin/jest",
-        "args": ["${file}"],
+        "args": ["${fileBasenameNoExtension}"],
         "cwd": "${workspaceRoot}",
         "protocol": "inspector",
         "internalConsoleOptions": "openOnSessionStart"

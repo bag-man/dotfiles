@@ -121,7 +121,7 @@
 
   " Open file from link
   nnoremap gt <C-w>gf
-  nnoremap gs <C-w>vgf
+  nnoremap gs :vertical wincmd f<CR>
   nnoremap gi <C-w>f
 
   " Autocomplete navigation

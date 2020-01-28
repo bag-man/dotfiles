@@ -75,7 +75,7 @@
   nnoremap <S-F5> :call CocActionAsync('showSignatureHelp')<cr>
   nnoremap <F6> :call CocActionAsync('rename')<cr>
   nnoremap <F7> :call CocAction('jumpReferences')<cr>
-  nnoremap <F8> :CocAction<cr>,
+  nnoremap <F8> :CocAction<cr>
   
   " View git history for file
   nnoremap <F9> :AgitFile <Cr>
@@ -332,12 +332,7 @@
   Plug 'kamykn/spelunker.vim'                                          " Clever spell check
 
   " Languages
-  Plug 'moll/vim-node'                                                 " Syntax for node.js
-  Plug 'wavded/vim-stylus'                                             " Stylus for stylus
-  Plug 'digitaltoad/vim-pug'                                           " Syntax for pug
-  Plug 'josudoey/vim-eslint-fix'                                       " Eslint fixamajig
   Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
-  Plug 'ruanyl/vim-fixmyjs'                                            " TSlint runner
   Plug 'jparise/vim-graphql'                                           " Syntax for graphql
 
   " tpope
@@ -365,7 +360,6 @@
   Plug 'jceb/vim-textobj-uri'                                          " URL objects
   Plug 'glts/vim-textobj-comment'                                      " Comment text objects
   Plug 'kana/vim-textobj-function'                                     " Add function based text objects
-  Plug 'bag-man/vim-textobj-keyvalue'                                  " Key value object
   Plug 'bag-man/vim-textobj-function-javascript'                       " Add JS function object
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
   

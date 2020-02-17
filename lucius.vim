@@ -572,6 +572,7 @@ else
         hi TabLineFill  guifg=#9e9e9e   guibg=#444444
         hi TabLineSel   guifg=#ffffff  guibg=#444444
         hi VertSplit                    guibg=NONE
+        hi Pmenu guibg=#444444 guifg=#9e9e9e
     elseif s:contrast == "high"
         hi FoldColumn   guifg=#c6c6c6
         hi Folded       guifg=#c6c6c6

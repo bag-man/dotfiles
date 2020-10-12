@@ -15,7 +15,6 @@ PKGFILE_PROMPT_INSTALL_MISSING=y
 source /usr/share/doc/pkgfile/command-not-found.bash
 source /usr/share/git/completion/git-prompt.sh
 
-PROJECT=$(gcloud config get-value project)
 WHITE="\[\e[1;37m\]"
 BLUE="\[\e[1;34m\]"
 RED="\[\e[1;31m\]"
@@ -27,12 +26,6 @@ PS4='+ '
 prompt_cmd () {
   LAST_STATUS=$?
   history -a; history -c; history -r;
-  if [[ $PROJECT == "a6s-dev" ]]; then
-    COLOUR=$BLUE;
-  else
-    COLOUR=$RED;
-  fi
-  PS1="$WHITE\W\$(__git_ps1 ' (%s)') $COLOURλ $WHITE"
 }
 
 export PROMPT_COMMAND=prompt_cmd

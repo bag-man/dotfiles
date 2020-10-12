@@ -34,6 +34,11 @@
   if !isdirectory($HOME . "/.vim/undodir")
     call mkdir($HOME . "/.vim/undodir", "p")
   endif
+  
+  " Create backup directory
+  if !isdirectory($HOME . "/.vim/backup")
+    call mkdir($HOME . "/.vim/backup", "p")
+  endif
 
 """ Appearance
 

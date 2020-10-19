@@ -17,8 +17,9 @@ Config {
                              , "--normal"   , "blue"
                              , "--high"     , "darkred" ] 10,
                Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
-               Run Date "%H:%M " "date" 10],
+               Run Date "%H:%M " "date" 10,
+               Run Kbd [("gb", "GB"), ("se", "SE")]],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% : %memory% : %cpu% }{ %battery% %date%" 
+   template = "%StdinReader% : %memory% : %cpu% }{ %battery% %kbd% %date%" 
  }

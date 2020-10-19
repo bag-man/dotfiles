@@ -37,14 +37,14 @@ myKeys = [
   ((mod1Mask, xK_Down), spawn "xbacklight -dec 5"),
   ((0, xK_F11),spawn "amixer -D pulse sset Master 5%-"),
   ((0, xK_Insert),spawn "amixer -D pulse sset Master 5%+"),
+  ((mod1Mask, xK_F11),spawn "xkb-switch -n"),
 
   -- Applications
-  ((mod1Mask, xK_w), spawn "google-chrome-stable"),
+  ((mod1Mask, xK_w), spawn "brave"),
   ((mod1Mask, xK_F4), kill),
-  ((mod1Mask, xK_i), spawn "rofi-copyq"),
   ((mod1Mask, xK_p), spawn "rofi -show run"),
-  ((mod1Mask, xK_o), spawn "pass clip --rofi"),
-  ((mod1Mask, xK_End), spawn "slock"),
+  ((mod1Mask, xK_o), spawn "pass clip --rofi"), -- pass-clip
+  ((mod1Mask, xK_End), spawn "dm-tool lock"),
   ((mod1Mask, xK_v ), windows copyToAll),
   ((controlMask .|. mod1Mask, xK_v ), killAllOtherCopies),
   ((0, xK_Print), spawn "sleep 0.2; scrot -o -q 100 -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),

@@ -1,5 +1,0 @@
-#xbacklight -set 0
-#slock
-#xbacklight -set 70
-systemctl suspend
-sflock

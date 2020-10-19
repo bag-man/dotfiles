@@ -1,9 +1,3 @@
-
-#
-# /etc/bash.bashrc
-#
-xmodmap -e "keycode 96 = Insert Insert Insert"
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -48,16 +42,6 @@ alias build="npm --silent run build"
 alias test="npm --silent run test"
 alias start="npm --silent run start"
 alias nuke="rm -rf build node_modules/ && npm i && npm run build"
-alias stage="gcloud config set project a6s-stage; export PROJECT=a6s-stage"
-alias dev="gcloud config set project a6s-dev; export PROJECT=a6s-dev"
-
-
-#alias dev="tsc-watch --onSuccess 'node --inspect ./build/bin/server.js'"
-alias debug="tsc-watch --onSuccess 'node inspect ./build/bin/server.js'"
-alias cleartestdb="PGPASSWORD=123 psql -U postgres -h localhost -d advinans -c 'DROP SCHEMA company_benefit_next_test CASCADE; CREATE SCHEMA company_benefit_next_test;'"
-alias cleardb="PGPASSWORD=123 psql -U postgres -h localhost -d advinans -c 'DROP SCHEMA company_benefit_next CASCADE; CREATE SCHEMA company_benefit_next;'"
-alias clearcdb="PGPASSWORD=123 psql -U postgres -h localhost -d advinans -c 'DROP SCHEMA company CASCADE; CREATE SCHEMA company;'"
-alias test="npm run test --silent --"
 alias psql="pgcli"
 
 alias diff="git difftool -- ':!package-lock.json'"
@@ -170,13 +154,8 @@ c() {
   cols=$(( COLUMNS / 3 ))
   sep='{::}'
 
-  if [ "$(uname)" = "Darwin" ]; then
-    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
-    open=open
-  else
-    google_history="$HOME/.config/google-chrome/Profile 1/History"
-    open=xdg-open
-  fi
+  google_history="$HOME/.config/BraveSoftware/Brave-Browser/Default/History"
+  open=xdg-open
   cp -f "$google_history" /tmp/h
   sqlite3 -separator $sep /tmp/h \
     "select substr(title, 1, $cols), url
@@ -190,11 +169,3 @@ gopen() {
     url="http://github.com/$project/commit/$1"
     xdg-open $url
 }
-
-# [[ -s "/home/owg1/.gvm/scripts/gvm" ]] && source "/home/owg1/.gvm/scripts/gvm"
-
-# export NVM_DIR="$HOME/.nvm"
-
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-

@@ -33,17 +33,20 @@ myPP = xmobarPP {
 myKeys = [ 
 
   -- Functions
-  ((mod1Mask, xK_Up), spawn "xbacklight -inc 5"),
-  ((mod1Mask, xK_Down), spawn "xbacklight -dec 5"),
-  ((0, xK_F11),spawn "amixer -D pulse sset Master 5%-"),
-  ((0, xK_Insert),spawn "amixer -D pulse sset Master 5%+"),
+
+  ((mod1Mask, xK_F1),spawn "amixer -D pulse set Master 1+ toggle"),
+  ((mod1Mask, xK_F2),spawn "amixer -D pulse sset Master 5%-"),
+  ((mod1Mask, xK_F3),spawn "amixer -D pulse sset Master 5%+"),
+  -- sudoers file hack, because of weird intel drivers
+  ((mod1Mask, xK_F5),spawn "sudo light -U 5"),
+  ((mod1Mask, xK_F6),spawn "sudo light -A 5"),
   ((mod1Mask, xK_F11),spawn "xkb-switch -n"),
 
   -- Applications
   ((mod1Mask, xK_w), spawn "brave"),
   ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_p), spawn "rofi -show run"),
-  ((mod1Mask, xK_o), spawn "pass clip --rofi"), -- pass-clip
+  ((mod1Mask, xK_o), spawn "pass clip --rofi"),
   ((mod1Mask, xK_End), spawn "dm-tool lock"),
   ((mod1Mask, xK_v ), windows copyToAll),
   ((controlMask .|. mod1Mask, xK_v ), killAllOtherCopies),

@@ -1,6 +1,6 @@
 This is for my Manjaro systems. Install manjaro with the architect, and use cinammon as the DE, and ensure to have yay installed. This gives you a nice platform to bootstrap the rest of the setup from. 
 
-All of the files except for the vim specific stuff (lucious, coc, vimspector) needs to just be moved to the home directory and prepended with a `.`.  i.e. `xmonad/ -> `~/.xmonad/`, `bashrc -> .bashrc`.
+All of the files except for the vim specific stuff (lucius, coc, vimspector) needs to just be moved to the home directory and prepended with a `.` so `xmonad/ -> ~/.xmonad/`, `bashrc -> .bashrc`.
 
 The only exception is the ssh-agent.service file which has commented instructions in. 
 

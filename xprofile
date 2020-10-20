@@ -1,3 +1,4 @@
+xset s off -dpms
 xset r rate 250 44 
 setxkbmap  -layout "gb,se" -option caps:escape 
 xmodmap ~/.Xmodmap 

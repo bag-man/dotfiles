@@ -346,6 +346,7 @@
   Plug 'tpope/vim-repeat'                                              " Repeat plugins
   Plug 'tpope/vim-commentary'                                          " Comment out blocks
   Plug 'tpope/vim-fugitive'                                            " Git integration
+  Plug 'tommcdo/vim-fubitive'                                          " Bitbucket extension
   Plug 'tpope/vim-abolish'                                             " Flexible search
   Plug 'tpope/vim-jdaddy'                                              " JSON text object
   Plug 'tpope/vim-rhubarb'                                             " Github browse

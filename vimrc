@@ -283,7 +283,7 @@
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-i': 'split',
     \ 'ctrl-s': 'vsplit' }
-  let g:fzf_layout = { 'down': '~20%' }
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
   let g:rg_command = '
     \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
@@ -346,7 +346,7 @@
   Plug 'tpope/vim-repeat'                                              " Repeat plugins
   Plug 'tpope/vim-commentary'                                          " Comment out blocks
   Plug 'tpope/vim-fugitive'                                            " Git integration
-  Plug 'tommcdo/vim-fubitive'                                          " Bitbucket extension
+  "Plug 'tommcdo/vim-fubitive'                                          " Bitbucket extension
   Plug 'tpope/vim-abolish'                                             " Flexible search
   Plug 'tpope/vim-jdaddy'                                              " JSON text object
   Plug 'tpope/vim-rhubarb'                                             " Github browse

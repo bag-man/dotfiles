@@ -6,5 +6,6 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
-  "tslint.autoFixOnSave": true
+  "tslint.autoFixOnSave": true,
+  "sql.database":"postgresql"
 }

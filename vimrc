@@ -30,6 +30,12 @@
           \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
   endif
   
+  " Install coc-settings
+  if empty(glob("~/.vim/coc-settings.json"))
+    silent !curl -fLo ~/.vim/coc-settings.json --create-dirs
+          \ https://raw.githubusercontent.com/bag-man/dotfiles/master/coc-settings.json
+  endif
+  
   " Create undo directory
   if !isdirectory($HOME . "/.vim/undodir")
     call mkdir($HOME . "/.vim/undodir", "p")
@@ -303,7 +309,7 @@
   let g:agit_enable_auto_refresh = 1
 
   " coc extensions
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-python', 'coc-tslint-plugin', 'coc-rls']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-python', 'coc-tslint-plugin', 'coc-rls', 'coc-sql']
 
 """ Plugins 
 
@@ -346,7 +352,7 @@
   Plug 'tpope/vim-repeat'                                              " Repeat plugins
   Plug 'tpope/vim-commentary'                                          " Comment out blocks
   Plug 'tpope/vim-fugitive'                                            " Git integration
-  Plug 'tommcdo/vim-fubitive'                                          " Bitbucket extension
+  "Plug 'tommcdo/vim-fubitive'                                          " Bitbucket extension
   Plug 'tpope/vim-abolish'                                             " Flexible search
   Plug 'tpope/vim-jdaddy'                                              " JSON text object
   Plug 'tpope/vim-rhubarb'                                             " Github browse

@@ -1,11 +1,16 @@
-xset s off -dpms
+xset -dpms 
+xset s noblank 
+xset s of
 xset r rate 250 44 
 setxkbmap  -layout "gb,se" -option caps:escape 
 xmodmap ~/.Xmodmap 
 copyq &
+udiskie -a &
+picom -b &
 nitrogen --restore &  
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --height 18 --margin 105  --transparent true --alpha 0 --tint 0x111111 --iconspacing 10 &
 pamac-tray &
 nm-applet &
+pa-applet &
 libinput-gestures-setup start &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

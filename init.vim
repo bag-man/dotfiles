@@ -1,8 +1,8 @@
 """ Auto Installation
 
   " Install plugins
-  if empty(glob("~/.vim/autoload/plug.vim"))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     auto VimEnter * PlugInstall
   endif
@@ -25,25 +25,25 @@
   endif
   
   " Install theme
-  if empty(glob("~/.vim/colors/lucius.vim"))
-    silent !curl -fLo ~/.vim/colors/lucius.vim --create-dirs
+  if empty(glob("~/.config/nvim/colors/lucius.vim"))
+    silent !curl -fLo ~/.config/nvim/colors/lucius.vim --create-dirs
           \ https://raw.githubusercontent.com/bag-man/dotfiles/master/lucius.vim
   endif
   
   " Install coc-settings
-  if empty(glob("~/.vim/coc-settings.json"))
-    silent !curl -fLo ~/.vim/coc-settings.json --create-dirs
+  if empty(glob("~/.config/nvim/coc-settings.json"))
+    silent !curl -fLo ~/.config/nvim/coc-settings.json --create-dirs
           \ https://raw.githubusercontent.com/bag-man/dotfiles/master/coc-settings.json
   endif
   
   " Create undo directory
-  if !isdirectory($HOME . "/.vim/undodir")
-    call mkdir($HOME . "/.vim/undodir", "p")
+  if !isdirectory($HOME . "/.config/nvim/undodir")
+    call mkdir($HOME . "/.config/nvim/undodir", "p")
   endif
   
   " Create backup directory
-  if !isdirectory($HOME . "/.vim/backup")
-    call mkdir($HOME . "/.vim/backup", "p")
+  if !isdirectory($HOME . "/.config/nvim/backup")
+    call mkdir($HOME . "/.config/nvim/backup", "p")
   endif
 
 """ Appearance
@@ -76,10 +76,10 @@
 """ Key modifiers
 
   " debugger keys
-  nnoremap <F1> :call vimspector#ToggleBreakpoint()<CR>
-  nnoremap <F2> :call vimspector#Continue()<CR>
-  nnoremap <F3> :call vimspector#Restart()<CR>
-  nnoremap <F4> :call vimspector#Reset()<CR>
+  " nnoremap <F1> :call vimspector#ToggleBreakpoint()<CR>
+  " nnoremap <F2> :call vimspector#Continue()<CR>
+  " nnoremap <F3> :call vimspector#Restart()<CR>
+  " nnoremap <F4> :call vimspector#Reset()<CR>
   
   " coc bindings
   nnoremap <F5> :call CocActionAsync('doHover')<cr>
@@ -172,9 +172,9 @@
 """ Behaviour modifiers
 
   set undofile
-  set undodir=~/.vim/undodir
+  set undodir=~/.config/nvim/undodir
   set backup
-  set backupdir=~/.vim/backup/
+  set backupdir=~/.config/nvim/backup/
   set writebackup
   set backupcopy=yes
   set clipboard^=unnamed
@@ -210,7 +210,7 @@
     autocmd BufWritePre *.ts,*.erb,*.scss,*.rb,*.js,*.c,*.py,*.php :%s/\s\+$//e
 
     " Auto load vimrc on save
-    autocmd BufWritePost ~/.vimrc source %
+    autocmd BufWritePost ~/.config/nvimrc source %
 
     " Maintain cwd
     autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
@@ -227,7 +227,7 @@
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     
     " Rainbow brackets
-    if !empty(glob("~/.vim/plugged/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim"))
+    if !empty(glob("~/.config/nvim/plugged/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim"))
       autocmd VimEnter * RainbowParenthesesToggle
       autocmd Syntax * RainbowParenthesesLoadRound
       autocmd Syntax * RainbowParenthesesLoadSquare
@@ -298,7 +298,7 @@
 
 """ Plugins 
 
-  call plug#begin('~/.vim/plugged')
+  call plug#begin('~/.config/nvim/plugged')
   filetype plugin indent on
 
   " Features
@@ -308,10 +308,8 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
   Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " Language server
-  if v:version >= 801
-    Plug 'bag-man/nuake'                                               " Quake term
-  endif
-  Plug 'puremourning/vimspector'                                       " Debugger
+  Plug 'bag-man/nuake'                                               " Quake term
+  " Plug 'puremourning/vimspector'                                       " Debugger
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file

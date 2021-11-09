@@ -310,6 +310,7 @@
   Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " Language server
   Plug 'bag-man/nuake'                                               " Quake term
   " Plug 'puremourning/vimspector'                                       " Debugger
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Small utilities
   Plug 'bag-man/copypath.vim'                                          " copy path of file
@@ -325,8 +326,8 @@
   Plug 'kamykn/spelunker.vim'                                          " Clever spell check
 
   " Languages
-  Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
-  Plug 'jparise/vim-graphql'                                           " Syntax for graphql
+  " Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax
+  " Plug 'jparise/vim-graphql'                                           " Syntax for graphql
 
   " tpope
   Plug 'tpope/vim-surround'                                            " Operate on surrounding 
@@ -357,3 +358,15 @@
   Plug 'reedes/vim-textobj-sentence'                                   " Sentence object
   
   call plug#end()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", 
+  sync_install = false, 
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+}
+EOF
+

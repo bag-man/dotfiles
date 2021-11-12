@@ -254,7 +254,7 @@
   let g:NERDTreeMapActivateNode = '<tab>'
 
   " Nuake
-  tnoremap <C-q> <C-w>N
+  tnoremap <C-q> <C-\><C-n>
   tnoremap <C-\> <C-\><C-n>:Nuake<CR>
   nnoremap + <C-w>3+
   nnoremap _ <C-w>3-
@@ -294,7 +294,7 @@
   let g:agit_enable_auto_refresh = 1
 
   " coc extensions
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-pyright', 'coc-tslint-plugin', 'coc-rls', 'coc-sql']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-pyright', 'coc-rls', 'coc-sql']
 
 """ Plugins 
 

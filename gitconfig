@@ -1,7 +1,7 @@
 [core]
   email = garland.owen@gmail.com
   name = Owen Garland
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
 [user]
   email = garland.owen@gmail.com

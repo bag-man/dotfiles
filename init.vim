@@ -81,6 +81,12 @@
   " nnoremap <F3> :call vimspector#Restart()<CR>
   " nnoremap <F4> :call vimspector#Reset()<CR>
   
+  " terminal navigation
+  tnoremap <C-w><C-h> <C-\><C-n><C-w>h
+  tnoremap <C-w><C-j> <C-\><C-n><C-w>j
+  tnoremap <C-w><C-k> <C-\><C-n><C-w>k
+  tnoremap <C-w><C-l> <C-\><C-n><C-w>l
+  
   " coc bindings
   nnoremap <F5> :call CocActionAsync('doHover')<cr>
   nnoremap <S-F5> :call CocActionAsync('showSignatureHelp')<cr>
@@ -240,6 +246,9 @@
 
     " Coc errors
     highlight CocErrorHighlight ctermfg=Red guifg=#ff0000
+
+    autocmd BufWinEnter,WinEnter term://* startinsert
+    autocmd BufLeave term://* stopinsert
 
   augroup END
 

@@ -294,7 +294,7 @@
   let g:agit_enable_auto_refresh = 1
 
   " coc extensions
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-pyright', 'coc-tslint-plugin', 'coc-rls', 'coc-sql']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-pyright', 'coc-rls', 'coc-sql']
 
 """ Plugins 
 

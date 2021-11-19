@@ -8,7 +8,7 @@ stty -ixon
 PKGFILE_PROMPT_INSTALL_MISSING=y
 source /usr/share/doc/pkgfile/command-not-found.bash
 source /usr/share/git/completion/git-prompt.sh
-source /home/owg1/.pythonvenv/bin/activate
+#source /home/owg1/.pythonvenv/bin/activate
 
 WHITE="\[\e[1;37m\]"
 BLUE="\[\e[1;34m\]"
@@ -25,8 +25,9 @@ prompt_cmd () {
 
 export PROMPT_COMMAND=prompt_cmd
 
+alias pins="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro yay -S"
 alias spr="curl -F 'sprunge=<-' http://sprunge.us | xclip"
-alias vi=vim
+alias vi=nvim
 alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
 alias ls="ls -lah --color --group-directories-first"
@@ -73,10 +74,12 @@ alias theirs="git merge --strategy-option theirs"
 alias removelocal="git reset --hard @{u}"
 alias amend="git commit --amend -C @"
 
-export EDITOR=vim
+export EDITOR=nvim
 export TERM=xterm-256color
-export PYTHON=python2.7
-export PATH=~/.npm-global/bin:/home/owg1/.gem/ruby/2.5.0/bin:$PATH
+export PYTHON=python3.9.1
+export PATH=~/.npm-global/bin:/home/owg1/.gem/ruby/2.5.0/bin:~/.poetry/bin:$PATH
+export DOCKER_BUILDKIT=1 
+export COMPOSE_DOCKER_CLI_BUILD=1
 
 export HISTCONTROL=ignoredups:erasedups  
 export HISTSIZE=-1
@@ -94,11 +97,11 @@ bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
 sf() {
   if [ "$#" -lt 1 ]; then echo "Supply string to search for!"; return 1; fi
   printf -v search "%q" "$*"
-  include="tsx,vim,ts,yml,yaml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst,graphql,tf"
+  include="tsx,vim,ts,yml,yaml,js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst,graphql,tf,proto"
   exclude="output,.config,.git,node_modules,vendor,build/,yarn.lock,*.sty,*.bst,*.coffee,dist"
   rg_command='rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{'$include'}" -g "!{'$exclude'}/*"'
   files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
-  [[ -n "$files" ]] && ${EDITOR:-vim} $files
+  [[ -n "$files" ]] && ${EDITOR:-nvim} $files
 }
 
 sfu() {
@@ -108,7 +111,7 @@ sfu() {
   exclude="output,.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist"
   rg_command='rg -m1 --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{'$include'}" -g "!{'$exclude'}/*"'
   files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
-  [[ -n "$files" ]] && ${EDITOR:-vim} $files
+  [[ -n "$files" ]] && ${EDITOR:-nvim} $files
 }
 
 
@@ -136,6 +139,10 @@ tm() {
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
+vee() {
+  nvim $(npm run build | grep error | awk -F " " '{print $1}' | sed s/\(/:/g | sed s/\,/:/g | sed s/\).*//)
+}
+
 branch() {
   local branches branch
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
@@ -147,7 +154,7 @@ branch() {
 fvim() {
   local IFS=$'\n'
   local files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  [[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
 }
 
 c() {

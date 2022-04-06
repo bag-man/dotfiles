@@ -40,11 +40,13 @@ myKeys = [
   -- sudoers file hack, because of weird intel drivers
   ((mod1Mask, xK_F5),spawn "sudo light -U 5"),
   ((mod1Mask, xK_F6),spawn "sudo light -A 5"),
+  ((mod1Mask, xK_F8),spawn "mpc next"),
+  ((mod1Mask, xK_F9),spawn "mpd-pause-play"),
+  ((mod1Mask, xK_F10),spawn "toggle-audio"),
   ((mod1Mask, xK_F11),spawn "xkb-switch -n"),
 
   -- Applications
   ((mod1Mask, xK_w), spawn "brave"),
-  ((mod1Mask, xK_F4), kill),
   ((mod1Mask, xK_p), spawn "rofi -show run"),
   ((mod1Mask, xK_o), spawn "pass clip --rofi"),
   ((mod1Mask, xK_End), spawn "dm-tool lock"),
@@ -78,7 +80,7 @@ myManageHook =
 
 myResizable = smartBorders $ ResizableTall 1 (3/100) (1/2) [] 
 
-myLayout = myResizable ||| Mirror myResizable ||| Full
+myLayout = myResizable ||| Mirror myResizable ||| noBorders Full
 
 startup = do
   spawn "mpv ~/pikachu.webm"

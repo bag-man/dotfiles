@@ -41,7 +41,7 @@ myKeys = [
   ((mod1Mask, xK_F5),spawn "sudo light -U 5"),
   ((mod1Mask, xK_F6),spawn "sudo light -A 5"),
   ((mod1Mask, xK_F8),spawn "mpc next"),
-  ((mod1Mask, xK_F9),spawn "mpd-pause-play"),
+  ((mod1Mask, xK_F9),spawn "mpc toggle"),
   ((mod1Mask, xK_F10),spawn "toggle-audio"),
   ((mod1Mask, xK_F11),spawn "xkb-switch -n"),
 

@@ -145,7 +145,7 @@
   inoremap <expr> J ((pumvisible())?("\<C-n>"):("J"))
   inoremap <expr> K ((pumvisible())?("\<C-p>"):("K"))
   
-  " use <tab> for trigger completion and navigate to the next complete item
+  "" use <tab> for trigger completion and navigate to the next complete item
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~ '\s'
@@ -316,9 +316,9 @@
   Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " Language server
-  Plug 'bag-man/nuake'                                               " Quake term
-  " Plug 'puremourning/vimspector'                                       " Debugger
+  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.81'}                         " Language server
+  Plug 'bag-man/nuake'                                                 " Quake term
+  " Plug 'puremourning/vimspector'                                     " Debugger
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Small utilities

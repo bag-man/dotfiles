@@ -92,7 +92,7 @@
   nnoremap <S-F5> :call CocActionAsync('showSignatureHelp')<cr>
   nnoremap <F6> :call CocActionAsync('rename')<cr>
   nnoremap <F7> :call CocAction('jumpReferences')<cr>
-  nnoremap <F8> :CocAction<cr>
+  nnoremap <F8> <Plug>(coc-codeaction-selected)w
   
   " View git history for file
   nnoremap <F9> :AgitFile <Cr>

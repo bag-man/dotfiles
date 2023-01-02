@@ -55,6 +55,11 @@ myKeys = [
   ((0, xK_Print), spawn "sleep 0.2; scrot -o -q 100 -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   ((controlMask, xK_Print), spawn "scrot -o -q 100 /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   
+  -- Media keys (bluetooth headset) /usr/include/X11/XF86keysym.h
+  ((0, 0x1008FF17), spawn "mpc next"),
+  ((0, 0x1008ff14), spawn "mpc toggle"),
+  ((0, 0x1008ff31), spawn "mpc toggle"),
+  
   -- Adjust split
   ((mod1Mask, xK_j), sendMessage MirrorShrink),
   ((mod1Mask, xK_k), sendMessage MirrorExpand),

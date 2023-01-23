@@ -52,8 +52,8 @@ myKeys = [
   ((mod1Mask, xK_End), spawn "dm-tool lock"),
   ((mod1Mask, xK_v ), windows copyToAll),
   ((controlMask .|. mod1Mask, xK_v ), killAllOtherCopies),
-  ((0, xK_Print), spawn "sleep 0.2; scrot -o -q 100 -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
-  ((controlMask, xK_Print), spawn "scrot -o -q 100 /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
+  ((0, xK_Print), spawn "sleep 0.2; escrotum -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
+  ((controlMask, xK_Print), spawn "escrotum /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   
   -- Media keys (bluetooth headset) /usr/include/X11/XF86keysym.h
   ((0, 0x1008FF17), spawn "mpc next"),

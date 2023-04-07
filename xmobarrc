@@ -1,8 +1,9 @@
 Config { 
-   font     = "xft:Anonymous Pro Minus:size=10:antialias=true:autohint=true",
+   font     = "Anonymous Pro Minus 10",
+   -- font     = "xft:Anonymous Pro Minus:size=10:antialias=true:autohint=true",
    bgColor  = "#111111",
    fgColor  = "#888888",
-   position = Top,
+   position = TopH 20,
    commands = [Run StdinReader,
                Run Cpu ["--template" ,"<bar>"
                              , "--Low"      , "20"        -- units: %
@@ -17,9 +18,9 @@ Config {
                              , "--normal"   , "blue"
                              , "--high"     , "darkred" ] 10,
                Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
-               Run Date "%H:%M " "date" 10,
+               Run Date "%H:%M " "date" 10],
                Run Kbd [("gb", "GB"), ("se", "SE")]],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% : %memory% : %cpu% }{ %battery% %kbd% %date%" 
+   template = "%StdinReader% : %memory% : %cpu% }{ %battery% %kbd% %date%"
  }

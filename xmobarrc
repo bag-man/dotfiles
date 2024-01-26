@@ -20,6 +20,8 @@ Config {
                Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
                Run Date "%H:%M " "date" 10],
                Run Kbd [("gb", "GB"), ("se", "SE")]],
+               Run CoreTemp [ "--template" , "<core0>°C" ] 50,
+               Run Com "sh" ["-c", "cd ~/Projects/DepartureBoard/; node build/xmobar.js"] "bus" 500 
    sepChar  = "%",
    alignSep = "}{",
    template = "%StdinReader% : %memory% : %cpu% }{ %battery% %kbd% %date%"

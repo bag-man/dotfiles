@@ -35,3 +35,7 @@ xmonad
 xmonad-contrib
 yay
 ```
+
+Handy link for installing xmonad: https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/
+
+Short version, don't use arch repos, build yourself with Stack. 

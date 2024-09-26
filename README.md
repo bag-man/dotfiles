@@ -12,7 +12,6 @@ Packages used:
 bfs-git
 brave
 copyq
-docker-compose
 gvim
 htop
 icdiff
@@ -24,16 +23,12 @@ pass
 pass-clip
 pkgfile
 rofi
-scrot
 trayer
 ttf-anonymous-pro
-wifi-menu
 xf86-input-synaptics
 xkb-switch
-xmobar
-xmonad
-xmonad-contrib
 yay
+iwd
 ```
 
 Handy link for installing xmonad: https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/

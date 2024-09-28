@@ -37,13 +37,12 @@ myKeys = [
   ((mod1Mask, xK_F1),spawn "amixer -D pulse set Master 1+ toggle"),
   ((mod1Mask, xK_F2),spawn "amixer -D pulse sset Master 5%-"),
   ((mod1Mask, xK_F3),spawn "amixer -D pulse sset Master 5%+"),
-  -- sudoers file hack, because of weird intel drivers
-  ((mod1Mask, xK_F5),spawn "sudo light -U 5"),
-  ((mod1Mask, xK_F6),spawn "sudo light -A 5"),
+  ((mod1Mask, xK_F5),spawn "brightnessctl s 5%-"),
+  ((mod1Mask, xK_F6),spawn "brightnessctl s 5%+"),
   ((mod1Mask, xK_F8),spawn "mpc next"),
   ((mod1Mask, xK_F9),spawn "mpc toggle"),
   ((mod1Mask, xK_F10),spawn "toggle-audio"),
-  ((mod1Mask, xK_F11),spawn "xkb-switch -n"),
+  ((mod1Mask, xK_F9),spawn "xkb-switch -n"),
 
   -- Applications
   ((mod1Mask, xK_w), spawn "brave"),
@@ -52,8 +51,8 @@ myKeys = [
   ((mod1Mask, xK_End), spawn "dm-tool lock"),
   ((mod1Mask, xK_v ), windows copyToAll),
   ((controlMask .|. mod1Mask, xK_v ), killAllOtherCopies),
-  ((0, xK_Print), spawn "sleep 0.2; escrotum -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
-  ((controlMask, xK_Print), spawn "escrotum /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
+  ((0, xK_F11), spawn "escrotum -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
+  ((controlMask, xK_F11), spawn "escrotum /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
   
   -- Media keys (bluetooth headset) /usr/include/X11/XF86keysym.h
   ((0, 0x1008FF17), spawn "mpc next"),

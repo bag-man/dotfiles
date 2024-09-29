@@ -37,18 +37,18 @@ myKeys = [
   ((mod1Mask, xK_F1),spawn "amixer -D pulse set Master 1+ toggle"),
   ((mod1Mask, xK_F2),spawn "amixer -D pulse sset Master 5%-"),
   ((mod1Mask, xK_F3),spawn "amixer -D pulse sset Master 5%+"),
-  ((mod1Mask, xK_F5),spawn "brightnessctl s 5%-"),
-  ((mod1Mask, xK_F6),spawn "brightnessctl s 5%+"),
-  ((mod1Mask, xK_F8),spawn "mpc next"),
-  ((mod1Mask, xK_F9),spawn "mpc toggle"),
-  ((mod1Mask, xK_F10),spawn "toggle-audio"),
+  ((mod1Mask, xK_F4),spawn "mpc prev"),
+  ((mod1Mask, xK_F5),spawn "mpc toggle"),
+  ((mod1Mask, xK_F6),spawn "mpc next"),
+  ((mod1Mask, xK_F7),spawn "brightnessctl s 5%-"),
+  ((mod1Mask, xK_F8),spawn "brightnessctl s 5%+"),
   ((mod1Mask, xK_F9),spawn "xkb-switch -n"),
 
   -- Applications
   ((mod1Mask, xK_w), spawn "brave"),
   ((mod1Mask, xK_p), spawn "rofi -show run"),
   ((mod1Mask, xK_o), spawn "pass clip --rofi"),
-  ((mod1Mask, xK_End), spawn "dm-tool lock"),
+  ((mod1Mask, xK_End), spawn "betterlockscreen --lock"),
   ((mod1Mask, xK_v ), windows copyToAll),
   ((controlMask .|. mod1Mask, xK_v ), killAllOtherCopies),
   ((0, xK_F11), spawn "escrotum -s /tmp/shot.png; copyq write image/png - < /tmp/shot.png && copyq select 0"),
@@ -89,7 +89,7 @@ myLayout = myResizable ||| Mirror myResizable ||| noBorders Full
 startup = do
   spawn "mpv ~/pikachu.webm"
 
-myConfig = defaultConfig {
+myConfig = def {
   terminal           = myTerminal,
   borderWidth        = myBorderWidth,
   normalBorderColor  = myBorderColour,

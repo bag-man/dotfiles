@@ -125,7 +125,7 @@
   nnoremap n nzz
 
   " Write as sudo
-  cnoremap w!! w !sudo tee > /dev/null %
+  cnoremap w!! SudaWrite
   
   " View fzf buffers
   nnoremap <C-b> :Buffers<cr>
@@ -325,6 +325,7 @@
   Plug 'sickill/vim-pasta'                                             " Paste format
   Plug 'cohama/agit.vim'                                               " Git log
   Plug 'kamykn/spelunker.vim'                                          " Clever spell check
+  Plug 'lambdalisue/vim-suda'                                          " Save as sudo
 
   " Languages
   " Plug 'leafgarland/typescript-vim'                                    " TypeScript Syntax

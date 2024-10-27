@@ -98,6 +98,7 @@ startup = do
   spawn "xset s off"
   spawn "xset r rate 250 44"
   spawn "setxkbmap  -layout 'gb,se' -option caps:escape"
+  spawn "echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK > .ssh-env"
   spawn "sleep 3; xmodmap /home/owg1/.Xmodmap"
 
 

@@ -142,18 +142,10 @@
   nnoremap gi <C-w>f
 
   " Autocomplete navigation
-  inoremap <expr> J ((pumvisible())?("\<C-n>"):("J"))
-  inoremap <expr> K ((pumvisible())?("\<C-p>"):("K"))
-  
-  "" use <tab> for trigger completion and navigate to the next complete item
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
-  inoremap <silent><expr> <Tab>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<Tab>" :
-        \ coc#refresh()
+  inoremap <silent><expr> J coc#pum#visible() ? coc#pum#next(0) : "J"
+  inoremap <silent><expr> K coc#pum#visible() ? coc#pum#prev(0) : "K"
+  inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : coc#refresh()
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
   " External item maps
   nnoremap cp :CopyRelativePath<Cr>
@@ -316,7 +308,7 @@
   Plug 'jistr/vim-nerdtree-tabs'                                       " NerdTree independent of tabs
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Install fzf for user
   Plug 'junegunn/fzf.vim'                                              " Fzf vim plugin
-  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.81'}                         " Language server
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " Language server
   Plug 'bag-man/nuake'                                                 " Quake term
   " Plug 'puremourning/vimspector'                                     " Debugger
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

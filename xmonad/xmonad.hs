@@ -87,7 +87,19 @@ myResizable = smartBorders $ ResizableTall 1 (3/100) (1/2) []
 myLayout = myResizable ||| Mirror myResizable ||| noBorders Full
 
 startup = do
-  spawn "mpv ~/pikachu.webm"
+  spawn "libinput-gestures-setup start &"
+  spawn "picom -b --config ~/.picom.conf &"
+  spawn "nitrogen --restore &"
+  spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --height 18 --margin 105  --transparent true --alpha 0 --tint 0x111111 --iconspacing 10 &"
+  spawn "copyq &"
+  spawn "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
+  spawn "xset -dpms"
+  spawn "xset s noblank"
+  spawn "xset s off"
+  spawn "xset r rate 250 44"
+  spawn "setxkbmap  -layout 'gb,se' -option caps:escape"
+  spawn "sleep 3; xmodmap /home/owg1/.Xmodmap"
+
 
 myConfig = def {
   terminal           = myTerminal,

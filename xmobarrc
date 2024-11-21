@@ -14,5 +14,5 @@ Config {
                Run Kbd [("gb", "GB"), ("se", "SE")]],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% : %mpd% } %bus% { %weather% : %wifi% : %kbd% %battery% %date%"
+   template = "%StdinReader% : %mpd% } %bus% { %weather% : %wifi% : %kbd% : %battery% : %date%"
  }

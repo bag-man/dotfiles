@@ -90,7 +90,7 @@ startup = do
   spawn "libinput-gestures-setup start &"
   spawn "picom -b --config ~/.picom.conf &"
   spawn "nitrogen --restore &"
-  spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --height 18 --margin 105  --transparent true --alpha 0 --tint 0x111111 --iconspacing 10 &"
+  spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --height 18 --margin 600 --transparent true --alpha 0 --tint 0x111111 --iconspacing 10 &"
   spawn "copyq &"
   spawn "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
   spawn "xset -dpms"

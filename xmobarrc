@@ -1,28 +1,18 @@
 Config { 
-   font     = "Anonymous Pro Minus 10",
+   font     = "Anonymous Pro Minus 13",
    -- font     = "xft:Anonymous Pro Minus:size=10:antialias=true:autohint=true",
    bgColor  = "#111111",
    fgColor  = "#888888",
    position = TopH 20,
    commands = [Run StdinReader,
-               Run Cpu ["--template" ,"<bar>"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "blue"
-                             , "--high"     , "darkred" ] 10,
-               Run Memory ["--template" ,"<usedbar>"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "blue"
-                             , "--high"     , "darkred" ] 10,
                Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
-               Run Date "%H:%M " "date" 10],
+               Run Date "%H:%M " "date" 10,
+               Run Com "sh" ["-c", "mpc | head -n 1"] "mpd" 50,
+               Run Com "sh" ["-c", "iwctl station wlan0 show  | grep network | awk -F ' ' '{print $3}'"] "wifi" 60,
+               Run Com "sh" ["-c", "cd Projects/departureboard; node build/xmobar.js"] "bus" 50,
+               Run Com "sh" ["-c", "cd Projects/departureboard; node build/xmobarweather.js"] "weather" 3600,
                Run Kbd [("gb", "GB"), ("se", "SE")]],
-               Run CoreTemp [ "--template" , "<core0>°C" ] 50,
-               Run Com "sh" ["-c", "cd ~/Projects/DepartureBoard/; node build/xmobar.js"] "bus" 500 
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% : %memory% : %cpu% }{ %battery% %kbd% %date%"
+   template = "%StdinReader% : %mpd% } %bus% { %weather% : %wifi% : %kbd% %battery% %date%"
  }

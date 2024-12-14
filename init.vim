@@ -242,6 +242,7 @@
     autocmd BufWinEnter,WinEnter term://* startinsert
     autocmd BufLeave term://* stopinsert
 
+    autocmd FileType markdown let b:coc_suggest_disable = 1
   augroup END
 
 """ Plugins

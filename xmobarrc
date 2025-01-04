@@ -5,14 +5,16 @@ Config {
    fgColor  = "#888888",
    position = TopH 20,
    commands = [Run StdinReader,
-               Run BatteryP ["BAT0"] ["-t", "<left>%"] 10,
+               Run BatteryP ["BAT0"] ["-t", "<left>%"] 60,
                Run Date "%H:%M " "date" 10,
                Run Com "sh" ["-c", "mpc | head -n 1"] "mpd" 50,
                Run Com "sh" ["-c", "iwctl station wlan0 show  | grep network | awk -F ' ' '{print $3}'"] "wifi" 60,
+               Run Com "sh" ["-c", "iwconfig wlan0 | grep Signal | awk -F '=' '{print substr($3,0,3)}'"] "wifisignal" 60,
                Run Com "sh" ["-c", "cd Projects/departureboard; node build/xmobar.js"] "bus" 50,
-               Run Com "sh" ["-c", "cd Projects/departureboard; node build/xmobarweather.js"] "weather" 3600,
+               Run Com "sh" ["-c", "cd Projects/departureboard; node build/xmobarweather.js"] "weather" 60,
+               Run Com "sh" ["-c", "cd Projects/SSA; bash propagation.sh"] "propagation" 3600,
                Run Kbd [("gb", "GB"), ("se", "SE")]],
    sepChar  = "%",
    alignSep = "}{",
-   template = "%StdinReader% : %mpd% } %bus% { %weather% : %wifi% : %kbd% : %battery% : %date%"
+   template = "%StdinReader% : %mpd% } %bus% { %propagation% :  %weather% : %wifi% %wifisignal% : %kbd% : %battery% : %date%"
  }

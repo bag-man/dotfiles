@@ -26,7 +26,7 @@ prompt_cmd () {
 export PROMPT_COMMAND=prompt_cmd
 
 alias pins="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro yay -S"
-alias spr="curl -F 'sprunge=<-' http://sprunge.us | xclip"
+alias spr="nc termbin.com 9999"
 alias vi=nvim
 alias pamcan="pacman"
 alias paste="xsel --clipboard | spr"
@@ -45,7 +45,9 @@ alias test="npm --silent run test"
 alias start="npm --silent run start"
 alias nuke="rm -rf build node_modules/ && npm i && npm run build"
 alias psql="pgcli"
+alias vsink="pactl load-module module-null-sink sink_name=VirtualRx format=s16le channels=2 rate=48000 sink_properties=device.description='VirtualRx'"
 
+alias pr="gh pr create -w"
 alias diff="git difftool -- ':!package-lock.json'"
 alias show="git showtool"
 alias stat="git status"
@@ -77,7 +79,8 @@ alias amend="git commit --amend -C @"
 export EDITOR=nvim
 export TERM=xterm-256color
 export PYTHON=python3.9.1
-export PATH=~/.npm-global/bin:/home/owg1/.gem/ruby/2.5.0/bin:~/.poetry/bin:$PATH
+export VOLTA_HOME=$HOME/.volta
+export PATH=$VOLTA_HOME/bin:~/.npm-global/bin:/home/owg1/.gem/ruby/2.5.0/bin:~/.poetry/bin:$PATH
 export DOCKER_BUILDKIT=1 
 export COMPOSE_DOCKER_CLI_BUILD=1
 
@@ -177,4 +180,5 @@ gopen() {
     url="http://github.com/$project/commit/$1"
     xdg-open $url
 }
-#source /usr/share/nvm/init-nvm.sh
+
+

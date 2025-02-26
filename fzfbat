@@ -1,0 +1,17 @@
+#!/bin/bash
+export BAT_THEME="Monokai Extended Origin"
+REGEX=':[0-9]+:[0-9]+:'
+if [[ $1 =~ $REGEX ]]; then 
+  filename=$(awk -F ':' '{print $1}' <<< $1)
+  line=$(awk -F ':' '{print $2}' <<< $1)
+  if [[ $line -gt 10 ]]; then
+    end=$(($line+50))
+    start=$(($line-10))
+  else 
+    end=$(($line+50))
+    start=0
+  fi
+  bat --style=numbers --color=always --line-range $start:$end --highlight-line $line $filename
+else
+  bat --style=numbers --color=always $@
+fi

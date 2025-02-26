@@ -93,7 +93,7 @@ shopt -s histappend
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,output,node_modules,*.swp,dist,*.coffee}/*" 2> /dev/null'
 export FZF_ALT_C_COMMAND='bfs -type d -nohidden -exclude -name "Music" -exclude -name "Drive"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi --multi --preview "bat --style=numbers --color=always --line-range :500 {}"'
+export FZF_DEFAULT_OPTS='--bind J:down,K:up --reverse --ansi --multi --preview "fzfbat {}" --preview-window "up,70%,border-bottom"'
 bind -x '"\C-p": fvim'
 bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
 
